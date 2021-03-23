@@ -1,0 +1,77 @@
+// scheme:
+// https://coolors.co/1c0f13-6e7e85-b7cece-bbbac6-e2e2e2
+
+$xiketic: #220c10ff;
+$feldgrau: #506c64ff;
+$middle-blue-green: #77cbb9ff;
+$dark-sky-blue: #75b8c8ff;
+$light-gray: #cdd3d5ff;
+
+html {
+  background: $light-gray;
+  color: $xiketic;
+  font-size: 23px;
+}
+
+a {
+    color: $feldgrau;
+}
+
+blockquote {
+    border-left: 8px solid grey;
+    padding: 10px;
+    text-align: left;
+    font-style: italic;
+}
+
+.base-container {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+
+.brand {
+  margin: 20px 10px;
+}
+
+.nav-list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.nav-item {
+  list-style: none;
+  margin: 10px;
+}
+
+.content-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+pre {
+  line-height: 1.4;
+  width: 90%;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.intro {
+  padding: 5vh 15vw;
+  font-size: 30px;
+  text-align: center;
+}
+
+.main-content {
+  width: 80%;
+}
+
+.intro-quote {
+}

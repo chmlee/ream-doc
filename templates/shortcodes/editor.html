@@ -1,0 +1,18 @@
+
+<div>
+  <textarea id="{{ id }}-input" name="" cols="30" rows="10"></textarea>
+  <pre id="{{ id }}-ouput">Hello world</pre>
+  <button id="test">update</button>
+</div>
+
+<script>
+  document.getElementById("{{ id }}-button").addEventListener("click", update, false);
+
+  function update() {
+    var input = document.getElementById("{{ id }}-input").value;
+    console.log(input);
+    let output = document.getElementById("test");
+    console.log(output.innerHTML);
+    console.log(1);
+  }
+</script>

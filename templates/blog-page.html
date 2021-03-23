@@ -5,5 +5,11 @@
   {{ page.title }}
 </h1>
 <p class="subtitle"><strong>{{ page.date }}</strong></p>
+
+
+<textarea id="input" name="" cols="30" rows="10"></textarea>
+<pre id="output">Hello World</pre>
+
+
 {{ page.content | safe }}
 {% endblock content %}

@@ -1,0 +1,11 @@
+<div>
+  <button id="{{ id }}">Import {{ name }}</button>
+</div>
+
+<script>
+  document.getElementById("{{ id }}").addEventListener("click", update, false);
+
+  function update() {
+    document.getElementById("output").innerHTML = "{{ input }}"
+  }
+</script>
