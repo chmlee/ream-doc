@@ -2,10 +2,10 @@
 // https://coolors.co/1c0f13-6e7e85-b7cece-bbbac6-e2e2e2
 
 // $xiketic: #220c10ff;
-// $feldgrau: #506c64ff;
-// $middle-blue-green: #77cbb9ff;
-// $dark-sky-blue: #75b8c8ff;
-// $light-gray: #cdd3d5ff;
+$feldgrau: #506c64ff;
+$middle-blue-green: #77cbb9ff;
+$dark-sky-blue: #75b8c8ff;
+$light-gray: #cdd3d5ff;
 
 // // https://coolors.co/725752-878e88-96c0b7-d4dfc7-fef6c9
 $liver: #725752ff;
@@ -24,12 +24,26 @@ html {
   background: $eggshell;
   color: $xiketic;
   font-size: 23px;
+  line-height: 1.4;
 }
 
-.navbar a {
-    color: $liver;
+.base-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: right;
+  margin: 0em 5em;
 }
 
+a {
+    text-decoration: none;
+    color: green;
+}
+
+p>code {
+    background: $light-gray;
+    padding: 0em 0.5em;
+    margin: 0em 0.1em;
+}
 
 #brand a {
   text-decoration: none;
@@ -38,23 +52,16 @@ html {
   font-size: 30px;
 }
 
-.base-container {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: right;
+.navbar a {
+  color: $liver;
 }
-
 
 .navbar {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
-  padding: 0em 0em 0em 2em;
+  padding: 0em 0em 0em 0em;
   //border-bottom: 2px solid grey;
-}
-
-#brand {
-
 }
 
 .nav-list {
@@ -64,7 +71,11 @@ html {
 
 .nav-item {
   list-style: none;
-  margin: 10px;
+  margin: 0em 0.5em;
+}
+
+.nav-item-active > a {
+    color: red;
 }
 
 .content-container {
@@ -75,7 +86,6 @@ html {
 pre {
   line-height: 1.4;
   overflow-y: auto;
-  width: 80%;
   padding: 1em;
   margin: 0em 3em;
 }

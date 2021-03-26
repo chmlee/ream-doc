@@ -12,17 +12,58 @@
 <body>
   <div class="base-container">
 
-    <nav class="navbar">
+    
+
+  
+
+
+<nav class="navbar">
   <div id="brand">
     <a href="/">REAM</a>
   </div>
   <ul class="nav-list">
-    <li class="nav-item"><a href="/overview/about">Overview</a></li>
-    <li class="nav-item"><a href="/tutorial/getting-started">Tutorial</a></li>
-    <li class="nav-item"><a href="/toolchain">Toolchain</a></li>
-    <li class="nav-item"><a href="#">Contribution</a></li>
-  </ul>
   
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;blog&#x2F;">
+          Blog
+        </a>
+      </li>
+  
+  </ul>
 </nav>
 
 
@@ -48,7 +89,15 @@
                     <ul class="sub-sidebar">
                         
                             <li class="section-title">
-                                <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;why-ream&#x2F;#static-type-checking">Static Type Checking</a>
+                                <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;why-ream&#x2F;#easy-to-learn-and-use">Easy to learn and use</a>
+                            </li>
+                        
+                            <li class="section-title">
+                                <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;why-ream&#x2F;#static-typing">Static typing</a>
+                            </li>
+                        
+                            <li class="section-title">
+                                <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;why-ream&#x2F;#single-source-of-truth">Single source of truth</a>
                             </li>
                         
                     </ul>
@@ -76,7 +125,119 @@
         </h1>
         <p class="subtitle"><strong></strong></p>
 
-        <h2 id="static-type-checking">Static Type Checking</h2>
+        <p>REAM is a data serialization standard designed for social science datasets.
+The language encourages inline documentation for individual data points, and compiles to analysis-ready format (CSV, JSON, etc.) and human-readable documentation (HTML, PDF, etc.)
+It also introduces features to make managing large data project easier, such as static type checking, reference and macro.
+The language, along with the toolchain built upon it, aims to make it easy to create, maintain, distribute and reuse datasets.</p>
+<h2 id="easy-to-learn-and-use">Easy to learn and use</h2>
+<p>REAM syntax is similar to Markdown, and should be easy to learn if not already familiar:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#5cb3fa;">- population: $</span><span style="color:#db9d63;">11433256</span><span style="color:#5cb3fa;">$
+- euro zone: `</span><span style="color:#cd74e8;">TRUE</span><span style="color:#5cb3fa;">`
+</span></code></pre>
+<p>It takes around 15 minutes to learn the basics of the language to start writing your first REAM dataset.
+Learn more advanced features later as your project scales up.</p>
+<p>All REAM datasets are stored as text files, and can be edited in any text editor.
+A <a href="https://chmlee.github.io/ream-editor">web-based editor</a> is available to provide basic functionalities.
+No local installation required; just visit the website, drag and drop your REAM datasets, and start getting productive.
+Advanced functionalities are available through the <a href="https://github.com/chmlee/ream-core">REAM CLI tool</a>.
+No complex development environment to set up.
+No third-party dependencies to manage except Git.
+Just one executable binary file.</p>
+<h2 id="static-typing">Static typing</h2>
+<p>REAM checks for data types during compile time to ensure type safety.
+Instead of guessing what the types each variable would be assigned to when reading the following CSV:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-csvv" data-lang="csvv"><span style="color:#cd74e8;">x1</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">x2</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">x3</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">x4
+1.0</span><span style="color:#adb7c9;">,</span><span style="color:#9acc76;">&quot;</span><span style="color:#db9d63;">1.0</span><span style="color:#9acc76;">&quot;</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">true</span><span style="color:#adb7c9;">,</span><span style="color:#9acc76;">&quot;</span><span style="color:#cd74e8;">true</span><span style="color:#9acc76;">&quot;
+</span></code></pre>
+<p>you specify the types through explicit type annotation:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Data
+</span><span style="color:#5cb3fa;">- x1 (</span><span style="color:#cd74e8;">num</span><span style="color:#5cb3fa;">): $</span><span style="color:#db9d63;">1.0</span><span style="color:#5cb3fa;">$
+- x2 (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): 1.</span><span style="color:#9acc76;">0
+</span><span style="color:#5cb3fa;">- x3 (</span><span style="color:#cd74e8;">bool</span><span style="color:#5cb3fa;">): `</span><span style="color:#cd74e8;">TRUE</span><span style="color:#5cb3fa;">`
+- x4 (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">true
+</span></code></pre><h2 id="single-source-of-truth">Single source of truth</h2>
+<p>REAM makes large data project maintainable by <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">reducing repetition</a> through the following ways:</p>
+<h3 id="nested-structure">Nested structure</h3>
+<p>REAM encourages data to be stored in nested structures.
+Instead of organizing data in the following 2-dimension spreadsheet:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-csvv" data-lang="csvv"><span style="color:#cd74e8;">Country</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">Year
+Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">2010
+</span><span style="color:#cd74e8;">Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">2011
+</span><span style="color:#cd74e8;">Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">2012
+</span></code></pre>
+<p>you write:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">2010
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">2011
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">2012
+</span></code></pre>
+<p>and let the compiler compiles the latter to the former.
+There is now one source for the country name <code>Belgium</code>.</p>
+<h3 id="reference">Reference*</h3>
+<p>REAM implement a reference system to reuse existing data.
+Instead of manually define unique id for each data point:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">2010
+</span><span style="color:#5cb3fa;">- unique_id: </span><span style="color:#9acc76;">Belgium_2010
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">2011
+</span><span style="color:#5cb3fa;">- unique_id: </span><span style="color:#9acc76;">Belgium_2011
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">2012
+</span><span style="color:#5cb3fa;">- unique_id: </span><span style="color:#9acc76;">Belgium_2012
+</span></code></pre>
+<p>you write:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">2010
+</span><span style="color:#5cb3fa;">- unique_id (</span><span style="color:#cd74e8;">fmt</span><span style="color:#5cb3fa;">): Country$name + &quot;_&quot; + Year$</span><span style="color:#9acc76;">name
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">2011
+</span><span style="color:#5cb3fa;">- unique_id (</span><span style="color:#cd74e8;">fmt</span><span style="color:#5cb3fa;">): Country$name + &quot;_&quot; + Year$</span><span style="color:#9acc76;">name
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#5cb3fa;">- name (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">2012
+</span><span style="color:#5cb3fa;">- unique_id (</span><span style="color:#cd74e8;">fmt</span><span style="color:#5cb3fa;">): Country$name + &quot;_&quot; + Year$</span><span style="color:#9acc76;">name
+</span></code></pre>
+<p>Variable <code>unique_id</code> is now generated by referencing a local variable <code>Country$name</code> and the parent variable <code>Country$name</code>.</p>
+<h3 id="inline-documentation">Inline documentation</h3>
+<p>REAM encourages inline documentation for individual data points through annotations.
+Instead of editing data in a spreadsheet and its documentation in a separate text file, you write:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="font-style:italic;color:#5f697a;">  &gt; officially the Kingdom of Belgium
+</span><span style="color:#5cb3fa;">- population: $</span><span style="color:#db9d63;">11433256</span><span style="color:#5cb3fa;">$
+</span><span style="font-style:italic;color:#5f697a;">  &gt; data from 2019; retrieved from World Bank
+</span><span style="color:#5cb3fa;">- euro zone: `</span><span style="color:#cd74e8;">TRUE</span><span style="color:#5cb3fa;">`
+</span><span style="font-style:italic;color:#5f697a;">  &gt; joined in 1999
+</span></code></pre>
+<p>and let the compiler produce analysis-ready datasets (CSV, JSON, etc.) and human-readable documentations (HTML, PDF, etc.)
+Two formats, one source.</p>
 
     </div>
 
