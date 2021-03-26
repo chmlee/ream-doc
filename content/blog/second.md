@@ -8,6 +8,14 @@ This is my second blog post.
 {{ import(id="1", name="one", input="test \none") }}
 {{ import(id="2", name="two", input="test two") }}
 
+# one
+
+## one-one
+
+## one-two
+
+# two
+
 ```csvv
 x1,x2,x3
 1,2,3
@@ -26,7 +34,7 @@ enum Direction {
 ```ream
 # Country
 - name: Belgium
-- capital (bool): Brussels
+- capital: Brussels
 - population: $11433256$
   > data from 2019; retrieved from World Bank
 - euro zone: `TRUE`

@@ -7,20 +7,16 @@
   <title>REAM</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ get_url(path="style.css", trailing_slash=false) }}">
+  <link rel="stylesheet" type="text/css" href="{{ get_url(path="style.css", trailing_slash=false) }}">
 
 </head>
-
-<style>
-
-
-</style>
 
 <body>
   <div class="base-container">
 
     {% include "navbar.html" %}
 
+    {% block newnav %}{% endblock newnav %}
 
     <div class="content-container">
       {% block content %}

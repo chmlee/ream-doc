@@ -1,8 +1,6 @@
 +++
-title = "Homepage"
-template = "index.html"
+title = "homepage"
 +++
 
-```js
-let a = 1
-```
+
+test

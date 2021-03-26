@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        {% set parent = page.ancestors | last %}
+        {% set section = get_section(path=parent) %}
+        {% set current_page = page.title%}
+        {% for page in section.pages %}
+
+            {% if page.title == current_page %}
+
+                <li class="section-title section-title-focus">
+                    <a href="{{ page.permalink }}">{{ page.title }}</a>
+
+                    <ul class="sub-sidebar">
+                        {% for subsection in page.toc %}
+                            <li class="section-title">
+                                <a href="{{ subsection.permalink }}">{{ subsection.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                </li>
+
+            {% else %}
+
+                <li class="section-title">
+                    <a href="{{ page.permalink }}">{{ page.title }}</a></li>
+                </li>
+
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          {{ page.title }}
+        </h1>
+        <p class="subtitle"><strong>{{ page.date }}</strong></p>
+
+        {{ page.content | safe }}
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -2,26 +2,36 @@
 
 {% block content %}
 
+<div class="homepage">
 
-<div class="intro">
-    One-stop solution to create, document, manage and distrubute social science datasets.
-</div>
+    <div class="intro">
+        Data management framework for maintainable social science datasets
+    </div>
 
-<button>Overview</button>
-<button>Getting Started</button>
+    <div class="index-button">
+        <a href="/overview/why-ream">Why REAM</a>
+        <a href="/tutorial/getting-started">Get Started</a>
+    </div>
 
-<div class="intro-quote">
-    <blockquote>
-        It reads like Markdown, writes like Markdown, converts like Markdown.
-        Is it Markdown?
-    </blockquote>
+    <div class="description">
+        <p>
+            REAM is a data serialization standard designed for social science datasets.
+            The language encourages inline documentation for individual data points, and compiles to analysis-ready format (CSV, JSON, etc.) and human-readable documentation (HTML, PDF, etc.)
+            It also introduces features such as static type checking, reference and macros to make large data projects more manageable.
+        </p>
+    </div>
 
-    <blockquote>
-        <b>RE</b>AM <b>A</b>int <b>M</b>arkdown!
-    </blockquote>
-</div>
+    <div class="intro-quote">
+        <blockquote>
+            It reads like Markdown, writes like Markdown, converts like Markdown.
+            Is it Markdown?
+        </blockquote>
 
-<!-- Code manually copied and pasted -->
+        <blockquote>
+            <b>RE</b>AM <b>A</b>int <b>M</b>arkdown!
+        </blockquote>
+    </div>
+
 <pre style="background-color:#2b303b;"><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
 </span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
 </span><span style="color:#5cb3fa;">- capital: </span><span style="color:#9acc76;">Brussels
@@ -44,6 +54,10 @@
 </span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
 </span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">German
 </span></code></pre>
+
+</div>
+
+
 
 
 {% endblock content %}
