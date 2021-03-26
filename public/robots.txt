@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chmlee.github.io/ream-doc-dev/sitemap.xml

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc-dev&#x2F;style.css">
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    <nav class="navbar">
+  <div id="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+    <li class="nav-item"><a href="/overview/about">Overview</a></li>
+    <li class="nav-item"><a href="/tutorial/getting-started">Tutorial</a></li>
+    <li class="nav-item"><a href="/toolchain">Toolchain</a></li>
+    <li class="nav-item"><a href="#">Contribution</a></li>
+  </ul>
+  
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+<h1 class="title">
+  Entry
+</h1>
+<h1 id="entry">Entry</h1>
+<p>An entry is a collection of variables.
+An entry class is proceeded by one or multiple pound signs <code>#</code>, in the form of:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">&lt;entry class&gt;
+</span><span style="color:#5cb3fa;">- &lt;key 1&gt;: &lt;value 1&gt;
+- &lt;key 2&gt;: &lt;value 2&gt;
+</span><span style="color:#abb2bf;">...
+</span><span style="color:#5cb3fa;">- &lt;key n&gt;: &lt;value n&gt;
+</span></code></pre>
+<p><code># Example</code> in previous examples are the classes of Level-1 Entries, as denoted by the single leading pound sign.
+All REAM files start with a Level-1 Entry, and contain exactly one Level-1 Entry.</p>
+<p>Entries are useful when describing an object with multiple attributes:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#5cb3fa;">- capital: </span><span style="color:#9acc76;">Brussels
+</span><span style="color:#5cb3fa;">- population: $</span><span style="color:#db9d63;">11433256</span><span style="color:#5cb3fa;">$
+- euro zone: `</span><span style="color:#cd74e8;">TRUE</span><span style="color:#5cb3fa;">`
+</span></code></pre><EditorLite-EditorLite item="entry1" />
+<p>Here we define an object of <code>Country</code> class, whose name is <code>Belgium</code>, capital is <code>Brussels</code>, population is <code>11433256</code>, and is part of the <code>euro zone</code>.</p>
+<p>Let's add some annotations.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="font-style:italic;color:#5f697a;">  &gt; short for the Kingdom of Belgium
+</span><span style="color:#5cb3fa;">- capital: </span><span style="color:#9acc76;">Brussels
+</span><span style="color:#5cb3fa;">- population: $</span><span style="color:#db9d63;">11433256</span><span style="color:#5cb3fa;">$
+</span><span style="font-style:italic;color:#5f697a;">  &gt; data from 2019; retrieved from World Bank
+</span><span style="color:#5cb3fa;">- euro zone: `</span><span style="color:#cd74e8;">TRUE</span><span style="color:#5cb3fa;">`
+</span><span style="font-style:italic;color:#5f697a;">  &gt; joined in 1999
+</span></code></pre><EditorLite-EditorLite item="entry2" />
+<p>Entries can have zero variables:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span></code></pre>
+<p>(TODO: missing editor example)</p>
+<p>Entries should have local unique keys.
+The following code will raise an error:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#5cb3fa;">- language: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#5cb3fa;">- language: </span><span style="color:#9acc76;">French
+</span><span style="color:#5cb3fa;">- language: </span><span style="color:#9acc76;">German
+</span></code></pre>
+<p>::: details Note: Duplicate Keys
+The current parser don't check for duplicate keys yet, so technically this is still valid.
+This rule will be enforced in future versions.
+:::</p>
+<h2 id="subentry">Subentry</h2>
+<p>Entries can be nested, and the level of the entry is denoted by the number of leading <code>#</code>.
+So a Level-1 Entry takes the form of <code># &lt;Level 1 Entry Class&gt;</code>, and a Level-2 Entry takes the form of <code>## &lt;Level 2 Entry Class&gt;</code>, and so forth.</p>
+<p>Examples:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Dutch
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">French
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">German
+</span></code></pre><EditorLite-EditorLite item="entry3" />
+<p>The <code># Country</code> entry has one variable <code>name</code> and three Level-2 child entries <code>## Language</code>.</p>
+<p>The three <code>## Language</code>  subentries are <strong>terminal nodes</strong> as they do not contain any subentry.
+When compiling the dataset, the parser look for all terminal nodes in the REAM file and flatten the data structure.
+Thus the previous example produces a dataset with three rows (one for each terminal node) and two columns (one of each variable).</p>
+<p>Note that the variable keys are scoped, so <code>## Language</code> is allowed to have a variable with the key <code>name</code> despite its parent entry <code># Country</code> also contain a variable with the same key.</p>
+<p>Entry must be nested in order.
+Level-2 Entries can only be nested in a Level-1 Entry, and Level-3 Entries can only be nested in a Level-2 Entry, and so forth.
+Compare the datasets compiled from the following two examples with the previous one:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 2 Entry
+
+</span><span style="color:#abb2bf;">### </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">French
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 3 Entry
+
+</span><span style="color:#abb2bf;">### </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">German
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 3 Entry
+</span></code></pre><EditorLite-EditorLite item="entry4" />
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 2 Entry
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">French
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 2 Entry
+
+</span><span style="color:#abb2bf;">### </span><span style="color:#eb6772;">Language
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 3 Entry
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">German
+</span></code></pre><EditorLite-EditorLite item="entry5" />
+<p>A visualization of the differences between the three schemas are as follows.
+The terminal nodes are colored yellow.</p>
+<p><img src="./tree.svg" alt="tree" /></p>
+<p>:::details Note: Duplicate Entry Class
+Can a <code>### Language</code> entry be nested in another <code>## Language</code> entry?
+This doesn't really make sense, but currently there is no rule against it, and the parser is able to parse it.</p>
+<p>Maybe this shouldn't be allowed?
+:::</p>
+<p>An entry can contain subentires of differenct classes:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">City
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Brussels
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Dutch
+</span></code></pre><EditorLite-EditorLite item="entry6" />
+<p>Also, entries of the same class need not have identical variables, nor the same variable order.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Belgium
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#5cb3fa;">- size: $</span><span style="color:#db9d63;">0.59</span><span style="color:#5cb3fa;">$
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- size: $</span><span style="color:#db9d63;">0.4</span><span style="color:#5cb3fa;">$
+- name: </span><span style="color:#9acc76;">French
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#5cb3fa;">- name: </span><span style="color:#9acc76;">German
+</span></code></pre><EditorLite-EditorLite item="entry7" />
+<p>Observe that the order of the variables are preserved by default.</p>
+<p>The datasets compiled by the last two examples are not too useful for analysis.
+To compile quality analysis-ready datasets, we should specify the schema of the datasets in the codebook.</p>
+
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
