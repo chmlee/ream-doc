@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;ream-lang.org&#x2F;style.css">
+
+  <script type="module" src="https:&#x2F;&#x2F;ream-lang.org&#x2F;js&#x2F;bundle.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+
+  </script>
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div id="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;blog&#x2F;">
+          Blog
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;basic&#x2F;">
+          Basic
+        </a>
+      </li>
+  
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+<h1 class="title">
+  Variable
+</h1>
+<h1 id="variable">Variable</h1>
+<p><code>&lt;variable&gt;</code> assigns a <code>&lt;value&gt;</code> to a <code>&lt;key&gt;</code>, in the form of</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#5cb3fa;">- &lt;key&gt;: &lt;value&gt;
+</span></code></pre>
+<p>Note that a space is required after the dash and colon.</p>
+<h2 id="key">Key</h2>
+<p><code>&lt;key&gt;</code> can't be empty.
+It may contain any upper and lowercase letters (<code>A-Za-z</code>), digits (<code>0-9</code>), spaces (<code>U+0020</code>), and underscores (<code>_</code>), but can't start with a digit.
+Key names are case sensitive.</p>
+<p>Some examples for valid key names are:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- key: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- KEY: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- key_1: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- key with spaces: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- key_with_underscore: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- _: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<p>::: tip
+Don't worry about what <code># Example</code> is.
+For now just see this as the title for your REAM file, and all REAM files starts with a title.
+We'll discuss what it is in detail in <a href="https://ream-lang.org/basic/variable/Entry">Entry</a> section.
+:::</p>
+<p>Key name can't be empty:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#5cb3fa;">- : </span><span style="color:#9acc76;">value
+</span></code></pre>
+<p>Key name can't start with a digit:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#5cb3fa;">- 1: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- 1key: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<p>::: details Note: UTF-8 support
+Key names should support UTF-8.
+The <a href="https://github.com/chmlee/reamparser.js">current parser</a> <em>should</em> be able to parse UTF-8 identifiers correctly, but this hasn't been tested extensively.
+It is recommended that you use only ASCII code before UTF-8 support is stable.</p>
+<p><a href="https://github.com/chmlee/ream-core">The experimental parser</a> does NOT support UTF-8 yet.</p>
+<p>:::
+::: details Note: Whitespace in identifiers</p>
+<p>The <a href="https://github.com/chmlee/reamparser.js">current parser</a> allows whitespaces in identifiers, but future versions may remove such support.
+I plan to implement <a href="/ream-doc/Language/Advanced/Reference">reference</a>, and identifiers with spaces just don't look good in the current design.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Entry
+</span><span style="color:#5cb3fa;">- key_1 (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">value
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">SubEntry
+</span><span style="color:#5cb3fa;">- key_2 (fn -&gt; str): `THIS::SUPER$key_1`
+</span></code></pre>
+<p>vs</p>
+<p>(R style)</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Entry
+</span><span style="color:#5cb3fa;">- key 1 (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">value
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">SubEntry
+</span><span style="color:#5cb3fa;">- key 2 (fn -&gt; str): `THIS::SUPER$&quot;key 1&quot;`
+</span></code></pre>
+<p>or</p>
+<p>(Python/Pandas style)</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Entry
+</span><span style="color:#5cb3fa;">- key 1 (</span><span style="color:#cd74e8;">str</span><span style="color:#5cb3fa;">): </span><span style="color:#9acc76;">value
+
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">SubEntry
+</span><span style="color:#5cb3fa;">- key 2 (fn -&gt; str): `THIS::SUPER[&quot;key 1&quot;]`
+</span></code></pre>
+<p>:::</p>
+<h2 id="value">Value</h2>
+<p><code>&lt;value&gt;</code> can be any of the following primitive types:</p>
+<ul>
+<li><a href="https://ream-lang.org/basic/variable/#string">String</a></li>
+<li><a href="https://ream-lang.org/basic/variable/#number">Number</a></li>
+<li><a href="https://ream-lang.org/basic/variable/#boolean">Boolean</a></li>
+</ul>
+<p>Value can't be empty.</p>
+<h3 id="string">String</h3>
+<p>Example:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- string: </span><span style="color:#9acc76;">value
+</span><span style="color:#5cb3fa;">- long string: Hello </span><span style="color:#9acc76;">World
+</span><span style="color:#5cb3fa;">- quoted string: &quot;quote&quot;
+</span></code></pre><EditorLite-EditorLite item="string" />
+<p>There is not need to quote strings.
+Quotation marks will be preserved.</p>
+<p>Values can't contain line breaks.
+The following will raise an error:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream{3}" data-lang="ream{3}"><span style="color:#abb2bf;"># BadExample
+- key 1: first line
+         second line
+- key 2: value
+</span></code></pre>
+<p>::: details Note: Handling Unexpected Line Breaks
+The <a href="https://github.com/chmlee/reamparser.js">current parser</a> is able to parse the example.
+It will read everything before and including <code>- key 1: first line</code>, then stop parsing and return whatever has been parsed, ignoring the rest of the file.
+So the example is equivalent to:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- key 1: first </span><span style="color:#9acc76;">line
+</span></code></pre>
+<p>Ideally the parser should panic, and an error with meaningful messages should be raised.
+Error handling will be improved in future versions.
+:::</p>
+<p>REAM stores strings as raw literal strings, hence the following example is valid. <code>\n</code> will not be escaped, and is equivalent to <code>\\n</code> in JSON.</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- key 1: first line\nsecond </span><span style="color:#9acc76;">line
+</span><span style="color:#5cb3fa;">- key 2: </span><span style="color:#9acc76;">value
+</span></code></pre><h3 id="number">Number</h3>
+<p>Numbers are wrapped by dollar signs (<code>$</code>).</p>
+<p>Example:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- number 1: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
+- number 2: $</span><span style="color:#db9d63;">-2</span><span style="color:#5cb3fa;">$
+- number 3: $</span><span style="color:#db9d63;">3.1415926</span><span style="color:#5cb3fa;">$
+</span></code></pre><EditorLite-EditorLite item="number" />
+<p>::: details Note: Potential Breaking Change for Syntax
+I'm considering removing the <code>$</code> requirement for numbers, and have a more YAML-like syntax for number.
+:::</p>
+<p>If a leading or trailing character exist, the entire value would be interpreted as a string.</p>
+<p>Example:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- number: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
+- not number 1: a$</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
+- not number 2: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$</span><span style="color:#9acc76;">b
+</span></code></pre><EditorLite-EditorLite item="notNumber" />
+<p>::: details Note: No Floats or Integers</p>
+<p>Should REAM add integers and floats as primitive types?</p>
+<p>Most programming languages and data serialization standards have clear specifications for primitive number types, such as <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> .</p>
+<p>REAM's <code>Number</code> type doesn't really have one right now, and all <code>Number</code> values are stored as strings.
+You can verify this by visiting the <a href="https://chmlee.github.io/ream-editor/">online editor</a> and select <code>tree</code> as the output format.</p>
+<p>In fact the current parser considers all values wrapper by <code>$</code> as <code>Number</code>.
+So</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- number: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
+- not a number: $</span><span style="color:#db9d63;">abc</span><span style="color:#5cb3fa;">$
+</span></code></pre>
+<p>generates</p>
+<pre style="background-color:#2b303b;">
+<code class="language-csv" data-lang="csv"><span style="color:#db9d63;">1</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">abc
+</span></code></pre>
+<p>instead of</p>
+<pre style="background-color:#2b303b;">
+<code class="language-csv" data-lang="csv"><span style="color:#db9d63;">1</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">$abc$
+</span></code></pre>
+<p>even though <code>abc</code> is not a valid number.</p>
+<p>I might adopt <a href="https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf">ECMA's specification</a>, or part of it (do social scientists normally store data with scientific notation?):</p>
+<blockquote>
+<p>A number is a sequence of decimal digits with no superfluous leading zero.
+It may have a preceding minus sign (U+002D).
+It may have a fractional part prefixed by a decimal point (U+002E).
+It may have an exponent, prefixed by <code>e</code>(U+0065) or <code>E</code>(U+0045) and optionally <code>+</code>(U+002B) or <code>-</code>(U+002D).
+The digits are the code points U+0030 through U+0039. Numeric values that cannot be represented as sequences of digits (such as <code>Infinity </code>and <code>NaN</code>) are not permitted.</p>
+</blockquote>
+<p>Another reason against the use of an explicit <code>float</code> type in REAM is to avoid the pitfalls of floating-point accuracy.
+Since REAM is designed to store social science data, and will eventually be compiled to an analysis-ready format and imported into another programme for further data analysis, lose of accuracy is bound to happen somewhere.[1]
+What we can do is reduce the number of type conversion.
+The plan is to have numbers saved as strings when compiling JSON and CSV, and let individual JSON and CSV parsers deal with the conversion.</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#abb2bf;">           (no type conversion)       (conversion happens here)
+               REAM parser          CSV/JSON Reader in Language X
+Number(&quot;3.14&quot;) -----------&gt; &quot;3.14&quot;  -----------------------------&gt;  3.14
+   REAM                    CSV/JSON                               Language X
+</span></code></pre>
+<p>For example, in Python, <code>pandas.read_csv()</code> converts applicable strings to <code>int64</code> and <code>float64</code> by default, and allow users to specify types through <code>dtype</code> argument.
+In R, <code>readr::read_csv</code> also converts applicable strings to <code>double</code> by default, and can be overrode by specifying the <code>col_types</code> argument.</p>
+<p>Just rely on these scientific packages for type conversion.
+This is what they are designed to do, so I assume they are better at handling such problem.</p>
+<p>[1]: for example, try reading the following JSON file in Python and R and compare the result:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-json" data-lang="json"><span style="color:#abb2bf;">{</span><span style="color:#9acc76;">&quot;number&quot;</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.19999999999999999</span><span style="color:#abb2bf;">}
+</span></code></pre><pre style="background-color:#2b303b;">
+<code class="language-python" data-lang="python"><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">json
+
+</span><span style="color:#cd74e8;">with </span><span style="color:#5ebfcc;">open</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;./test.json&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;r&quot;</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">f:
+    dat </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">json.</span><span style="color:#eb6772;">load</span><span style="color:#abb2bf;">(f)
+
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(dat[</span><span style="color:#9acc76;">&quot;number&quot;</span><span style="color:#abb2bf;">]) </span><span style="font-style:italic;color:#5f697a;"># 0.19999999999999998
+</span></code></pre><pre style="background-color:#2b303b;">
+<code class="language-r" data-lang="r"><span style="color:#5ebfcc;">library</span><span style="color:#abb2bf;">(rjson)
+dat </span><span style="color:#adb7c9;">&lt;- </span><span style="color:#eb6772;">fromJSON</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">file </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;./test.json&quot;</span><span style="color:#abb2bf;">)
+dat[</span><span style="color:#9acc76;">&quot;number&quot;</span><span style="color:#abb2bf;">]
+
+</span><span style="font-style:italic;color:#5f697a;"># $number
+# [1] 0.2
+</span></code></pre>
+<hr />
+<p>Unless...</p>
+<p>With projects like <a href="https://github.com/PyO3/PyO3">PyO3</a> and <a href="https://github.com/extendr/extendr">extendr</a>, it might be possible to wrap the parser into a Python/R module and interact with <code>pandas</code> and <code>tibble</code> directly.
+Instead of:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#abb2bf;">          REAM parser     pandas.read_csv()
+REAM file -----------&gt; CSV ----------------&gt; Pandas.dataframe
+</span></code></pre>
+<p>we may be able to do:</p>
+<pre style="background-color:#2b303b;">
+<code><span style="color:#abb2bf;">          ream.read_ream()
+REAM file ---------------&gt; Pandas.dataframe
+</span></code></pre>
+<p>by</p>
+<pre style="background-color:#2b303b;">
+<code class="language-python" data-lang="python"><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">pandas </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">pd
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">ream
+
+</span><span style="color:#cd74e8;">with </span><span style="color:#5ebfcc;">open</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;data.ream&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;r&quot;</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">f:
+    df </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">ream.</span><span style="color:#eb6772;">load</span><span style="color:#abb2bf;">(f)
+
+</span><span style="color:#5ebfcc;">print</span><span style="color:#abb2bf;">(</span><span style="color:#5ebfcc;">type</span><span style="color:#abb2bf;">(df)) </span><span style="font-style:italic;color:#5f697a;"># &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</span></code></pre>
+<p>Wouldn't this be wonderful?</p>
+<p>If so, REAM probably need explicit float and integer types to make interacting with Pandas and Tibbles types surprise-free.
+See <a href="/ream-doc/Language/Advanced/Typed-Variable">typed variable</a> for more information.
+:::</p>
+<h3 id="boolean">Boolean</h3>
+<p>Boolean values are <code>`TRUE`</code> and <code>`FALSE`</code>, both uppercase and surrounded by backticks (<code>`</code>).</p>
+<p>::: details Note: Potential Breaking Change for Syntax
+I'm planning to replace <code>`</code> with <code>__</code>.
+So instead of <code>`TRUE`</code> and <code>`FALSE`</code> you write <code>__TRUE__</code> and <code>__FALSE__</code>.
+:::</p>
+<p>Example:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#5cb3fa;">- bool 1: `</span><span style="color:#cd74e8;">TRUE</span><span style="color:#5cb3fa;">`
+- bool 2: `</span><span style="color:#cd74e8;">FALSE</span><span style="color:#5cb3fa;">`
+- not bool 1: `true`
+- not bool 2: </span><span style="color:#9acc76;">FALSE
+</span></code></pre><EditorLite-EditorLite item="boolean" />
+<p>Note that boolean values must be exact matches.
+Values not wrapped by backticks or not uppercased will be stored as strings.</p>
+<p>::: details Note: Potential Breaking Changes for Syntax
+The syntax is not stable.
+You should expect breaking changes.</p>
+<p>When I wrote REAM, it was meant for managing data for my undergraduate thesis.
+I wanted to edit data and documentation in one single file for easier management, and I needed it fast.
+That's why I adopted a Markdown-like syntax, so that all I had to do was to write a parser to convert REAM files to CSV, and use any Markdown converter to generate the documentation.
+That's why numbers are wrapped by <code>$</code> (inline math mode), and boolean values are wrapped by <code>`</code> (inline code).
+List items are recommended to be indented because that's how <a href="https://pandoc.org/">pandoc</a>, the Markdown converter I then used, identifies nested lists.</p>
+<p>But now I have more time, and have full control of the scanner and parser, I discover it's fairly easy to write a documentation generator with existing codebase.
+I plan to do so not only to reduce outside dependencies but also to add more customized functionalities.
+The new documentation generator may also be faster since I am only scanning a small subset of the syntax.
+That being said, I don't have to think too much about how REAM files looks in other Markdown converters.
+I still intend to use only Markdown syntax in the language for ease of use and readability, but some of the previous verbose design is no longer necessary.</p>
+<p>I will <em>almost certainly</em> remove <code>$</code> for numbers, and <em>maybe</em> replace <code>`TRUE`</code> and <code>`FALSE`</code> with <code>__TRUE__</code> and <code>__FALSE__</code> (or <code>TRUE</code> and <code>FALSE</code>. No decision has been made yet.)
+:::</p>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      auto_grow(textarea)
+    })
+  </script>
+</body>
+
+</html>
