@@ -5,8 +5,8 @@ weight = 1
 
 REAM is a data serialization standard designed for social science datasets.
 The language encourages inline documentation for individual data points, and compiles to analysis-ready format (CSV, JSON, etc.) and human-readable documentation (HTML, PDF, etc.)
-It also introduces features to make managing large data project easier, such as static type checking, reference and macro.
-The language, along with the toolchain built upon it, aims to make it easy to create, maintain, distribute and reuse datasets.
+It also introduces unique features to make managing large data projects easier by [reducing repetition](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+The language, along with the [toolchain](#) built around it, aims to make it easy to create, maintain, distribute and reuse social science datasets.
 
 ## Easy to learn and use
 
@@ -19,7 +19,14 @@ REAM syntax is similar to Markdown, and should be easy to learn if not already f
 - euro zone: `TRUE`
 ```
 
-It takes around 15 minutes to learn the basics of the language to start writing your first REAM dataset.
+{% editor(id="easy-to-learn-and-use") %}
+# Country
+- name: Belgium
+- population: $11433256$
+- euro zone: `TRUE`
+{% end %}
+
+It takes around 15 minutes to [learn the basics](#) of the language to start writing your first REAM dataset.
 Learn more advanced features later as your project scales up.
 
 All REAM datasets are stored as text files, and can be edited in any text editor.
@@ -27,35 +34,15 @@ A [web-based editor](https://chmlee.github.io/ream-editor) is available to provi
 No local installation required; just visit the website, drag and drop your REAM datasets, and start getting productive.
 Advanced functionalities are available through the [REAM CLI tool](https://github.com/chmlee/ream-core).
 No complex development environment to set up.
-No third-party dependencies to manage except Git.
+No third-party dependencies to manage*.
 Just one executable binary file.
 
-## Static typing
+(*: some functionalities may require [Git](https://git-scm.com/))
 
-REAM checks for data types during compile time to ensure type safety.
-Instead of guessing what the types each variable would be assigned to when reading the following CSV:
-```csvv
-x1,x2,x3,x4
-1.0,"1.0",true,"true"
-```
-
-you specify the types through explicit type annotation:
-```ream
-# Data
-- x1 (num): $1.0$
-- x2 (str): 1.0
-- x3 (bool): `TRUE`
-- x4 (str): true
-```
-
-## Single source of truth
-
-REAM makes large data project maintainable by [reducing repetition](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) through the following ways:
-
-### Nested structure
+## Nested structure
 
 REAM encourages data to be stored in nested structures.
-Instead of organizing data in the following 2-dimension spreadsheet:
+Instead of managing data in the following 2-dimension spreadsheet:
 
 ```csvv
 Country,Year
@@ -77,13 +64,86 @@ you write:
 ## Year
 - name: 2012
 ```
-and let the compiler compiles the latter to the former.
-There is now one source for the country name `Belgium`.
 
-### Reference*
+and let the compiler compiles the latter to the former:
 
-REAM implement a reference system to reuse existing data.
-Instead of manually define unique id for each data point:
+{% editor(id="nested-structure") %}
+# Country
+- name: Belgium
+
+## Year
+- name: 2010
+
+## Year
+- name: 2011
+
+## Year
+- name: 2012
+{% end %}
+
+Instead of saving the same country name `Belgium` in three separate rows, there is now [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) for the variable.
+
+## Inline documentation
+
+REAM encourages inline documentation for individual data points through [annotations](#).
+Instead of editing data and its documentation in two separate files - one spreadsheet and one word document - you write:
+
+```ream
+# Country
+- name: Belgium
+  > officially the Kingdom of Belgium
+- population: $11433256$
+  > data from 2019; retrieved from World Bank
+- euro zone: `TRUE`
+  > joined in 1999
+```
+
+{% editor(id="inline-documentation") %}
+# Country
+- name: Belgium
+  > officially the Kingdom of Belgium
+- population: $11433256$
+  > data from 2019; retrieved from World Bank
+- euro zone: `TRUE`
+  > joined in 1999
+{% end %}
+
+and let the compiler produce analysis-ready datasets (CSV, JSON, etc.) and human-readable documentations (HTML, PDF, etc.)
+Two formats, one source.
+
+## Static typing*
+
+REAM checks for data types during compile time to ensure type safety.
+Instead of guessing what the types each variable would be assigned to when being read:
+```csvv
+x1,x2,x3,x4
+1.0,"1.0",true,"true"
+```
+you specify the types through explicit type annotations:
+```ream
+# Data
+- x1 (num): $1.0$
+- x2 (str): 1.0
+- x3 (bool): `TRUE`
+- x4 (str): true
+```
+
+{% editor(id="static-typing")%}
+# Data
+- x1 (num): $1.0$
+- x2 (str): 1.0
+- x3 (bool): `TRUE`
+- x4 (str): true
+{% end %}
+
+(*: not implemented yet)
+
+The goal is to embed the compiler into Python and R modules so you read REAM files directly as `panda.dataframe` and `tidyverse::tibble`, without ever touching CSV or JSON.
+
+## Reference and script*
+
+REAM implement a reference system to reuse existing data, and a python-like scripting language for basic data manipulation.
+Instead of manually manipulating variables with similar pattern:
 
 ```ream
 # Country
@@ -120,21 +180,133 @@ you write:
 - unique_id (fmt): Country$name + "_" + Year$name
 ```
 
-Variable `unique_id` is now generated by referencing a local variable `Country$name` and the parent variable `Country$name`.
+{% editor(id="reference") %}
+# Country
+- name (str): Belgium
 
-### Inline documentation
+## Year
+- name (str): 2010
+- unique_id (fmt): Country$name + "_" + Year$name
 
-REAM encourages inline documentation for individual data points through annotations.
-Instead of editing data in a spreadsheet and its documentation in a separate text file, you write:
+## Year
+- name (str): 2011
+- unique_id (fmt): Country$name + "_" + Year$name
 
+## Year
+- name (str): 2012
+- unique_id (fmt): Country$name + "_" + Year$name
+{% end %}
+
+(*: not implemted yet)
+
+Variable `Year$unique_id` is now formatted by concatenating a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
+
+## Macro*
+
+Macro allows datasets to reuse schemas.
+Instead of defining the schema for the entry of class `Year` three times:
 ```ream
 # Country
-- name: Belgium
-  > officially the Kingdom of Belgium
-- population: $11433256$
-  > data from 2019; retrieved from World Bank
-- euro zone: `TRUE`
-  > joined in 1999
+- name (str): Belgium
+
+## Year
+- name (str): 2010
+- unique_id (fmt): Country$name + "_" + Year$name
+
+## Year
+- name (str): 2011
+- unique_id (fmt): Country$name + "_" + Year$name
+
+## Year
+- name (str): 2012
+- unique_id (fmt): Country$name + "_" + Year$name
 ```
-and let the compiler produce analysis-ready datasets (CSV, JSON, etc.) and human-readable documentations (HTML, PDF, etc.)
-Two formats, one source.
+
+you write:
+```ream
+# Country
+- name (str): Belgium
+- years (str+):
+  * 2010
+  * 2011
+  * 2012
+
+@@ FOR $year IN Country$years
+## Year
+- name (fmt): $year
+- unique_id (fmt): Country$name + "_" + $year
+```
+{% editor(id="macro")%}
+# Country
+- name (str): Belgium
+- years (str+):
+  * 2010
+  * 2011
+  * 2012
+
+@@ FOR $year IN Country$years
+## Year
+- name (fmt): $year
+- unique_id (fmt): Country$name + "_" + $year
+{% end %}
+
+(*: not implemented yet; design not yet final)
+
+## Interoperatability
+
+One of the main motivation behind REAM is to make reusing datasets easy.
+Say you have data on Belgium, Netherlands and Luxemborg, and want to zip all three into one master dataset then find the sum of population.
+
+(Country/Belgium.ream)
+```ream
+# Country
+- name (str): Belgium
+- population (num): $11433256$
+```
+
+(Country/Netherlands.ream)
+```ream
+# Country
+- name (str): Netherlands
+- population (num): $11433256$
+```
+
+(Country/Luxemborg.ream)
+```ream
+# Country
+- name (str): Luxembourg
+- population (num): $619900$
+```
+
+Instead of manually copying and pasting the data, you import them into a new REAM file and bind them with macros:
+
+(TheBeneluxUnion.ream)
+```ream
+# TheBeneluxUnion
+- members (mod+):
+  * ./Country/Belgium.ream
+  * ./Country/Netherlands.ream
+  * ./Country/Luxembourg.ream
+- population (fn: num): Country$population.sum()
+
+@@ FOR Member IN TheBeneluxUnion$members
+## Country
+- name (fmt): Member$name
+- population (fn: num): Member$population.to_num()
+```
+
+{% editor(id="interoperatability")%}
+# TheBeneluxUnion
+- members (mod+):
+  * Belgium
+  * Netherlands
+  * Luxembourg
+- population (fn: num): Country$population.sum()
+
+@@ FOR Member IN TheBeneluxUnion$members
+## Country
+- name (fmt): Member$name
+- population (fn: num): Member$population.to_num()
+{% end %}
+
+(*: not implemented yet; design not yet final)

@@ -1,18 +1,9 @@
-<div>
-  <textarea id="{{ id }}-input" name="" cols="30" rows="10"></textarea>
-  <div id="{{ id }}-output" class="output" style="monospace">
-    a
+<div class="editor">
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="{{ id }}-input" wrap="off">{{ body }}</textarea>
+    </div>
+    <div id="{{ id }}-output" class="output" style="monospace">(compile output)</div>
   </div>
-  <button id="{{ id }}-button">update</button>
-  <div id="app"></div>
-  <script>
-
-    document.getElementById("{{ id }}-button").addEventListener("click", update, false);
-
-    function update() {
-      var input = document.getElementById("{{ id }}-input").value;
-      document.getElementById("{{ id }}-output").innerHTML = input;
-    }
-
-  </script>
+  <button class="update-button" id="{{ id }}">Compile</button>
 </div>

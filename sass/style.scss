@@ -19,6 +19,10 @@ $cyan-process: #5db7deff;
 $eggshell: #f1e9dbff;
 $grullo: #a39b8bff;
 $dim-gray: #716a5cff;
+$turquoise: #41EAD4;
+$jet: #323031;
+$alablater: #E8EDDF;
+
 
 html {
   background: $eggshell;
@@ -83,6 +87,7 @@ p>code {
   flex-flow: column wrap;
 }
 
+
 pre {
   line-height: 1.4;
   overflow-y: auto;
@@ -128,6 +133,10 @@ li.section-title-focus>a:first-child {
     flex-grow: 999;
     min-width: 50%;
     padding: 0em 0em 0em 1em;
+}
+
+.main > * {
+  margin: 0.5em 5px;
 }
 
 .output {
@@ -188,4 +197,59 @@ blockquote {
 
 .manual-code {
     padding: 0em;
+}
+
+// editor
+
+.editor {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 0.5em;
+  //background: $blond;
+}
+
+.input-output-container {
+    display: flex;
+    width: 100%;
+}
+
+.input-container {
+  width: 50%;
+  margin: 0em 0.25em 0em 0.5em;
+}
+
+.input-container > textarea {
+  font-size: 23px;
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+  padding: 1em;
+  background: $jet;
+  color: white;
+  line-height: 1.4;
+  overflow-x: auto;
+  overflow-y: scroll;
+  overflow-wrap: nowrap;
+}
+
+
+.output {
+  background: $alablater;
+  border: 2px solid grey;
+  padding: 1em;
+  overflow: auto;
+  width: 50%;
+  margin: 0em 0.5em 0em 0.25em;
+}
+
+.update-button {
+    font-size: 23px;
+    width: 5em;
+    background: $turquoise;
+    margin: 0em 0.5em;
+}
+
+.update-button:hover {
+    background: grey;
+    color: white;
 }

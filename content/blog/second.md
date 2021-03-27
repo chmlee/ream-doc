@@ -6,6 +6,7 @@ date = 2019-11-28
 This is my second blog post.
 
 {{ import(id="1", name="one", input="test \none") }}
+
 {{ import(id="2", name="two", input="test two") }}
 
 # one
