@@ -6,10 +6,20 @@ weight = 1
 level = 2
 +++
 
+{% box(class="note") %}
+The project is under active development and is not production ready.
+You are free to play around with the language and tools, but note that backward compatibility is not guaranteed.
+
+Migrating from [the old documentation](https://chmlee.github.io/ream-doc) is a working in progress, so this site may not be as polished as the old one.
+[All contributions are welcome.](/contribution)
+{% end %}
+<br>
+
+
 REAM is a data serialization standard designed for social science datasets.
 The language encourages inline documentation for individual data points, and compiles to both analysis-ready **datasets** (CSV, JSON, etc.) and human-readable **documentations** (HTML, PDF, etc.)
 It also introduces unique features to make managing large data projects easier by [reducing repetition](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
-The language, along with the [toolchain](#) built around it, aims to make it easy to create, maintain, distribute and reuse social science datasets.
+The language, along with the [toolchain](/toolchain) built around it, aims to make it easy to create, maintain, distribute and reuse social science datasets.
 
 **Current Design:**
 {% mermaid() %}
@@ -48,7 +58,7 @@ REAM syntax is similar to Markdown, and should be easy to learn if not already f
 - euro zone: `TRUE`
 {% end %}
 
-It takes around 15 minutes to [learn the basics](#) of the language to start writing your first REAM dataset.
+It takes around 15 minutes to [learn the basics](/tutorial) of the language to start writing your first REAM dataset.
 Learn more advanced features later as your project scales up.
 
 All REAM datasets are stored as text files, and can be edited in any text editor.
@@ -107,7 +117,7 @@ Instead of saving the same country name `Belgium` in three separate rows, there 
 
 ## Inline documentation
 
-REAM encourages inline documentation for individual data points through [annotations](#).
+REAM encourages inline documentation for individual data points through [annotations](/tutorial/annotation).
 Instead of editing data and its documentation in two separate files - one spreadsheet and one word document - you write:
 
 ```ream
@@ -221,7 +231,7 @@ you write:
 
 (*: not implemted yet)
 
-Variable `Year$unique_id` is now formatted by concatenating a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
+Variable `Year$unique_id` is now formatted by joining a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
 
 ## Template*
 

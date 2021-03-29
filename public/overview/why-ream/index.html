@@ -154,10 +154,23 @@
         </h1>
         <p class="subtitle"><strong></strong></p>
 
-        <p>REAM is a data serialization standard designed for social science datasets.
+        <div class="box note">
+  <div class="box-heading">
+    
+      NOTE
+    
+  </div>
+  <p>The project is under active development and is not production ready.
+You are free to play around with the language and tools, but note that backward compatibility is not guaranteed.</p>
+<p>Migrating from <a href="https://chmlee.github.io/ream-doc">the old documentation</a> is a working in progress, so this site may not be as polished as the old one.
+<a href="/contribution">All contributions are welcome.</a></p>
+
+</div>
+<br>
+<p>REAM is a data serialization standard designed for social science datasets.
 The language encourages inline documentation for individual data points, and compiles to both analysis-ready <strong>datasets</strong> (CSV, JSON, etc.) and human-readable <strong>documentations</strong> (HTML, PDF, etc.)
 It also introduces unique features to make managing large data projects easier by <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">reducing repetition</a>.
-The language, along with the <a href="https://ream-lang.org/overview/why-ream/#">toolchain</a> built around it, aims to make it easy to create, maintain, distribute and reuse social science datasets.</p>
+The language, along with the <a href="/toolchain">toolchain</a> built around it, aims to make it easy to create, maintain, distribute and reuse social science datasets.</p>
 <p><strong>Current Design:</strong></p>
 <div class="mermaid">
   graph LR;
@@ -202,7 +215,7 @@ The language, along with the <a href="https://ream-lang.org/overview/why-ream/#"
   </div>
   <button class="update-button" id="easy-to-learn-and-use">Compile</button>
 </div>
-<p>It takes around 15 minutes to <a href="https://ream-lang.org/overview/why-ream/#">learn the basics</a> of the language to start writing your first REAM dataset.
+<p>It takes around 15 minutes to <a href="/tutorial">learn the basics</a> of the language to start writing your first REAM dataset.
 Learn more advanced features later as your project scales up.</p>
 <p>All REAM datasets are stored as text files, and can be edited in any text editor.
 A <a href="https://chmlee.github.io/ream-editor">web-based editor</a> is available to provide basic functionalities.
@@ -276,7 +289,7 @@ Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">
 </div>
 <p>Instead of saving the same country name <code>Belgium</code> in three separate rows, there is now <a href="https://en.wikipedia.org/wiki/Single_source_of_truth">single source of truth</a> for the variable.</p>
 <h2 id="inline-documentation">Inline documentation</h2>
-<p>REAM encourages inline documentation for individual data points through <a href="https://ream-lang.org/overview/why-ream/#">annotations</a>.
+<p>REAM encourages inline documentation for individual data points through <a href="/tutorial/annotation">annotations</a>.
 Instead of editing data and its documentation in two separate files - one spreadsheet and one word document - you write:</p>
 <pre style="background-color:#2b303b;">
 <code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
@@ -443,7 +456,7 @@ Instead of manually manipulating variables with similar pattern:</p>
   <button class="update-button" id="reference">Compile</button>
 </div>
 <p>(*: not implemted yet)</p>
-<p>Variable <code>Year$unique_id</code> is now formatted by concatenating a local variable <code>Year$name</code> and the parent variable <code>Country$name</code>, separated by an underscore.</p>
+<p>Variable <code>Year$unique_id</code> is now formatted by joining a local variable <code>Year$name</code> and the parent variable <code>Country$name</code>, separated by an underscore.</p>
 <h2 id="template">Template*</h2>
 <p>Templates allow datasets to reuse schemas.
 Instead of defining the schema for the entry of class <code>Year</code> three times:</p>

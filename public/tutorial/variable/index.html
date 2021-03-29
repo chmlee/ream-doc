@@ -103,35 +103,23 @@
                     <ul class="header-container">
                         
     
-      <li class="header-item header-level-3">
+      <li class="header-item header-level-2">
         <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#key">Key</a>
         
       </li>
     
-      <li class="header-item header-level-3">
+      <li class="header-item header-level-2">
         <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#value">Value</a>
         
-          
-          <ul class="header-container">
-            
+      </li>
     
-      <li class="header-item header-level-3">
+      <li class="header-item header-level-2">
         <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#string">String</a>
         
       </li>
     
-      <li class="header-item header-level-3">
+      <li class="header-item header-level-2">
         <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#number">Number</a>
-        
-      </li>
-    
-      <li class="header-item header-level-3">
-        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#boolean">Boolean</a>
-        
-      </li>
-    
-
-          </ul>
         
       </li>
     
@@ -199,32 +187,7 @@ Key names are case sensitive.</p>
 </span><span style="color:#5cb3fa;">- key with spaces: </span><span style="color:#9acc76;">value
 </span><span style="color:#5cb3fa;">- key_with_underscore: </span><span style="color:#9acc76;">value
 </span><span style="color:#5cb3fa;">- _: </span><span style="color:#9acc76;">value
-</span></code></pre><div class="editor">
-  <!-- <div id="key-code"> -->
-  <!--   <h1 id="example">Example</h1>
-<ul>
-<li>key: value</li>
-<li>KEY: value</li>
-<li>key_1: value</li>
-<li>key with spaces: value</li>
-<li>key_with_underscore: value</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="key-input" wrap="off"># Example
-- key: value
-- KEY: value
-- key_1: value
-- key with spaces: value
-- key_with_underscore: value</textarea>
-    </div>
-    <div id="key-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="key">Compile</button>
-</div>
-<div class="box tip">
+</span></code></pre><div class="box tip">
   <div class="box-heading">
     
       TIP
@@ -232,64 +195,20 @@ Key names are case sensitive.</p>
   </div>
   <p>Don't worry about what <code># Example</code> is.
 For now just see this as the title for your REAM file, and all REAM files starts with a title.
-We'll discuss what it is in detail in <a href="entry">Entry</a> section.</p>
+We'll discuss what it is in detail in <a href="/tutorial/entry">Entry</a> section.</p>
 
 </div>
 <p>Key name can't be empty:</p>
 <pre style="background-color:#2b303b;">
 <code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
 </span><span style="color:#5cb3fa;">- : </span><span style="color:#9acc76;">value
-</span></code></pre><div class="editor">
-  <!-- <div id="key-empty-code"> -->
-  <!--   <h1 id="badexample">BadExample</h1>
-<ul>
-<li>: value</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="key-empty-input" wrap="off"># BadExample
-- : value</textarea>
-    </div>
-    <div id="key-empty-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="key-empty">Compile</button>
-</div>
+</span></code></pre>
 <p>Key name can't start with a digit:</p>
 <pre style="background-color:#2b303b;">
 <code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
 </span><span style="color:#5cb3fa;">- 1: </span><span style="color:#9acc76;">value
 </span><span style="color:#5cb3fa;">- 1key: </span><span style="color:#9acc76;">value
-</span></code></pre><div class="editor">
-  <!-- <div id="key-digit-code"> -->
-  <!--   <h1 id="badexample">BadExample</h1>
-<ul>
-<li>1: value</li>
-<li>1key: value</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="key-digit-input" wrap="off"># BadExample
-- 1: value
-- 1key: value</textarea>
-    </div>
-    <div id="key-digit-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="key-digit">Compile</button>
-</div>
-<div class="box note">
-  <div class="box-heading">
-    
-      NOTE
-    
-  </div>
-  <p>The current parser doesn't check for identifer names yet.</p>
-
-</div>
-<!--
+</span></code></pre><!--
 ::: details Note: UTF-8 support
 Key names should support UTF-8.
 The [current parser](https://github.com/chmlee/reamparser.js) *should* be able to parse UTF-8 identifiers correctly, but this hasn't been tested extensively.
@@ -344,34 +263,14 @@ or
 <li><a href="https://ream-lang.org/tutorial/variable/#boolean">Boolean</a></li>
 </ul>
 <p>Value can't be empty.</p>
-<h3 id="string">String</h3>
+<h2 id="string">String</h2>
 <p>Example:</p>
 <pre style="background-color:#2b303b;">
 <code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
 </span><span style="color:#5cb3fa;">- string: </span><span style="color:#9acc76;">value
 </span><span style="color:#5cb3fa;">- long string: Hello </span><span style="color:#9acc76;">World
 </span><span style="color:#5cb3fa;">- quoted string: &quot;quote&quot;
-</span></code></pre><div class="editor">
-  <!-- <div id="string-code"> -->
-  <!--   <h1 id="example">Example</h1>
-<ul>
-<li>string: value</li>
-<li>long string: Hello World</li>
-<li>quoted string: &quot;quote&quot;</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="string-input" wrap="off"># Example
-- string: value
-- long string: Hello World
-- quoted string: &quot;quote&quot;</textarea>
-    </div>
-    <div id="string-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="string">Compile</button>
-</div>
+</span></code></pre><EditorLite-EditorLite item="string" />
 <p>There is not need to quote strings.
 Quotation marks will be preserved.</p>
 <p>Values can't contain line breaks.
@@ -381,64 +280,25 @@ The following will raise an error:</p>
 </span><span style="color:#5cb3fa;">- key 1: first </span><span style="color:#9acc76;">line
 </span><span style="color:#abb2bf;">         second line
 </span><span style="color:#5cb3fa;">- key 2: </span><span style="color:#9acc76;">value
-</span></code></pre><div class="editor">
-  <!-- <div id="string-line-break-code"> -->
-  <!--   <h1 id="badexample">BadExample</h1>
-<ul>
-<li>key 1: first line
-second line</li>
-<li>key 2: value</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="string-line-break-input" wrap="off"># BadExample
+</span></code></pre><!--
+::: details Note: Handling Unexpected Line Breaks
+The [current parser](https://github.com/chmlee/reamparser.js) is able to parse the example.
+It will read everything before and including `- key 1: first line`, then stop parsing and return whatever has been parsed, ignoring the rest of the file.
+So the example is equivalent to:
+```ream
+# Example
 - key 1: first line
-         second line
-- key 2: value</textarea>
-    </div>
-    <div id="string-line-break-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="string-line-break">Compile</button>
-</div>
-<div class="box note">
-  <div class="box-heading">
-    
-      NOTE
-    
-  </div>
-  <p>The <a href="https://github.com/chmlee/reamparser.js">current parser</a> is able to parse the example.
-It will read everything before and including <code>- key 1: first line</code>, then stop parsing and return whatever has been parsed, ignoring the rest of the file.</p>
-<p>Ideally the parser should panic, and an error with meaningful messages should be raised.
-Error handling will be improved in future versions.</p>
-
-</div>
+```
+Ideally the parser should panic, and an error with meaningful messages should be raised.
+Error handling will be improved in future versions.
+:::
+-->
 <p>REAM stores strings as raw literal strings, hence the following example is valid. <code>\n</code> will not be escaped, and is equivalent to <code>\\n</code> in JSON.</p>
 <pre style="background-color:#2b303b;">
 <code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
 </span><span style="color:#5cb3fa;">- key 1: first line\nsecond </span><span style="color:#9acc76;">line
 </span><span style="color:#5cb3fa;">- key 2: </span><span style="color:#9acc76;">value
-</span></code></pre><div class="editor">
-  <!-- <div id="string-no-escpae-code"> -->
-  <!--   <h1 id="example">Example</h1>
-<ul>
-<li>key 1: first line\nsecond line</li>
-<li>key 2: value</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="string-no-escpae-input" wrap="off"># Example
-- key 1: first line\nsecond line
-- key 2: value</textarea>
-    </div>
-    <div id="string-no-escpae-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="string-no-escpae">Compile</button>
-</div>
-<h3 id="number">Number</h3>
+</span></code></pre><h2 id="number">Number</h2>
 <p>Numbers are wrapped by dollar signs (<code>$</code>).</p>
 <p>Example:</p>
 <pre style="background-color:#2b303b;">
@@ -446,27 +306,7 @@ Error handling will be improved in future versions.</p>
 </span><span style="color:#5cb3fa;">- number 1: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
 - number 2: $</span><span style="color:#db9d63;">-2</span><span style="color:#5cb3fa;">$
 - number 3: $</span><span style="color:#db9d63;">3.1415926</span><span style="color:#5cb3fa;">$
-</span></code></pre><div class="editor">
-  <!-- <div id="number-code"> -->
-  <!--   <h1 id="example">Example</h1>
-<ul>
-<li>number 1: $1$</li>
-<li>number 2: $-2$</li>
-<li>number 3: $3.1415926$</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="number-input" wrap="off"># Example
-- number 1: $1$
-- number 2: $-2$
-- number 3: $3.1415926$</textarea>
-    </div>
-    <div id="number-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="number">Compile</button>
-</div>
+</span></code></pre><EditorLite-EditorLite item="number" />
 <!--
 ::: details Note: Potential Breaking Change for Syntax
 I'm considering removing the `$` requirement for numbers, and have a more YAML-like syntax for number.
@@ -479,27 +319,7 @@ I'm considering removing the `$` requirement for numbers, and have a more YAML-l
 </span><span style="color:#5cb3fa;">- number: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
 - not number 1: a$</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$
 - not number 2: $</span><span style="color:#db9d63;">1</span><span style="color:#5cb3fa;">$</span><span style="color:#9acc76;">b
-</span></code></pre><div class="editor">
-  <!-- <div id="number-error-code"> -->
-  <!--   <h1 id="example">Example</h1>
-<ul>
-<li>number: $1$</li>
-<li>not number 1: a$1$</li>
-<li>not number 2: $1$b</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="number-error-input" wrap="off"># Example
-- number: $1$
-- not number 1: a$1$
-- not number 2: $1$b</textarea>
-    </div>
-    <div id="number-error-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="number-error">Compile</button>
-</div>
+</span></code></pre><EditorLite-EditorLite item="notNumber" />
 <!--
 ::: details Note: No Floats or Integers
 
@@ -606,6 +426,17 @@ See [typed variable](/ream-doc/Language/Advanced/Typed-Variable) for more inform
 -->
 <h3 id="boolean">Boolean</h3>
 <p>Boolean values are <code>`TRUE`</code> and <code>`FALSE`</code>, both uppercase and surrounded by backticks (<code>`</code>).</p>
+<!--
+::: details Note: Potential Breaking Change for Syntax
+I'm planning to replace `` ` `` with `__`.
+So instead of `` `TRUE` `` and `` `FALSE` `` you write `__TRUE__` and `__FALSE__`.
+:::
+--><!--
+<p>::: details Note: Potential Breaking Change for Syntax
+I'm planning to replace <code>`</code> with <code>__</code>.
+So instead of <code>`TRUE`</code> and <code>`FALSE`</code> you write <code>__TRUE__</code> and <code>__FALSE__</code>.
+:::
+--&gt;</p>
 <p>Example:</p>
 <pre style="background-color:#2b303b;">
 <code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
@@ -616,29 +447,26 @@ See [typed variable](/ream-doc/Language/Advanced/Typed-Variable) for more inform
 </span></code></pre>
 <p>Note that boolean values must be exact matches.
 Values not wrapped by backticks or not uppercased will be stored as strings.</p>
-<div class="editor">
-  <!-- <div id="bool-code"> -->
-  <!--   <h1 id="example">Example</h1>
-<ul>
-<li>bool 1: <code>TRUE</code></li>
-<li>bool 2: <code>FALSE</code></li>
-<li>not bool 1: <code>true</code></li>
-<li>not bool 2: FALSE</li>
-</ul>
- -->
-  <!-- </div> -->
-  <div class="input-output-container">
-    <div class="input-container">
-      <textarea class="input" oninput="auto_grow(this)" id="bool-input" wrap="off"># Example
-- bool 1: `TRUE`
-- bool 2: `FALSE`
-- not bool 1: `true`
-- not bool 2: FALSE</textarea>
-    </div>
-    <div id="bool-output" class="output" style="monospace">(compile output)</div>
-  </div>
-  <button class="update-button" id="bool">Compile</button>
-</div>
+<!--
+::: details Note: Potential Breaking Changes for Syntax
+The syntax is not stable.
+You should expect breaking changes.
+
+When I wrote REAM, it was meant for managing data for my undergraduate thesis.
+I wanted to edit data and documentation in one single file for easier management, and I needed it fast.
+That's why I adopted a Markdown-like syntax, so that all I had to do was to write a parser to convert REAM files to CSV, and use any Markdown converter to generate the documentation.
+That's why numbers are wrapped by `$` (inline math mode), and boolean values are wrapped by `` ` `` (inline code).
+List items are recommended to be indented because that's how [pandoc](https://pandoc.org/), the Markdown converter I then used, identifies nested lists.
+
+But now I have more time, and have full control of the scanner and parser, I discover it's fairly easy to write a documentation generator with existing codebase.
+I plan to do so not only to reduce outside dependencies but also to add more customized functionalities.
+The new documentation generator may also be faster since I am only scanning a small subset of the syntax.
+That being said, I don't have to think too much about how REAM files looks in other Markdown converters.
+I still intend to use only Markdown syntax in the language for ease of use and readability, but some of the previous verbose design is no longer necessary.
+
+I will *almost certainly* remove `$` for numbers, and *maybe* replace `` `TRUE` `` and `` `FALSE` `` with `__TRUE__` and `__FALSE__` (or `TRUE` and `FALSE`. No decision has been made yet.)
+:::
+-->
 
 
         <div class="nav-row">

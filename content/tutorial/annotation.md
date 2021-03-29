@@ -4,16 +4,16 @@ weight = 4
 +++
 
 Annotations follow
-[strings](Variable.html#string),
-[numbers](Variable.html#number),
+[strings](/tutorial/variable#string),
+[numbers](/tutorial/variable#number),
 and
-[booleans](Variable.html#boolean)
+[booleans](/tutorial/variable#boolean)
 in variables in the form of
 ```ream
 - <key>: <value>
   > <annotation>
 ```
-and items in [lists](List.html) in the form of
+and items in [lists](/tutorial/list) in the form of
 
 ```ream
 - <key>:
