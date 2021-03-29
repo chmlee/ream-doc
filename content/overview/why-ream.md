@@ -1,12 +1,34 @@
 +++
 title = "Why REAM"
 weight = 1
+
+[extra]
+level = 2
 +++
 
 REAM is a data serialization standard designed for social science datasets.
-The language encourages inline documentation for individual data points, and compiles to analysis-ready format (CSV, JSON, etc.) and human-readable documentation (HTML, PDF, etc.)
+The language encourages inline documentation for individual data points, and compiles to both analysis-ready **datasets** (CSV, JSON, etc.) and human-readable **documentations** (HTML, PDF, etc.)
 It also introduces unique features to make managing large data projects easier by [reducing repetition](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 The language, along with the [toolchain](#) built around it, aims to make it easy to create, maintain, distribute and reuse social science datasets.
+
+**Current Design:**
+{% mermaid() %}
+graph LR;
+  SOURCE[REAM File] --> PARSER([REAM Parser]);
+  PARSER --> DATA[(Datasets<br>CSV, JSON, etc.)]
+
+  SOURCE --> CONVERTER([Third-party<br>Markdown Converter])
+  CONVERTER --> DOC[[Documentation<br>HTML, PDF, etc.]]
+{% end %}
+
+
+**Future Design:**
+{% mermaid() %}
+graph LR;
+  SOURCE[REAM File] --> COMPILER([REAM Compiler]);
+  COMPILER --> DATA[(Datasets<br>CSV, JSON, etc.)]
+  COMPILER --> DOC[[Documentations<br>HTML, PDF, etc.]]
+{% end %}
 
 ## Easy to learn and use
 

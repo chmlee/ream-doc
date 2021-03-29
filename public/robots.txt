@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ream-lang.org/sitemap.xml
