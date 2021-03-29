@@ -1,8 +1,7 @@
 +++
 title = "Annotation"
-order = 3
+weight = 4
 +++
-# Annotation
 
 Annotations follow
 [strings](Variable.html#string),
@@ -38,7 +37,16 @@ Examples:
 - key 3: `TRUE`
   > Annotation for boolean
 ```
-<EditorLite-EditorLite item="annotation1" />
+
+{% editor(id="entry") %}
+# Example
+- key 1: value
+  > Annotation for string
+- key 2: $1$
+  > Annotation for number
+- key 3: `TRUE`
+  > Annotation for boolean
+{% end %}
 
 ```ream
 # Example
@@ -50,7 +58,17 @@ Examples:
   * `TRUE`
     > Annotation for boolean
 ```
-<EditorLite-EditorLite item="annotation2" />
+
+{% editor(id="annotation-list") %}
+# Example
+- list:
+  * value
+    > Annotation for string
+  * $1$
+    > Annotation for number
+  * `TRUE`
+    > Annotation for boolean
+{% end %}
 
 Annotations are ignored when compiled to datasets.
 
@@ -65,6 +83,13 @@ Placing annotations in any other places will raise errors:
 - key: value
 ```
 
+{% editor(id="annotation-mistake")%}
+> Annotation can't be placed here...
+# BadExample
+> ...or here
+- key: value
+{% end %}
+
 Empty lines around annotations are allowed, but discouraged.
 
 ```ream
@@ -78,4 +103,15 @@ Empty lines around annotations are allowed, but discouraged.
 
 - key 4: value 4
 ```
-<EditorLite-EditorLite item="annotation3" />
+
+{% editor(id="annotation-empty-line")%}
+# Example
+- key 1: value 1
+- key 2: value 2
+  > Annotation
+- key 3: value 3
+
+  > Valid annotation
+
+- key 4: value 4
+{% end %}

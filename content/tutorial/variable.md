@@ -1,8 +1,10 @@
 +++
 title = "Variable"
-order = 1
+weight = 2
+
+[extra]
+level = 3
 +++
-# Variable
 
 `<variable>` assigns a `<value>` to a `<key>`, in the form of
 
@@ -28,11 +30,20 @@ Some examples for valid key names are:
 - _: value
 ```
 
-::: tip
+{% editor(id="key")%}
+# Example
+- key: value
+- KEY: value
+- key_1: value
+- key with spaces: value
+- key_with_underscore: value
+{% end %}
+
+{% box(class="tip") %}
 Don't worry about what `# Example` is.
 For now just see this as the title for your REAM file, and all REAM files starts with a title.
-We'll discuss what it is in detail in [Entry](Entry) section.
-:::
+We'll discuss what it is in detail in [Entry](entry) section.
+{% end %}
 
 Key name can't be empty:
 ```ream
@@ -40,13 +51,30 @@ Key name can't be empty:
 - : value
 ```
 
+{% editor(id="key-empty")%}
+# BadExample
+- : value
+{% end %}
+
 Key name can't start with a digit:
 ```ream
 # BadExample
 - 1: value
 - 1key: value
 ```
+{% editor(id="key-digit")%}
+# BadExample
+- 1: value
+- 1key: value
+{% end %}
 
+{% box(class="note")%}
+The current parser doesn't check for identifer names yet.
+{% end %}
+
+
+
+<!--
 ::: details Note: UTF-8 support
 Key names should support UTF-8.
 The [current parser](https://github.com/chmlee/reamparser.js) *should* be able to parse UTF-8 identifiers correctly, but this hasn't been tested extensively.
@@ -92,6 +120,7 @@ or
 
 
 :::
+-->
 
 ## Value
 
@@ -113,31 +142,40 @@ Example:
 - quoted string: "quote"
 ```
 
-<EditorLite-EditorLite item="string" />
+{% editor(id="string")%}
+# Example
+- string: value
+- long string: Hello World
+- quoted string: "quote"
+{% end %}
+
 
 There is not need to quote strings.
 Quotation marks will be preserved.
 
 Values can't contain line breaks.
 The following will raise an error:
-```ream{3}
+```ream
 # BadExample
 - key 1: first line
          second line
 - key 2: value
 ```
 
-::: details Note: Handling Unexpected Line Breaks
+{% editor(id="string-line-break")%}
+# BadExample
+- key 1: first line
+         second line
+- key 2: value
+{% end %}
+
+{% box(class="note")%}
 The [current parser](https://github.com/chmlee/reamparser.js) is able to parse the example.
 It will read everything before and including `- key 1: first line`, then stop parsing and return whatever has been parsed, ignoring the rest of the file.
-So the example is equivalent to:
-```ream
-# Example
-- key 1: first line
-```
+
 Ideally the parser should panic, and an error with meaningful messages should be raised.
 Error handling will be improved in future versions.
-:::
+{% end %}
 
 REAM stores strings as raw literal strings, hence the following example is valid. `\n` will not be escaped, and is equivalent to `\\n` in JSON.
 ```ream
@@ -145,6 +183,12 @@ REAM stores strings as raw literal strings, hence the following example is valid
 - key 1: first line\nsecond line
 - key 2: value
 ```
+
+{% editor(id="string-no-escpae")%}
+# Example
+- key 1: first line\nsecond line
+- key 2: value
+{% end %}
 
 
 ### Number
@@ -158,11 +202,19 @@ Example:
 - number 2: $-2$
 - number 3: $3.1415926$
 ```
-<EditorLite-EditorLite item="number" />
 
+{% editor(id="number") %}
+# Example
+- number 1: $1$
+- number 2: $-2$
+- number 3: $3.1415926$
+{% end %}
+
+<!--
 ::: details Note: Potential Breaking Change for Syntax
 I'm considering removing the `$` requirement for numbers, and have a more YAML-like syntax for number.
 :::
+-->
 
 If a leading or trailing character exist, the entire value would be interpreted as a string.
 
@@ -173,8 +225,15 @@ Example:
 - not number 1: a$1$
 - not number 2: $1$b
 ```
-<EditorLite-EditorLite item="notNumber" />
 
+{% editor(id="number-error")%}
+# Example
+- number: $1$
+- not number 1: a$1$
+- not number 2: $1$b
+{% end %}
+
+<!--
 ::: details Note: No Floats or Integers
 
 Should REAM add integers and floats as primitive types?
@@ -217,7 +276,7 @@ The plan is to have numbers saved as strings when compiling JSON and CSV, and le
 ```
            (no type conversion)       (conversion happens here)
                REAM parser          CSV/JSON Reader in Language X
-Number("3.14") -----------> "3.14"  ----------------------------->  3.14
+Number("3.14")  "3.14"    3.14
    REAM                    CSV/JSON                               Language X
 ```
 For example, in Python, `pandas.read_csv()` converts applicable strings to `int64` and `float64` by default, and allow users to specify types through `dtype` argument.
@@ -247,7 +306,6 @@ dat["number"]
 # [1] 0.2
 ```
 
----
 
 Unless...
 
@@ -255,12 +313,12 @@ With projects like [PyO3](https://github.com/PyO3/PyO3) and [extendr](https://gi
 Instead of:
 ```
           REAM parser     pandas.read_csv()
-REAM file -----------> CSV ----------------> Pandas.dataframe
+REAM file  CSV  Pandas.dataframe
 ```
 we may be able to do:
 ```
           ream.read_ream()
-REAM file ---------------> Pandas.dataframe
+REAM file  Pandas.dataframe
 ```
 by
 ```python
@@ -278,15 +336,11 @@ Wouldn't this be wonderful?
 If so, REAM probably need explicit float and integer types to make interacting with Pandas and Tibbles types surprise-free.
 See [typed variable](/ream-doc/Language/Advanced/Typed-Variable) for more information.
 :::
+-->
 
 ### Boolean
 
 Boolean values are `` `TRUE` `` and `` `FALSE` ``, both uppercase and surrounded by backticks (`` ` ``).
-
-::: details Note: Potential Breaking Change for Syntax
-I'm planning to replace `` ` `` with `__`.
-So instead of `` `TRUE` `` and `` `FALSE` `` you write `__TRUE__` and `__FALSE__`.
-:::
 
 Example:
 
@@ -297,26 +351,13 @@ Example:
 - not bool 1: `true`
 - not bool 2: FALSE
 ```
-<EditorLite-EditorLite item="boolean" />
-
 Note that boolean values must be exact matches.
 Values not wrapped by backticks or not uppercased will be stored as strings.
 
-::: details Note: Potential Breaking Changes for Syntax
-The syntax is not stable.
-You should expect breaking changes.
-
-When I wrote REAM, it was meant for managing data for my undergraduate thesis.
-I wanted to edit data and documentation in one single file for easier management, and I needed it fast.
-That's why I adopted a Markdown-like syntax, so that all I had to do was to write a parser to convert REAM files to CSV, and use any Markdown converter to generate the documentation.
-That's why numbers are wrapped by `$` (inline math mode), and boolean values are wrapped by `` ` `` (inline code).
-List items are recommended to be indented because that's how [pandoc](https://pandoc.org/), the Markdown converter I then used, identifies nested lists.
-
-But now I have more time, and have full control of the scanner and parser, I discover it's fairly easy to write a documentation generator with existing codebase.
-I plan to do so not only to reduce outside dependencies but also to add more customized functionalities.
-The new documentation generator may also be faster since I am only scanning a small subset of the syntax.
-That being said, I don't have to think too much about how REAM files looks in other Markdown converters.
-I still intend to use only Markdown syntax in the language for ease of use and readability, but some of the previous verbose design is no longer necessary.
-
-I will *almost certainly* remove `$` for numbers, and *maybe* replace `` `TRUE` `` and `` `FALSE` `` with `__TRUE__` and `__FALSE__` (or `TRUE` and `FALSE`. No decision has been made yet.)
-:::
+{% editor(id="bool")%}
+# Example
+- bool 1: `TRUE`
+- bool 2: `FALSE`
+- not bool 1: `true`
+- not bool 2: FALSE
+{% end %}

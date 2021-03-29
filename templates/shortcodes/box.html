@@ -1,0 +1,10 @@
+<div class="box {{ class }}">
+  <div class="box-heading">
+    {% if title %}
+      {{ title }}
+    {% else %}
+      {{ class | upper }}
+    {% endif %}
+  </div>
+  {{ body | markdown | safe }}
+</div>

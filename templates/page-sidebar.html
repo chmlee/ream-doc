@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros.html"  as macros %}
 
 {% block content %}
 
@@ -12,23 +13,25 @@
         {% for page in section.pages %}
 
             {% if page.title == current_page %}
+                {% if page.extra.level %}
+                    {% set level = page.extra.level %}
+                {% else %}
+                    {% set level = 2 %}
+                {% endif %}
 
-                <li class="section-title section-title-focus">
+                <li class="sidebar-item sidebar-item-focus">
+
                     <a href="{{ page.permalink }}">{{ page.title }}</a>
 
-                    <ul class="sub-sidebar">
-                        {% for subsection in page.toc %}
-                            <li class="section-title">
-                                <a href="{{ subsection.permalink }}">{{ subsection.title }}</a>
-                            </li>
-                        {% endfor %}
+                    <ul class="header-container">
+                        {{ macros::active_sidebar(toc=page.toc, level=level) }}
                     </ul>
 
                 </li>
 
             {% else %}
 
-                <li class="section-title">
+                <li class="sidebar-item">
                     <a href="{{ page.permalink }}">{{ page.title }}</a></li>
                 </li>
 
@@ -44,7 +47,29 @@
         <p class="subtitle"><strong>{{ page.date }}</strong></p>
 
         {{ page.content | safe }}
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                {% if page.lighter %}
+                    Previous:
+                    <a class="next" href="{{ page.lighter.permalink }}">
+                        {{ page.lighter.title }}
+                    </a>
+                {% endif %}
+            </div>
+
+            <div class="nav-box nav-next">
+                {% if page.heavier %}
+                    Next:
+                    <a class="next" href="{{ page.heavier.permalink }}">
+                        {{ page.heavier.title }}
+                    </a>
+                {% endif %}
+            </div>
+
+        </div>
     </div>
+
 
 </div>
 

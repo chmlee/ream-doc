@@ -1,8 +1,7 @@
 +++
 title = "Entry"
-order = 4
+weight = 5
 +++
-# Entry
 
 An entry is a collection of variables.
 An entry class is proceeded by one or multiple pound signs `#`, in the form of:
@@ -26,7 +25,14 @@ Entries are useful when describing an object with multiple attributes:
 - population: $11433256$
 - euro zone: `TRUE`
 ```
-<EditorLite-EditorLite item="entry1" />
+
+{% editor(id="entry")%}
+# Country
+- name: Belgium
+- capital: Brussels
+- population: $11433256$
+- euro zone: `TRUE`
+{% end %}
 
 Here we define an object of `Country` class, whose name is `Belgium`, capital is `Brussels`, population is `11433256`, and is part of the `euro zone`.
 
@@ -42,14 +48,25 @@ Let's add some annotations.
   > joined in 1999
 ```
 
-<EditorLite-EditorLite item="entry2" />
+{% editor(id="entry-with-annotation") %}
+# Country
+- name: Belgium
+  > short for the Kingdom of Belgium
+- capital: Brussels
+- population: $11433256$
+  > data from 2019; retrieved from World Bank
+- euro zone: `TRUE`
+  > joined in 1999
+{% end %}
 
 Entries can have zero variables:
 ```ream
 # Country
 ```
 
-(TODO: missing editor example)
+{% editor(id="entry-with-no-variable")%}
+# Country
+{% end %}
 
 Entries should have local unique keys.
 The following code will raise an error:
@@ -60,10 +77,19 @@ The following code will raise an error:
 - language: French
 - language: German
 ```
-::: details Note: Duplicate Keys
+
+{% editor(id="entry-duplicate-keys") %}
+# Country
+- name: Belgium
+- language: Dutch
+- language: French
+- language: German
+{% end %}
+
+{% box(class="note") %}
 The current parser don't check for duplicate keys yet, so technically this is still valid.
 This rule will be enforced in future versions.
-:::
+{% end %}
 
 ## Subentry
 
@@ -84,7 +110,20 @@ Examples:
 ## Language
 - name: German
 ```
-<EditorLite-EditorLite item="entry3" />
+
+{% editor(id="subentry") %}
+# Country
+- name: Belgium
+
+## Language
+- name: Dutch
+
+## Language
+- name: French
+
+## Language
+- name: German
+{% end %}
 
 The `# Country` entry has one variable `name` and three Level-2 child entries `## Language`.
 
@@ -113,7 +152,23 @@ Compare the datasets compiled from the following two examples with the previous 
 - name: German
   > This is in a Level 3 Entry
 ```
-<EditorLite-EditorLite item="entry4" />
+
+{% editor(id="subentry-2") %}
+# Country
+- name: Belgium
+
+## Language
+- name: Dutch
+  > This is in a Level 2 Entry
+
+### Language
+- name: French
+  > This is in a Level 3 Entry
+
+### Language
+- name: German
+  > This is in a Level 3 Entry
+{% end %}
 
 ```ream
 # Country
@@ -132,20 +187,37 @@ Compare the datasets compiled from the following two examples with the previous 
 - name: German
 ```
 
-<EditorLite-EditorLite item="entry5" />
+{% editor(id="subentry-3")%}
+# Country
+- name: Belgium
+
+## Language
+- name: Dutch
+  > This is in a Level 2 Entry
+
+## Language
+- name: French
+  > This is in a Level 2 Entry
+
+### Language
+  > This is in a Level 3 Entry
+- name: German
+{% end %}
+
 
 A visualization of the differences between the three schemas are as follows.
 The terminal nodes are colored yellow.
 
-![tree](./tree.svg)
+![tree](/img/tree.svg)
 
+<!--
 :::details Note: Duplicate Entry Class
 Can a `### Language` entry be nested in another `## Language` entry?
 This doesn't really make sense, but currently there is no rule against it, and the parser is able to parse it.
 
 Maybe this shouldn't be allowed?
 :::
-
+-->
 
 An entry can contain subentires of differenct classes:
 
@@ -160,7 +232,16 @@ An entry can contain subentires of differenct classes:
 - name: Dutch
 ```
 
-<EditorLite-EditorLite item="entry6" />
+{% editor(id="subentry-different-class") %}
+# Country
+- name: Belgium
+
+## City
+- name: Brussels
+
+## Language
+- name: Dutch
+{% end %}
 
 Also, entries of the same class need not have identical variables, nor the same variable order.
 ```ream
@@ -178,6 +259,22 @@ Also, entries of the same class need not have identical variables, nor the same 
 ## Language
 - name: German
 ```
+
+{% editor(id="subentry-different-schema")%}
+# Country
+- name: Belgium
+
+## Language
+- name: Dutch
+- size: $0.59$
+
+## Language
+- size: $0.4$
+- name: French
+
+## Language
+- name: German
+{% end %}
 
 
 <EditorLite-EditorLite item="entry7" />

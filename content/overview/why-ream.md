@@ -147,19 +147,19 @@ Instead of manually manipulating variables with similar pattern:
 
 ```ream
 # Country
-- name: Belgium
+- name (str): Belgium
 
 ## Year
-- name: 2010
-- unique_id: Belgium_2010
+- name (str): 2010
+- unique_id (str): Belgium_2010
 
 ## Year
-- name: 2011
-- unique_id: Belgium_2011
+- name (str): 2011
+- unique_id (str): Belgium_2011
 
 ## Year
-- name: 2012
-- unique_id: Belgium_2012
+- name (str): 2012
+- unique_id (str): Belgium_2012
 ```
 
 you write:
@@ -169,15 +169,15 @@ you write:
 
 ## Year
 - name (str): 2010
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 
 ## Year
 - name (str): 2011
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 
 ## Year
 - name (str): 2012
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 ```
 
 {% editor(id="reference") %}
@@ -186,24 +186,24 @@ you write:
 
 ## Year
 - name (str): 2010
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 
 ## Year
 - name (str): 2011
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 
 ## Year
 - name (str): 2012
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 {% end %}
 
 (*: not implemted yet)
 
 Variable `Year$unique_id` is now formatted by concatenating a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
 
-## Macro*
+## Template*
 
-Macro allows datasets to reuse schemas.
+Templates allow datasets to reuse schemas.
 Instead of defining the schema for the entry of class `Year` three times:
 ```ream
 # Country
@@ -211,15 +211,15 @@ Instead of defining the schema for the entry of class `Year` three times:
 
 ## Year
 - name (str): 2010
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 
 ## Year
 - name (str): 2011
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 
 ## Year
 - name (str): 2012
-- unique_id (fmt): Country$name + "_" + Year$name
+- unique_id (fmt): {Country$name}_{Year$name}
 ```
 
 you write:
@@ -234,9 +234,10 @@ you write:
 @@ FOR $year IN Country$years
 ## Year
 - name (fmt): $year
-- unique_id (fmt): Country$name + "_" + $year
+- unique_id (fmt): {Country$name}_{$year}
 ```
-{% editor(id="macro")%}
+
+{% editor(id="template")%}
 # Country
 - name (str): Belgium
 - years (str+):
@@ -247,12 +248,12 @@ you write:
 @@ FOR $year IN Country$years
 ## Year
 - name (fmt): $year
-- unique_id (fmt): Country$name + "_" + $year
+- unique_id (fmt): {Country$name}_{$year}
 {% end %}
 
 (*: not implemented yet; design not yet final)
 
-## Interoperatability
+## Interoperatability*
 
 One of the main motivation behind REAM is to make reusing datasets easy.
 Say you have data on Belgium, Netherlands and Luxemborg, and want to zip all three into one master dataset then find the sum of population.
@@ -278,7 +279,7 @@ Say you have data on Belgium, Netherlands and Luxemborg, and want to zip all thr
 - population (num): $619900$
 ```
 
-Instead of manually copying and pasting the data, you import them into a new REAM file and bind them with macros:
+Instead of manually copying and pasting the data, you import them into a new REAM file and bind them with templates:
 
 (TheBeneluxUnion.ream)
 ```ream
@@ -291,7 +292,7 @@ Instead of manually copying and pasting the data, you import them into a new REA
 
 @@ FOR Member IN TheBeneluxUnion$members
 ## Country
-- name (fmt): Member$name
+- name (ref): Member$name
 - population (fn: num): Member$population.to_num()
 ```
 
@@ -305,7 +306,7 @@ Instead of manually copying and pasting the data, you import them into a new REA
 
 @@ FOR Member IN TheBeneluxUnion$members
 ## Country
-- name (fmt): Member$name
+- name (ref): Member$name
 - population (fn: num): Member$population.to_num()
 {% end %}
 

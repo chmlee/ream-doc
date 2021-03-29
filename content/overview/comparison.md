@@ -3,10 +3,27 @@ title = "Comparison"
 weight = 2
 +++
 
-# part one
+REAM started as a quick solution to organize the data for my undergraduate thesis.
+Before working on REAM, I tried various languages and tools, but none fits my needs.
 
-bla
+The following is a brief comparison between REAM and other alternatives.
 
-# part two
+## Spreadsheet/CSV
 
-foo
+(To be added)
+
+## XML
+
+(To be added)
+
+## JSON/YAML/TOML
+
+(To be added)
+
+## SQL
+
+(To be added)
+
+## Dhall
+
+(To be added)

@@ -1,8 +1,7 @@
 +++
 title = "List"
-order = 2
+weight = 3
 +++
-# List
 
 A list is a sequence of strings, numbers, and/or boolean, in the form of:
 
@@ -27,11 +26,22 @@ Example:
   * $-2$
   * $3.1415926$
 ```
-<EditorLite-EditorLite item="list1" />
 
-::: tip
+{% editor(id="list") %}
+# Example
+- list of strings:
+  * item 1
+  * item 2
+  * item 3
+- list of numbers:
+  * $1$
+  * $-2$
+  * $3.1415926$
+{% end %}
+
+{% box(class="tip") %}
 By default, items in lists would be joined as strings with semicolons as separators
-:::
+{% end %}
 
 Recall that REAM is indentation insensitive.
 Spaces before asterisks are not required, but two spaces are recommended.
@@ -44,7 +54,13 @@ Spaces before asterisks are not required, but two spaces are recommended.
 * item 3
 ```
 
-<EditorLite-EditorLite item="list2" />
+{% editor(id="list-no-indentation") %}
+# Example
+- still a list:
+* item 1
+* item 2
+* item
+{% end %}
 
 Empty lines between list items are allowed, but discouraged:
 ```ream
@@ -55,8 +71,17 @@ Empty lines between list items are allowed, but discouraged:
   * item 2
   * item 3
 ```
-<EditorLite-EditorLite item="list3" />
 
+{% editor(id="list-emtpy-line") %}
+# Example
+- still a list:
+  * item 1
+
+  * item 2
+  * item 3
+{% end %}
+
+<!--
 ::: details Note: Array
 I'm considering limiting lists to be sequences of items of *the same type*, also known as arrays.
 If for any reason you want to save data of different types as tuples, just use [subentries](/ream-doc/Language/Basics/Entry#subentry) as named tuples.
@@ -123,3 +148,4 @@ But the REAM file can also be interpreted as:
 
 Maybe I won't implement nested list.
 :::
+-->

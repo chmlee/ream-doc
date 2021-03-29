@@ -1,0 +1,17 @@
+{% macro code(input) %}
+  {{ input | markdown | safe}}
+{% endmacro input %}
+
+{% macro active_sidebar(toc, level)%}
+    {% for subsection in toc %}
+      <li class="header-item header-level-{{ level }}">
+        <a href="{{ subsection.permalink }}">{{ subsection.title }}</a>
+        {% if subsection.children and subsection.children.0.level <= level  %}
+          {% set current_level = subsection.children.0.level %}
+          <ul class="header-container">
+            {{ self::active_sidebar(toc=subsection.children, level=current_level) }}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+{% endmacro active_sidebar%}
