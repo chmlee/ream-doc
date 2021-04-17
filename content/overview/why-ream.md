@@ -1,6 +1,6 @@
 +++
 title = "Why REAM"
-eight = 1
+weight = 1
 
 [extra]
 level = 2
