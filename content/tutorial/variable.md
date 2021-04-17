@@ -27,6 +27,16 @@ Some examples for valid key names are:
 - _: value
 ```
 
+{% editor(id="key") %}
+# Example
+- key: value
+- KEY: value
+- key_1: value
+- key with spaces: value
+- key_with_underscore: value
+- _: value
+{% end %}
+
 {% box(class="tip") %}
 Don't worry about what `# Example` is.
 For now just see this as the title for your REAM file, and all REAM files starts with a title.
@@ -39,12 +49,25 @@ Key name can't be empty:
 - : value
 ```
 
+{% editor(id="key-cant-be-empty") %}
+# BadExample
+- : value
+{% end %}
+
 Key name can't start with a digit:
 ```ream
 # BadExample
-- 1: value
 - 1key: value
 ```
+
+{% editor(id="key-cant-start-with-a-digit") %}
+# BadExample
+- 1key: value
+{% end %}
+
+{% box(class="note") %}
+This rule is not yet enforced.
+{% end %}
 
 <!--
 ::: details Note: UTF-8 support
@@ -114,6 +137,13 @@ Example:
 - quoted string: "quote"
 ```
 
+{% editor(id="string-1") %}
+# Example
+- string: value
+- long string: Hello World
+- quoted string: "quote"
+{% end %}
+
 <EditorLite-EditorLite item="string" />
 
 There is not need to quote strings.
@@ -128,19 +158,21 @@ The following will raise an error:
 - key 2: value
 ```
 
-<!--
-::: details Note: Handling Unexpected Line Breaks
-The [current parser](https://github.com/chmlee/reamparser.js) is able to parse the example.
-It will read everything before and including `- key 1: first line`, then stop parsing and return whatever has been parsed, ignoring the rest of the file.
-So the example is equivalent to:
-```ream
-# Example
+{% editor(id="string-with-linebreak") %}
+# BadExample
 - key 1: first line
-```
+         second line
+- key 2: value
+{% end %}
+
+{% box(class="note") %}
+The [current parser](https://github.com/chmlee/reamparser.js) is able to parse the example.
+It reads everything before and including `- key 1: first line`, sees an unrecognized token, stops parsing, and returns whatever has been parsed and ignores the rest of the file.
+
 Ideally the parser should panic, and an error with meaningful messages should be raised.
 Error handling will be improved in future versions.
-:::
--->
+{% end %}
+
 
 REAM stores strings as raw literal strings, hence the following example is valid. `\n` will not be escaped, and is equivalent to `\\n` in JSON.
 ```ream
@@ -148,6 +180,12 @@ REAM stores strings as raw literal strings, hence the following example is valid
 - key 1: first line\nsecond line
 - key 2: value
 ```
+
+{% editor(id="string-is-raw") %}
+# Example
+- key 1: first line\nsecond line
+- key 2: value
+{% end %}
 
 
 ## Number
@@ -162,6 +200,13 @@ Example:
 - number 3: $3.1415926$
 ```
 <EditorLite-EditorLite item="number" />
+
+{% editor(id="number") %}
+# Example
+- number 1: $1$
+- number 2: $-2$
+- number 3: $3.1415926$
+{% end %}
 
 <!--
 ::: details Note: Potential Breaking Change for Syntax
@@ -178,7 +223,13 @@ Example:
 - not number 1: a$1$
 - not number 2: $1$b
 ```
-<EditorLite-EditorLite item="notNumber" />
+
+{% editor(id="number-bad") %}
+# Example
+- number: $1$
+- not number 1: a$1$
+- not number 2: $1$b
+{% end %}
 
 <!--
 ::: details Note: No Floats or Integers
@@ -294,11 +345,6 @@ Boolean values are `` `TRUE` `` and `` `FALSE` ``, both uppercase and surrounded
 I'm planning to replace `` ` `` with `__`.
 So instead of `` `TRUE` `` and `` `FALSE` `` you write `__TRUE__` and `__FALSE__`.
 :::
---><!--
-::: details Note: Potential Breaking Change for Syntax
-I'm planning to replace `` ` `` with `__`.
-So instead of `` `TRUE` `` and `` `FALSE` `` you write `__TRUE__` and `__FALSE__`.
-:::
 -->
 
 Example:
@@ -312,6 +358,14 @@ Example:
 ```
 Note that boolean values must be exact matches.
 Values not wrapped by backticks or not uppercased will be stored as strings.
+
+{% editor(id="boolean") %}
+# Example
+- bool 1: `TRUE`
+- bool 2: `FALSE`
+- not bool 1: `true`
+- not bool 2: FALSE
+{% end %}
 
 <!--
 ::: details Note: Potential Breaking Changes for Syntax

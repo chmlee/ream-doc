@@ -137,16 +137,21 @@ It also lack reference, which was [explicitly rejected during early design](http
 
 ## Documentation
 
-I want my documentation to be easy to read.
-Though I'm comfortable reading raw text files, I prefer reading HTML or PDFfiles if possible.
-To do so with YAML or TOML, I have to write a documentation generator, which means I either modifying an existing parser or write my own implementation of either languages.
+I want the documentation to be easy to read.
+Though I'm comfortable reading raw text files, I prefer reading HTML or PDF files if possible.
+To do so with YAML or TOML, I have to write a documentation generator, which means I either modify an existing parser or write my own implementation of whatever language I choose.
 If so, I much rather write an implementation of my own language which cater to my own needs and preferences.
 
-Now syntax.
 If I don't want to convert a data serialization language to a markup language, why don't I serialize a markup language?
-All I have to do is to write a encoder/decoder of this new language, and let third-party file format converters to produce HTML and PDF files.
+All I have to do [1] is to write a encoder/decoder of this new language, and let third-party file format converters produce HTML and PDF files.
 
-(Now that I think of it, )
+That's why REAM features Markdown-like syntax, in particular, [Pandoc-flavored Markdown](https://pandoc.org/).
+Numbers are surrounded by question marks so that they are rendered as inline math notations.
+Boolean values are surrounded by backticks so that they are rendered as inline code.
+The language is not indentation-based simply because in Pandoc, as well as other Markdown flavors, 4-space indent indicate code block, and I want to have more than 4 levels nested.
+Empty lines are optional because Pandoc requires an empty line before block quotes.
+I use Pandoc as my documentation generator, and [ream-python](https://github.com/chmlee/ream-python) to serialize the data.
 
-That's why REAM features a Markdown-like syntax.
-Since I was using [pandoc](https://pandoc.org/)
+[1]:
+If you really think about it, mapping a subset of a serialization language to a subset of a markup language is much easier than the other way around.
+I don't know why I thought the former would be easier.

@@ -289,8 +289,7 @@ $pale-cerulean: #a5c4d4ff;
 .box {
     border-left: 10px solid;
     padding: 0.5em 0.5em 0.5em 1em;
-    margin: 0em 5em;
-    background: $pale-cerulean;
+    margin: 2em 5em;
 }
 
 .box-heading {
@@ -301,10 +300,9 @@ $pale-cerulean: #a5c4d4ff;
 
 .box.tip {
     border-left-color: green;
+    background: $pale-cerulean;
 }
 
-$english-violet: #593f62ff;
-
 .box.note {
-    border-left-color: $english-violet;
+    background: #fecf6a;
 }
