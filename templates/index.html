@@ -6,7 +6,7 @@
 <div class="homepage">
 
     <div class="intro">
-        Data language for creating maintainable and interoperable social science datasets
+        Data language for creating maintainable social science datasets
     </div>
 
     <div class="index-button">
@@ -16,6 +16,30 @@
 
     <div class="description">
         <p>
+        </p>
+    </div>
+
+    <div>
+        <p>
+            REAM has three main components:
+            <ol>
+                <li>
+                    a <em>data serialization language</em> for structured datasets (working in progress)
+                </li>
+                <li>
+                    a <em>data template language</em> to generate datasets (planned)
+                </li>
+                <li>
+                    a collection of <em>filters</em> to manipulate data (planned)
+                </li>
+            </ol>
+        </p>
+        <p>
+          REAM encourages inline documentation through <a href="#">annotations</a>, and compiles to both analysis-ready <b>datasets</b> (CSV, JSON, etc.) and human-readable <b>documentations</b> (HTML, PDF, etc.)
+          Two formats, one source.
+        </p>
+        <p>
+          The language, along with the <a href="/toolchain">toolchain</a>, aims to create human-readable, modular and interoperable datasets for social science, ranging from small personal projects to large collaborative projects.
         </p>
     </div>
 
@@ -36,22 +60,25 @@
 - capital: Brussels
 - population: $11433256$
   > data from 2019; retrieved from World Bank
-- euro zone: `TRUE`
+- euro_zone: `TRUE`
   > joined in 1999
-- list:
-  * a
-  * string
-  * $123$
-  * `FALSE`
+- offical_languages:
+  * Dutch
+  * French
+  * German
 
 ## Language
 - name: Dutch
+- size: $0.59$
 
 ## Language
 - name: French
+- size: $0.4$
 
 ## Language
-- name: German") }}
+- name: German
+- size: $0.01$
+```") }}
 
 </div>
 
