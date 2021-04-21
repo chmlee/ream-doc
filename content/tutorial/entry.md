@@ -210,6 +210,7 @@ The terminal nodes are colored yellow.
 
 ![tree](/img/tree.svg)
 
+
 <!--
 :::details Note: Duplicate Entry Class
 Can a `### Language` entry be nested in another `## Language` entry?
@@ -275,9 +276,6 @@ Also, entries of the same class need not have identical variables, nor the same 
 ## Language
 - name: German
 {% end %}
-
-
-<EditorLite-EditorLite item="entry7" />
 
 Observe that the order of the variables are preserved by default.
 

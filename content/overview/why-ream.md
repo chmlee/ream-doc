@@ -6,18 +6,9 @@ weight = 1
 level = 2
 +++
 
-{% box(class="note") %}
-The project is under active development and is not production ready.
-You are free to play around with the language and tools, but note that backward compatibility is not guaranteed.
-
-Migrating from [the old documentation](https://chmlee.github.io/ream-doc) is a work in progress; information and features may be missing.
-[All contributions are welcome.](/contribution)
-{% end %}
-<br>
-
 REAM provides a one-stop solution to manage social science data projects.
 While there are existing tools that do part of what REAM does, REAM bundle all necessarily tools and functionalities into one framework with consistent syntax.
-See [Comparison](/ovewrview/comparison) for detailed discussion.
+See [Comparison](/ovewrview/comparison) for a more detailed discussion.
 
 In addition, REAM adhere to the [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) design so that large data projects are easier to manage.
 See the rest of the section for examples.
@@ -46,7 +37,7 @@ Learn more advanced features later as your project scales up.
 
 REAM is easy to edit.
 All REAM datasets are stored as text files, and can be edited in any text editor.
-A [web-based editor](https://chmlee.github.io/ream-editor) is available to provide basic functionalities.
+A [web-based editor](https://chmlee.github.io/ream-editor) is available and provides basic functionalities.
 No local installation required; just visit the website, drag and drop your REAM datasets, and start getting productive.
 Advanced functionalities are available through the [REAM CLI tool](https://github.com/chmlee/ream-core).
 No complex development environment to set up.
@@ -97,7 +88,7 @@ and let the compiler compiles the latter to the former:
 - name: 2012
 {% end %}
 
-To update `Belgium` to its ISO code `BEL`, you now have only one cell to update instead of three.
+To replace `Belgium` with its ISO code `BEL`, you now have only one cell to update instead of three.
 
 ## Inline documentation
 
@@ -137,7 +128,7 @@ graph LR;
   CONVERTER --> DOC[[Documentation<br>HTML, PDF, etc.]]
 {% end %}
 
-**Working Design:**
+**Future Design:**
 {% mermaid() %}
 graph LR;
   SOURCE[REAM File] --> COMPILER(["REAM Compiler<br>(ream-core.rs)"]);
@@ -153,6 +144,7 @@ Instead of guessing what type each variable would be assigned to when being read
 x1,x2,x3,x4
 1.0,"1.0",true,"true"
 ```
+
 you specify the types through explicit type annotations:
 ```ream
 # Data
@@ -172,7 +164,7 @@ you specify the types through explicit type annotations:
 
 (*: not implemented yet)
 
-The goal is to embed the compiler into Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`, without ever touching CSV or JSON and their limited type system.
+The goal is to embed [ream-core.rs](https://github.com/chmlee/ream-core) in Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`, without ever touching CSV or JSON and their limited type systems.
 
 Ideally, you should be able to do something like:
 
@@ -188,7 +180,7 @@ type(dat) # pandas.core.frame.DataFrame
 
 ## Reference and filters*
 
-REAM implement a reference system to reuse existing data, and filters for basic data manipulation.
+To reduce repetition, REAM implements a reference system to reuse existing data and filters for basic data manipulation.
 Instead of manually manipulating variables with similar pattern:
 
 ```ream
@@ -338,8 +330,8 @@ Instead of manually copying and pasting the data, you import them into a new REA
 @@ SET Countries = [Belgium, Netherlands, Luxembourg]
 @@ FOR Member IN Countries
 ## Country
-- name (ref): Member$name
-- population (ref): Member$population
+- name (ref): &Member$name
+- population (ref): &Member$population
 ```
 
 {% editor(id="interoperatability")%}
@@ -350,8 +342,8 @@ Instead of manually copying and pasting the data, you import them into a new REA
 @@ SET Countries = [Belgium, Netherlands, Luxembourg]
 @@ FOR Member IN Countries
 ## Country
-- name (ref): Member$name
-- population (ref): Member$population
+- name (ref): &Member$name
+- population (ref): &Member$population
 {% end %}
 
 (*: not implemented yet; design not yet final)
