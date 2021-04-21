@@ -3,11 +3,9 @@ title = "Comparison"
 weight = 2
 +++
 
-REAM started as a quick solution to organize data for my undergraduate thesis.
-Before working on REAM, I tried various languages and tools, but none fits my needs, so I wrote my own language and tools.
-See [Origin](/overview/origin) for more detailed discussion.
+The following is a brief comparison between REAM and other alternatives to help you decide whether REAM is a right choice for you.
 
-The following are brief comparison between REAM and other alternatives.
+See [Origin](/overview/origin) for a more detailed discussion on why *I* decided to create a new language instead of using any of the following solutions.
 
 ## Spreadsheet/CSV
 
