@@ -269,7 +269,8 @@ you write:
   * 2011
   * 2012
 
-@@ FOR year IN Country$years
+@@ USE Country$years
+@@ FOR year IN years
 ## Year
 - name (fmt): &year
 - unique_id (fmt): {Country$name}_{&year}
@@ -283,20 +284,21 @@ you write:
   * 2011
   * 2012
 
-@@ FOR year IN Country$years
+@@ USE Country$years
+@@ FOR year IN years
 ## Year
 - name (fmt): &year
 - unique_id (fmt): {Country$name}_{&year}
 {% end %}
 
-(*: not implemented yet; design not yet final)
+(*: not implemented yet. Design is not yet final, and suggestions are welcome)
 
 Variable `Year$unique_id` is now formatted by joining a local variable `Year$name` and the *template* variable `&country`, which loop through the parent varible `Country$years`.
 
 ## Modularity*
 
-One of the main motivations behind REAM is to make reusing datasets easy.
-Say you have data on Belgium, Netherlands and Luxembourg, and want to zip all three into one master dataset then find the sum of the population.
+REAM encourages datasets to be saved in smaller components.
+Say you want to collect data on Belgium, Netherlands and Luxembourg, instead of saving everything in one single file, it's recommended to saved them in separate files:
 
 (Country/Belgium.ream)
 ```ream
@@ -319,7 +321,7 @@ Say you have data on Belgium, Netherlands and Luxembourg, and want to zip all th
 - population (num): $619900$
 ```
 
-Instead of manually copying and pasting the data, you import them into a new REAM file and bind them with templates:
+And zip the files into one master dataset with templates:
 
 (TheBeneluxUnion.ream)
 ```ream
@@ -334,16 +336,29 @@ Instead of manually copying and pasting the data, you import them into a new REA
 - population (ref): &Member$population
 ```
 
+Or even better:
+
+(TheBeneluxUnion.ream)
+```ream
+# TheBeneluxUnion
+- population (num): `Country$population.sum()`
+
+@@ Import Country::{*} AS Countries
+@@ FOR Member IN Countries
+## Country
+- name (ref): &Member$name
+- population (ref): &Member$population
+```
+
 {% editor(id="interoperatability")%}
 # TheBeneluxUnion
 - population (num): `Country$population.sum()`
 
-@@ IMPORT Country::{Belgium, Netherlands, Luxembourg}
-@@ SET Countries = [Belgium, Netherlands, Luxembourg]
+@@ Import Country::{*} AS Countries
 @@ FOR Member IN Countries
 ## Country
 - name (ref): &Member$name
 - population (ref): &Member$population
 {% end %}
 
-(*: not implemented yet; design not yet final)
+(*: not implemented yet. Design is not yet final, and suggestions are welcome)
