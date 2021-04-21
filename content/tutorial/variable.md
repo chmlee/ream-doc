@@ -167,14 +167,14 @@ The following will raise an error:
 
 {% box(class="note") %}
 The [current parser](https://github.com/chmlee/reamparser.js) is able to parse the example.
-It reads everything before and including `- key 1: first line`, sees an unrecognized token, stops parsing, and returns whatever has been parsed and ignores the rest of the file.
+It reads everything before and including `- key 1: first line`, sees an unexpeted token (`second`), stops parsing, returns whatever has been parsed and ignores the rest of the file.
 
 Ideally the parser should panic, and an error with meaningful messages should be raised.
 Error handling will be improved in future versions.
 {% end %}
 
 
-REAM stores strings as raw literal strings, hence the following example is valid. `\n` will not be escaped, and is equivalent to `\\n` in JSON.
+Note that REAM stores strings as raw literals, so the following example is valid. `\n` will not be escaped, and is equivalent to `\\n` in JSON.
 ```ream
 # Example
 - key 1: first line\nsecond line

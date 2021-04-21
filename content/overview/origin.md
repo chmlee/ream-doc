@@ -193,17 +193,17 @@ I was so close to make REAM indentation-based, which would be a big mistake.
 ## GUI
 
 Even though I designed REAM to be editor-friendly so that I can edit it in NeoVim, development for the graphical editor started quite early.
-I don't remember exactly why or when I started working on the editor, but git history shows the [first commit](https://github.com/chmlee/ream-edit/commit/26da6f263b402e87356ddaedc04ce76750c5124e) was created 10 days after the prototype of the language parser was completed.
+I don't remember exactly why or when I started working on the editor, but git history shows the [first commit](https://github.com/chmlee/ream-edit/commit/26da6f263b402e87356ddaedc04ce76750c5124e) was created 10 days after the prototype for the language parser was completed.
 
-The originally design was to have an architecture similar to [Jupyter Notebook](https://jupyter.org/) and a front-end similar to [StackEdit](https://stackedit.io/app).
-REAM-python would be running on a Flask server [1], and the front-end would provide real-time rendering.
-As I work on the editor, I found myself moving codes into the front-end, and eventually the only thing the server did was receiving REAM data, parsing it, and returning JSON for Vue to render in the front-end.
+The original design was to have an architecture similar to [Jupyter Notebook](https://jupyter.org/) and a front-end similar to [StackEdit](https://stackedit.io/app).
+REAM-python would be running on a Flask server [1], and the Vue-based front-end would provide real-time rendering.
+As I work on the editor, I found myself moving more codes into the front-end, and eventually the only thing the server did was receiving REAM data, parsing it, and returning JSON for Vue to render in the front-end.
 What if... I move *everything* to the front-end and make the editor run 100% on the client side?
 
 The development for the editor stops before it worked properly as I had to focus on my thesis.
 After submitting the paper, the focus was on polishing the parser.
 I packaged it as a commandline tool and wrote the documentation.
-I [published it on PyPI](https://pypi.org/project/ream/), and was about to send the links to some of my friends for review.
+I [published it on PyPI](https://pypi.org/project/ream/), and was about to send the links to some friends for review.
 But I wasn't sure people were comfortable working with commandline interfaces, or whether they have Python installed or not.
 That's when I revisit the idea of rewriting the parser in JavaScript so that everything runs on the client side.
 
@@ -213,7 +213,7 @@ The author argues students who simply want to learn scientific computation shoul
 The goal for Hedgehog Lab is to make working on scientific computation as easy as opening an URL in the browser.
 As mentioned in [his design rationale](https://zhuanlan.zhihu.com/p/147402013):
 
-> Even if Numpy and MATLAB are 10000 times easier than Fortran/BLAS, there are always a learning curve.
+> Even if Numpy and MATLAB are 10000 times easier than Fortran/BLAS, there is always a learning curve.
 > If you can further smooth that curve, you are helping more people.
 >
 > ...
@@ -221,6 +221,7 @@ As mentioned in [his design rationale](https://zhuanlan.zhihu.com/p/147402013):
 > Designing an niche toy for smart people is hard, but creating an easy-to-understand tool for commoners is even harder.
 
 This fundamentally changes how I view the future of REAM.
+Ease of use became the number one concern for the project.
 
 [1]: I don't know why I thought Jupyter Notebook uses Flask.
 It uses Tornado.

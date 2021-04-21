@@ -7,11 +7,15 @@ level = 2
 +++
 
 REAM provides a one-stop solution to manage social science data projects.
-While there are existing tools that do part of what REAM does, REAM bundle all necessarily tools and functionalities into one framework with consistent syntax.
+While there are existing languages and tools that do part of what REAM does, REAM bundle all necessarily functionalities into one framework with consistent syntax.
 See [Comparison](/ovewrview/comparison) for a more detailed discussion.
 
 In addition, REAM adhere to the [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) design so that large data projects are easier to manage.
 See the rest of the section for examples.
+
+{% box(class="note")%}
+Features with a star sign `*` are not yet implemented.
+{% end %}
 
 ## Ease of use
 
@@ -173,9 +177,9 @@ import ream
 import pandas as pd
 
 with open("data.ream", "r") as f:
-    dat = ream.read(f)
+    df = ream.read(f)
 
-type(dat) # pandas.core.frame.DataFrame
+type(df) # pandas.core.frame.DataFrame
 ```
 
 ## Reference and filters*
@@ -237,7 +241,7 @@ you write:
 
 (*: not implemted yet)
 
-Variable `Year$unique_id` is now formatted by joining a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
+Variable `Year$unique_id` are now formatted by joining a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
 
 ## Template*
 
@@ -293,7 +297,7 @@ you write:
 
 (*: not implemented yet. Design is not yet final, and suggestions are welcome)
 
-Variable `Year$unique_id` is now formatted by joining a local variable `Year$name` and the *template* variable `&country`, which loop through the parent varible `Country$years`.
+Variable `Year$unique_id` is now formatted by joining the parent variable `Country$name` and a *template* variable `&year` which loop through the parent varible `Country$years`.
 
 ## Modularity*
 
@@ -321,7 +325,7 @@ Say you want to collect data on Belgium, Netherlands and Luxembourg, instead of 
 - population (num): $619900$
 ```
 
-And zip the files into one master dataset with templates:
+and zip the files into one master dataset with templates:
 
 (TheBeneluxUnion.ream)
 ```ream
@@ -343,7 +347,7 @@ Or even better:
 # TheBeneluxUnion
 - population (num): `Country$population.sum()`
 
-@@ Import Country::{*} AS Countries
+@@ IMPORT Country::{*} AS Countries
 @@ FOR Member IN Countries
 ## Country
 - name (ref): &Member$name
@@ -354,7 +358,7 @@ Or even better:
 # TheBeneluxUnion
 - population (num): `Country$population.sum()`
 
-@@ Import Country::{*} AS Countries
+@@ IMPORT Country::{*} AS Countries
 @@ FOR Member IN Countries
 ## Country
 - name (ref): &Member$name

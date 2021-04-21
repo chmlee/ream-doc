@@ -38,4 +38,4 @@ syntax highlighting for REAM in Vim.
 ## Not maintained
 - [ream-python](https://github.com/chmlee/ream-python):
 a REAM parser and emitter written in Python and [lark](https://github.com/lark-parser/lark).
-It is still available on [Pypi](https://pypi.org/project/ream/) if anyone is interested.
+It is still available on [PyPI](https://pypi.org/project/ream/) if anyone is interested.
