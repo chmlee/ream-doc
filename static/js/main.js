@@ -1,7 +1,5 @@
 import { MdFile } from './ream/ream.js';
 
-console.log(3);
-
 let buttons = document.querySelectorAll(".update-button")
 
 buttons.forEach(button => button.addEventListener('click', event => {

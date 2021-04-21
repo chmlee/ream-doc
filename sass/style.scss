@@ -289,12 +289,15 @@ $pale-cerulean: #a5c4d4ff;
 .box {
     border-left: 10px solid;
     padding: 0.5em 0.5em 0.5em 1em;
-    margin: 2em 5em;
+    margin: 2em 0em;
 }
 
 .box-heading {
-    font-weight: bold;
     margin: 0em 0em 0em 0em;
+}
+
+.box-title {
+    font-weight: bold;
 }
 
 

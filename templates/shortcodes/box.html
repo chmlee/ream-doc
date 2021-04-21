@@ -1,10 +1,18 @@
 <div class="box {{ class }}">
   <div class="box-heading">
-    {% if title %}
-      {{ title }}
-    {% else %}
-      {{ class | upper }}
+    <span class="box-title">
+      {% if title %}
+        {{ title }}
+      {% else %}
+        {{ class | upper }}
+      {% endif %}
+    </span>
+    {% if class == "detail"%}
+      <button class="toggle-detail" id="{{id}}">show</button>
     {% endif %}
   </div>
+  <div
+    {% if id %}class="box-detail-content" id="{{id}}-content"{% endif %}>
   {{ body | markdown | safe }}
+  </div>
 </div>

@@ -81,16 +81,16 @@ Empty lines between list items are allowed, but discouraged:
   * item 3
 {% end %}
 
-<!--
-::: details Note: Array
+{% box(class="detail" id="list-as-array")%}
 I'm considering limiting lists to be sequences of items of *the same type*, also known as arrays.
 If for any reason you want to save data of different types as tuples, just use [subentries](/ream-doc/Language/Basics/Entry#subentry) as named tuples.
-:::
+{% end %}
 
-::: details Note: Nested List
+{% box(class="detail" id="nest-list")%}
 Should lists be nested?
 
 The only reason why I thought of this is because I'm exploring ways to represent [GeoJson](https://geojson.org/) in REAM:
+
 ```json
 {
     "type": "MultiLineString",
@@ -105,47 +105,4 @@ The only reason why I thought of this is because I'm exploring ways to represent
     ]
 }
 ```
-
-But I have trouble coming up with a valid syntax.
-
-Say we want to encode the following JSON:
-```json
-{
-    "Example": {
-        "list":
-        [
-          ["item 1.1", "item 1.2"],
-          ["item 2.1", "item 2.2"]
-        ]
-    }
-}
-```
-
-The initial idea was something like:
-```ream
-# Example
-- list:
-  * * item 1.1
-    * item 1.2
-  * * item 2.1
-    * item 2.2
-```
-
-But the REAM file can also be interpreted as:
-```json
-{
-    "Example": {
-        "list":
-        [
-          ["item 1.1"],
-          "item 1.2",
-          ["item 2.1"],
-          "item 2.2"
-        ]
-    }
-}
-```
-
-Maybe I won't implement nested list.
-:::
--->
+{%end%}
