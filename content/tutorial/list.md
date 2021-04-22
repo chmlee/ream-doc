@@ -43,7 +43,7 @@ Example:
 By default, items in lists would be joined as strings with semicolons as separators
 {% end %}
 
-Recall that REAM is indentation insensitive.
+REAM is indentation insensitive.
 Spaces before asterisks are not required, but two spaces are recommended.
 
 ```ream
@@ -89,7 +89,7 @@ If for any reason you want to save data of different types as tuples, just use [
 {% box(class="detail" id="nest-list")%}
 Should lists be nested?
 
-The only reason why I thought of this is because I'm exploring ways to represent [GeoJson](https://geojson.org/) in REAM:
+The only reason why I thought of this is because I'm exploring ways to represent [GeoJson](https://geojson.org/) in REAM, but I couldn't found one nice way to do so.
 
 ```json
 {

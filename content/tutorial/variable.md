@@ -46,6 +46,11 @@ For now just see this as the title for your REAM file, and all REAM files starts
 We'll discuss what it is in detail in [Entry](/tutorial/entry) section.
 {% end %}
 
+{% box(class="detail" id="whitespace-in-identifers")%}
+The [current parser](https://github.com/chmlee/reamparser.js) allows whitespaces in identifiers, but future versions may remove such support.
+{% end %}
+
+
 Key name can't be empty:
 ```ream
 # BadExample
@@ -79,10 +84,6 @@ It is recommended that you use only ASCII code before UTF-8 support is stable.
 
 [The experimental parser](https://github.com/chmlee/ream-core) does NOT support UTF-8 yet.
 
-{% end %}
-
-{% box(class="detail" id="whitespace-in-identifers")%}
-The [current parser](https://github.com/chmlee/reamparser.js) allows whitespaces in identifiers, but future versions may remove such support.
 {% end %}
 
 
@@ -180,6 +181,7 @@ You can verify this with the [online editor](https://chmlee.github.io/ream-edito
 
 In fact the current parser considers all values wrapper by `$` as `Number`.
 So `$abc$` is identified as a `Number` by the parser even though `abc` is not a valid number.
+Well, at least not in base-10.
 
 I might adopt [ECMA's specification](https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf), or part of it.
 
