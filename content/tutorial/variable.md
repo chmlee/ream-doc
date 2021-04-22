@@ -1,6 +1,9 @@
 +++
 title = "Variable"
 weight = 2
+
+[extra]
+level = 3
 +++
 
 `<variable>` assigns a `<value>` to a `<key>`, in the form of
@@ -69,82 +72,19 @@ Key name can't start with a digit:
 This rule is not yet enforced.
 {% end %}
 
-<!--
-::: details Note: UTF-8 support
+{% box(class="detail" id="utf")%}
 Key names should support UTF-8.
 The [current parser](https://github.com/chmlee/reamparser.js) *should* be able to parse UTF-8 identifiers correctly, but this hasn't been tested extensively.
 It is recommended that you use only ASCII code before UTF-8 support is stable.
 
 [The experimental parser](https://github.com/chmlee/ream-core) does NOT support UTF-8 yet.
 
-:::
-::: details Note: Whitespace in identifiers
-
-The [current parser](https://github.com/chmlee/reamparser.js) allows whitespaces in identifiers, but future versions may remove such support.
-I plan to implement [reference](/ream-doc/Language/Advanced/Reference), and identifiers with spaces just don't look good in the current design.
-
-```ream
-# Entry
-- key_1 (str): value
-
-## SubEntry
-- key_2 (fn -> str): `THIS::SUPER$key_1`
-```
-
-vs
-
-(R style)
-```ream
-# Entry
-- key 1 (str): value
-
-## SubEntry
-- key 2 (fn -> str): `THIS::SUPER$"key 1"`
-```
-
-or
-
-(Python/Pandas style)
-```ream
-# Entry
-- key 1 (str): value
-
-## SubEntry
-- key 2 (fn -> str): `THIS::SUPER["key 1"]`
-```
-
-
-:::
--->
-
-## Value
-
-`<value>` can be any of the following primitive types:
-
-- [String](#string)
-- [Number](#number)
-- [Boolean](#boolean)
-
-Value can't be empty.
-
-## String
-
-Example:
-```ream
-# Example
-- string: value
-- long string: Hello World
-- quoted string: "quote"
-```
-
-{% editor(id="string-1") %}
-# Example
-- string: value
-- long string: Hello World
-- quoted string: "quote"
 {% end %}
 
-<EditorLite-EditorLite item="string" />
+{% box(class="detail" id="whitespace-in-identifers")%}
+The [current parser](https://github.com/chmlee/reamparser.js) allows whitespaces in identifiers, but future versions may remove such support.
+{% end %}
+
 
 There is not need to quote strings.
 Quotation marks will be preserved.
@@ -188,7 +128,7 @@ Note that REAM stores strings as raw literals, so the following example is valid
 {% end %}
 
 
-## Number
+### Number
 
 Numbers are wrapped by dollar signs (`$`).
 
@@ -241,18 +181,12 @@ You can verify this with the [online editor](https://chmlee.github.io/ream-edito
 In fact the current parser considers all values wrapper by `$` as `Number`.
 So `$abc$` is identified as a `Number` by the parser even though `abc` is not a valid number.
 
-I might adopt [ECMA's specification](https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf), or part of it (do social scientists normally store data with scientific notation?):
-
-> A number is a sequence of decimal digits with no superfluous leading zero.
-> It may have a preceding minus sign (U+002D).
-> It may have a fractional part prefixed by a decimal point (U+002E).
-> It may have an exponent, prefixed by `e`(U+0065) or `E`(U+0045) and optionally `+`(U+002B) or `-`(U+002D).
-> The digits are the code points U+0030 through U+0039. Numeric values that cannot be represented as sequences of digits (such as `Infinity `and `NaN`) are not permitted.
+I might adopt [ECMA's specification](https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf), or part of it.
 
 One reason against the use of an explicit `Float` type in REAM is to avoid the pitfalls of floating-point accuracy.
 Since REAM is designed to store social science data, and will eventually be compiled to an analysis-ready format and imported into another programme for further data analysis, lose of accuracy is bound to happen somewhere.
 What we can do is reduce the number of type conversion.
-The plan is to have numbers saved as strings when compiling JSON and CSV, and let individual JSON and CSV parsers deal with the conversion.
+The plan is to have numbers saved as strings when compiling to JSON and CSV, and let individual JSON and CSV parsers deal with the conversion.
 {% end %}
 
 ### Boolean
@@ -282,4 +216,22 @@ Values not wrapped by backticks or not uppercased will be stored as strings.
 - bool 2: `FALSE`
 - not bool 1: `true`
 - not bool 2: FALSE
+{% end %}
+
+### Missing Value*
+
+See DETAIL.
+
+{% box(class="detail" id="missing-value")%}
+How should REAM represent missing value?
+
+One solution is to simply add a `None` type.
+
+Another solution is converting all REAM types into [options](https://en.wikipedia.org/wiki/Option_type).
+In Rust I would have to do something like `type ReamString = Option<String>`.
+That being said, all missing values require explicit type annotations since `None` is not a type of value but a variant of a generic enumeration.
+
+The benefit of such design is more obvious when references and filters are implemented.
+When referencing existing data for manipulation, users should consider potential `None` values: referencing a `Boolean` returns an `Option<Boolean>` and the value should be unwrapped before being manipulated.
+The filters should then provide methods similar to `unwrap`, `unwrap_or` and `unwrap_or_default` in Rust.
 {% end %}
