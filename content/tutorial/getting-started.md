@@ -29,7 +29,7 @@ See [reamparser.js](https://github.com/chmlee/reamparser.js) and [ream-core](htt
 
 
 {% box(class="detail" id="two-implementation")%}
-There are currently two implementations for REAM, [reamparser.js](https://github.com/chmlee/reamparser.js) and [ream-core](https://github.com/chmlee/ream-core).
+There are currently two implementations for REAM, [reamparser.js](https://github.com/chmlee/reamparser.js) and [ream-core](https://github.com/chmlee/ream-core)
 
 reamparser.js is the default parser and implements all features mentioned in the tutorial unless stated otherwise.
 It is also the parser currently used in this documentation and [REAM Editor](https://chmlee.github.io/ream-editor).

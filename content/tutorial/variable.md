@@ -183,12 +183,15 @@ In fact the current parser considers all values wrapper by `$` as `Number`.
 So `$abc$` is identified as a `Number` by the parser even though `abc` is not a valid number.
 Well, at least not in base-10.
 
-I might adopt [ECMA's specification](https://www.ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf), or part of it.
-
 One reason against the use of an explicit `Float` type in REAM is to avoid the pitfalls of floating-point accuracy.
 Since REAM is designed to store social science data, and will eventually be compiled to an analysis-ready format and imported into another programme for further data analysis, lose of accuracy is bound to happen somewhere.
 What we can do is reduce the number of type conversion.
 The plan is to have numbers saved as strings when compiling to JSON and CSV, and let individual JSON and CSV parsers deal with the conversion.
+
+Update:
+
+Type system is implemented in ream-core, and numbers are check against Rust's `f64` type.
+This may change in the future.
 {% end %}
 
 ### Boolean
@@ -231,9 +234,9 @@ One solution is to simply add a `None` type.
 
 Another solution is converting all REAM types into [options](https://en.wikipedia.org/wiki/Option_type).
 In Rust I would have to do something like `type ReamString = Option<String>`.
-That being said, all missing values require explicit type annotations since `None` is not a type of value but a variant of a generic enumeration.
+That being said, all missing values require explicit type annotations since `None` is not a type of value but a variant of an enumeration.
 
 The benefit of such design is more obvious when references and filters are implemented.
-When referencing existing data for manipulation, users should consider potential `None` values: referencing a `Boolean` returns an `Option<Boolean>` and the value should be unwrapped before being manipulated.
+When referencing existing data for manipulation, users should consider potential `None` values: referencing a `Boolean` may return `Some(TRUE)`, `Some(FALSE)`, or `None`, and the value should be unwrapped before being manipulated.
 The filters should then provide methods similar to `unwrap`, `unwrap_or` and `unwrap_or_default` in Rust.
 {% end %}

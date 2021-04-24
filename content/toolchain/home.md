@@ -11,7 +11,7 @@ The goal is to provide a user-friendly workflow to create, edit, distribute and 
 
 - [reamparser.js](https://github.com/chmlee/reamparser.js):
 REAM parser written in JavaScript.
-This is the current default parser for REAM Editor, but will be replaced by ream-core.
+This is the default parser for REAM Editor, but will be replaced by ream-core.
 
 - [ream-core](https://github.com/chmlee/ream-core):
 REAM compiler written in Rust.
