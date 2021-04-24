@@ -135,7 +135,7 @@ graph LR;
 **Future Design:**
 {% mermaid() %}
 graph LR;
-  SOURCE[REAM File] --> COMPILER(["REAM Compiler<br>(ream-core.rs)"]);
+  SOURCE[REAM File] --> COMPILER(["REAM Compiler<br>(ream-core)"]);
   COMPILER --> DATA[(Datasets<br>CSV, JSON, etc.)]
   COMPILER --> DOC[[Documentations<br>HTML, PDF, etc.]]
 {% end %}
@@ -168,7 +168,24 @@ you specify the types through explicit type annotations:
 
 (*: not implemented yet)
 
-The goal is to embed [ream-core.rs](https://github.com/chmlee/ream-core) in Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`, without ever touching CSV or JSON and their limited type systems.
+Type errors are catched during compile time.
+The follwoing would not compile at all:
+
+```ream
+# Data
+- string (str): value
+- number (num): value
+```
+
+{% editor(id="type-error")%}
+# Data
+- string (str): value
+- number (num): value
+{% end %}
+
+(*: not implemented yet)
+
+The goal is to embed [ream-core](https://github.com/chmlee/ream-core) in Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`, without ever touching CSV or JSON and their limited type systems.
 
 Ideally, you should be able to do something like:
 
