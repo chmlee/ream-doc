@@ -38,6 +38,6 @@ ream-core is a rewrite of reamparser.js in Rust, and is expected to replace ream
 It features a slightly different syntax you see in this documentation: no wrapping numbers with `$` and no wrapping boolean values with `` ` ``.
 It is missing some features, such as [list](/tutorial/list) and [annotation](/tutorial/annotation), but implement a [type system](/overview/why-ream/#static-typing).
 
-ream-core is also compiled to [WebAssembly](https://github.com/chmlee/ream-core/tree/master/pkg), and can be run in a browser.
+ream-core is also compiled to [WebAssembly](https://github.com/chmlee/ream-wasm), and can be run in a browser.
 Try it online [here](https://chmlee.github.io/ream-wasm).
 {% end %}
