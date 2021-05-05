@@ -3,6 +3,13 @@ title = "List"
 weight = 3
 +++
 
+{% box(class="note")%}
+Support for lists has been removed for REAM v0.3.
+It will be added back in the future.
+
+The following is from the old documentation for REAM v0.2.
+{% end %}
+
 A list is a sequence of strings, numbers, and/or boolean, in the form of:
 
 ```ream

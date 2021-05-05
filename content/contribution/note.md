@@ -4,7 +4,7 @@ weight = 2
 +++
 
 **This documentation is for REAM v0.3,  but I haven't upgraded the embedded editor with the new implementation.
-It is currently running reamparser.js, the implementation for REAM v0.2
+The editor in the site is currently running reamparser.js, the implementation for REAM v0.2.
 The most reliable way to test the examples is through the [standalone editor](https://chmlee.github.io/ream-editor).**
 
 There are three versions of REAM and three corresponding implementations:

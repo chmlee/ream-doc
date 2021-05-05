@@ -24,27 +24,27 @@ and items in [lists](/tutorial/list) in the form of
 They start with a single greater sign (`>`), and a space is required before `>` and the content.
 
 Recall that REAM is indentation-insensitive.
-The indentation before `>` is optional, but the convention is to align `>` with the first character of the key (for non-list values) or value (for list items).
+The indentation before `>` is optional, but the convention is to align `>` with the first character of the key_(for non-list values) or value (for list items).
 
 Examples:
 
 ```ream
 # Example
-- key 1: value
+- key_1: value
   > Annotation for string
-- key 2: $1$
+- key_2: 1
   > Annotation for number
-- key 3: `TRUE`
+- key_3: TRUE
   > Annotation for boolean
 ```
 
 {% editor(id="entry") %}
 # Example
-- key 1: value
+- key_1: value
   > Annotation for string
-- key 2: $1$
+- key_2: 1
   > Annotation for number
-- key 3: `TRUE`
+- key_3: TRUE
   > Annotation for boolean
 {% end %}
 
@@ -53,9 +53,9 @@ Examples:
 - list:
   * value
     > Annotation for string
-  * $1$
+  * 1
     > Annotation for number
-  * `TRUE`
+  * TRUE
     > Annotation for boolean
 ```
 
@@ -64,9 +64,9 @@ Examples:
 - list:
   * value
     > Annotation for string
-  * $1$
+  * 1
     > Annotation for number
-  * `TRUE`
+  * TRUE
     > Annotation for boolean
 {% end %}
 
@@ -94,24 +94,24 @@ Empty lines around annotations are allowed, but discouraged.
 
 ```ream
 # Example
-- key 1: value 1
-- key 2: value 2
+- key_1: value 1
+- key_2: value 2
   > Annotation
-- key 3: value 3
+- key_3: value 3
 
   > Valid annotation
 
-- key 4: value 4
+- key_4: value 4
 ```
 
 {% editor(id="annotation-empty-line")%}
 # Example
-- key 1: value 1
-- key 2: value 2
+- key_1: value 1
+- key_2: value 2
   > Annotation
-- key 3: value 3
+- key_3: value 3
 
   > Valid annotation
 
-- key 4: value 4
+- key_4: value 4
 {% end %}

@@ -45,7 +45,7 @@ A [web-based editor](https://chmlee.github.io/ream-editor) is available and prov
 No local installation required; just visit the website, drag and drop your REAM datasets<sup>1</sup>, and start getting productive.
 Advanced functionalities are available through the [REAM CLI tool](https://github.com/chmlee/ream-core).
 No complex development environment to set up.
-No third-party dependencies to manage<sup>2</sup>
+No third-party dependencies to manage<sup>2</sup>.
 Just one executable binary file.
 
 [1]: Drag and drop not yet implemented.
@@ -261,7 +261,7 @@ you write:
 
 (*: not implemted yet)
 
-Variable `Year$unique_id` are now formatted by joining a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
+Variable `Year$unique_id` (variable `unique_id` in entry `Year`) are now formatted by joining a local variable `Year$name` and the parent variable `Country$name`, separated by an underscore.
 
 ## Template*
 
@@ -295,7 +295,7 @@ you write:
 
 @@ FOR year IN Country$years
 ## Year
-- name (fmt): &year
+- name (ref str): &year
 - unique_id (fmt): {Country$name}_{&year}
 ```
 

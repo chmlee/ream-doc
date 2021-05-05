@@ -22,16 +22,16 @@ Entries are useful when describing an object with multiple attributes:
 # Country
 - name: Belgium
 - capital: Brussels
-- population: $11433256$
-- euro zone: `TRUE`
+- population: 11433256
+- euro zone: TRUE
 ```
 
 {% editor(id="entry")%}
 # Country
 - name: Belgium
 - capital: Brussels
-- population: $11433256$
-- euro zone: `TRUE`
+- population: 11433256
+- euro zone: TRUE
 {% end %}
 
 Here we define an object of `Country` class, whose name is `Belgium`, capital is `Brussels`, population is `11433256`, and is part of the `euro zone`.
@@ -42,9 +42,9 @@ Let's add some annotations.
 - name: Belgium
   > short for the Kingdom of Belgium
 - capital: Brussels
-- population: $11433256$
+- population: 11433256
   > data from 2019; retrieved from World Bank
-- euro zone: `TRUE`
+- euro zone: TRUE
   > joined in 1999
 ```
 
@@ -53,9 +53,9 @@ Let's add some annotations.
 - name: Belgium
   > short for the Kingdom of Belgium
 - capital: Brussels
-- population: $11433256$
+- population: 11433256
   > data from 2019; retrieved from World Bank
-- euro zone: `TRUE`
+- euro zone: TRUE
   > joined in 1999
 {% end %}
 
@@ -251,10 +251,10 @@ Also, entries of the same class need not have identical variables, nor the same 
 
 ## Language
 - name: Dutch
-- size: $0.59$
+- size: 0.59
 
 ## Language
-- size: $0.4$
+- size: 0.4
 - name: French
 
 ## Language
@@ -267,10 +267,10 @@ Also, entries of the same class need not have identical variables, nor the same 
 
 ## Language
 - name: Dutch
-- size: $0.59$
+- size: 0.59
 
 ## Language
-- size: $0.4$
+- size: 0.4
 - name: French
 
 ## Language
