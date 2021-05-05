@@ -1,0 +1,32 @@
++++
+title = "Note"
+weight = 2
++++
+
+There are three versions of REAM and three corresponding implementations:
+
+- REAM v0.1:
+[specs](https://github.com/chmlee/ream-lang),
+[source](https://github.com/chmlee/ream-python),
+[PyPI](https://pypi.org/project/ream/)
+
+- REAM v0.2:
+[specs](https://chmlee.github.io/ream-doc-v2),
+[source](https://github.com/chmlee/reamparser.js),
+[editor](https://chmlee.github.io/ream-editor-vue)<sup>[1]</sup>
+
+- REAM v0.3:
+[specs](/)(this site),
+[sourse](https://github.com/chmlee/ream-core),
+[crates.io](https://crates.io/crates/ream),
+[editor 1](https://chmlee.github.io/ream-editor)<sup>[2]</sup>,
+[editor 2](https://chmlee.github.io/ream-wasm)<sup>[3]</sup>
+
+[1]: I broke some node dependencies, again, and the site is currently not working.
+
+[2]: Seems to work best on Firefox.
+
+[3]: both editor 1 and 2 uses ream-core for parsing.
+The only differences are the front-end framework and how front-end and the parser interact.
+Editor 1 is based on [Yew](https://yew.rs/docs/en/) and is written entirely in Rust with ream-core as a dependency.
+Editor 2 is vanilla JavaScript.

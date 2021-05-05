@@ -25,15 +25,15 @@ REAM syntax is similar to Markdown, and should look familiar:
 ```ream
 # Country
 - name: Belgium
-- population: $11433256$
-- euro zone: `TRUE`
+- population: 11433256
+- euro zone: TRUE
 ```
 
 {% editor(id="easy-to-learn-and-use") %}
 # Country
 - name: Belgium
-- population: $11433256$
-- euro zone: `TRUE`
+- population: 11433256
+- euro zone: TRUE
 {% end %}
 
 It takes around half an hour to [learn the basics](/tutorial) of the language to start writing your first REAM dataset.
@@ -42,13 +42,15 @@ Learn more advanced features later as your project scales up.
 REAM is easy to edit.
 All REAM datasets are stored as text files, and can be edited in any text editor.
 A [web-based editor](https://chmlee.github.io/ream-editor) is available and provides basic functionalities.
-No local installation required; just visit the website, drag and drop your REAM datasets, and start getting productive.
+No local installation required; just visit the website, drag and drop your REAM datasets<sup>1</sup>, and start getting productive.
 Advanced functionalities are available through the [REAM CLI tool](https://github.com/chmlee/ream-core).
 No complex development environment to set up.
-No third-party dependencies to manage*.
+No third-party dependencies to manage<sup>2</sup>
 Just one executable binary file.
 
-(*: some functionalities may require [Git](https://git-scm.com/))
+[1]: Drag and drop not yet implemented.
+
+[2]: May require Git during alpha development stage.
 
 ## Nested structure
 
@@ -103,9 +105,9 @@ Instead of editing data and its documentation in two separate files - one spread
 # Country
 - name: Belgium
   > officially the Kingdom of Belgium
-- population: $11433256$
+- population: 11433256
   > data from 2019; retrieved from World Bank
-- euro zone: `TRUE`
+- euro zone: TRUE
   > joined in 1999
 ```
 
@@ -113,9 +115,9 @@ Instead of editing data and its documentation in two separate files - one spread
 # Country
 - name: Belgium
   > officially the Kingdom of Belgium
-- population: $11433256$
+- population: 11433256
   > data from 2019; retrieved from World Bank
-- euro zone: `TRUE`
+- euro zone: TRUE
   > joined in 1999
 {% end %}
 
@@ -125,7 +127,7 @@ Two formats, one source.
 **Current Design:**
 {% mermaid() %}
 graph LR;
-  SOURCE[REAM File] --> PARSER(["REAM Parser<br>(reamparser.js)"]);
+  SOURCE[REAM File] --> PARSER(["REAM Parser<br>(ream-core)"]);
   PARSER --> DATA[(Datasets<br>CSV, JSON, etc.)]
 
   SOURCE --> CONVERTER([Third-party<br>Markdown Converter])
@@ -140,7 +142,7 @@ graph LR;
   COMPILER --> DOC[[Documentations<br>HTML, PDF, etc.]]
 {% end %}
 
-## Static typing*
+## Static typing
 
 REAM checks for data types during compile time to ensure type safety.
 Instead of guessing what type each variable would be assigned to when being read:
@@ -152,21 +154,21 @@ x1,x2,x3,x4
 you specify the types through explicit type annotations:
 ```ream
 # Data
-- x1 (num): $1.0$
+- x1 (num): 1.0
 - x2 (str): 1.0
-- x3 (bool): `TRUE`
-- x4 (str): true
+- x3 (bool): TRUE
+- x4 (str): TRUE
 ```
 
 {% editor(id="static-typing")%}
 # Data
-- x1 (num): $1.0$
+- x1 (num): 1.0
 - x2 (str): 1.0
-- x3 (bool): `TRUE`
-- x4 (str): true
+- x3 (bool): TRUE
+- x4 (str): TRUE
 {% end %}
 
-(*: not implemented yet)
+(*: Example not working. See [Note](/contribution/note) for more information.)
 
 Type errors are catched during compile time.
 The follwoing would not compile at all:
@@ -183,9 +185,10 @@ The follwoing would not compile at all:
 - number (num): value
 {% end %}
 
-(*: not implemented yet)
+(*: Example not working. See [Note](/contribution/note) for more information.)
 
-The goal is to embed [ream-core](https://github.com/chmlee/ream-core) in Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`, without ever touching CSV or JSON and their limited type systems.
+The goal is to embed [ream-core](https://github.com/chmlee/ream-core) in Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`.
+REAM's types will be translated directly into target languages' native types without ever touching CSV or JSON and their almost nonexistent type systems which is the source of all evil.
 
 Ideally, you should be able to do something like:
 
@@ -285,13 +288,12 @@ you write:
 ```ream
 # Country
 - name (str): Belgium
-- years (str+):
+- years (list str):
   * 2010
   * 2011
   * 2012
 
-@@ USE Country$years
-@@ FOR year IN years
+@@ FOR year IN Country$years
 ## Year
 - name (fmt): &year
 - unique_id (fmt): {Country$name}_{&year}
@@ -300,15 +302,14 @@ you write:
 {% editor(id="template")%}
 # Country
 - name (str): Belgium
-- years (str+):
+- years (list str):
   * 2010
   * 2011
   * 2012
 
-@@ USE Country$years
-@@ FOR year IN years
+@@ FOR year IN Country$years
 ## Year
-- name (fmt): &year
+- name (ref str): &year
 - unique_id (fmt): {Country$name}_{&year}
 {% end %}
 
@@ -319,27 +320,27 @@ Variable `Year$unique_id` is now formatted by joining the parent variable `Count
 ## Modularity*
 
 REAM encourages datasets to be saved in smaller components.
-Say you want to collect data on Belgium, Netherlands and Luxembourg, instead of saving everything in one single file, it's recommended to saved them in separate files:
+Say you want to collect data on Belgium, Netherlands and Luxembourg, instead of saving everything in one single file, it's recommended to saved data by country:
 
 (Country/Belgium.ream)
 ```ream
 # Country
 - name (str): Belgium
-- population (num): $11433256$
+- population (num): 11433256
 ```
 
 (Country/Netherlands.ream)
 ```ream
 # Country
 - name (str): Netherlands
-- population (num): $11433256$
+- population (num): 11433256
 ```
 
 (Country/Luxembourg.ream)
 ```ream
 # Country
 - name (str): Luxembourg
-- population (num): $619900$
+- population (num): 619900
 ```
 
 and zip the files into one master dataset with templates:

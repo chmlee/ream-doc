@@ -1,7 +1,8 @@
 +++
 title = "Contribution"
 weight = 4
-page_template = "plain.html"
+template = "base.html"
+page_template = "page-sidebar.html"
 redirect_to = "/contribution/home"
 sort_by = "weight"
 +++

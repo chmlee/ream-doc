@@ -1,0 +1,62 @@
+%YAML 1.2
+---
+name: REAM
+file_extensions: [ream]
+scope: source.ream
+variables:
+  eol: '$\n'
+
+contexts:
+  main:
+    - match: '^ *#+ +'
+      scope: entity.name.namespace
+      push: class
+    - match: '^ *> *.+$'
+      scope: comment.ream
+    - match: '^ *- +'
+      scope: entity.name.namespace
+      push: variable
+    - match: '^ *\* +'
+      push: list_item
+
+  list_item:
+    - meta_scope: puncuation.separator.ream
+      scope: entity.name.ream
+    - match: '(?<=\$).+(?=\$)'
+      scope: constant.numeric.ream
+    - match: '(?<=`)TRUE(?=`)|(?<=`)FALSE(?=`)'
+      scope: keyword.control.ream
+    - match: '(?!`)\w+$(?<!\$)'
+      scope: string.quoted.ream
+    - match: "{{eol}}"
+      pop: true
+
+  variable:
+    - meta_scope: entity.name.section.ream
+
+    - match: '[\w_]+(?=:| )'
+      scope: entity.name.ream
+
+    - match: '(?<=\$).+(?=\$)'
+      scope: constant.numeric.integer.ream
+
+    - match: 'TRUE|FALSE'
+      scope: keyword.control.ream
+
+    - match: '[+-]?([0-9]*[.])?[0-9]+'
+      scope: keyword.control.ream
+
+    - match: '(?!`)\w+$(?<!\$)'
+      scope: string.quoted.ream
+
+    - match: '(?<=\().+(?=\))'
+      scope: storage.type
+
+    - match: "{{eol}}"
+      pop: true
+
+  class:
+    - match: .
+      scope: entity.name.tag.ream
+    - match: "{{eol}}"
+      pop: true

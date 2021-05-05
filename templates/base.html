@@ -6,14 +6,22 @@
   <title>REAM</title>
 
   <link rel="stylesheet" type="text/css" href="{{ get_url(path="style.css") }}">
+  <link rel="shortcut icon" href="{{ get_url(path="favicon.ico") }}" type="image/x-icon">
 
-  <script type="module" src="{{ get_url(path="js/bundle.js") }}"></script>
+  <script type="module" src="{{ get_url(path="js/bundle.js") }}">
+  </script>
+  <script type="module" src="{{ get_url(path="js/b.js") }}"></script>
   <script>
     function auto_grow(element) {
       element.style.height = "5px";
       element.style.height = (element.scrollHeight)+"px";
     };
   </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "{{ get_url(path="js/wasm/ream.js") }}" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
 
 </head>
 

@@ -53,6 +53,14 @@ p > code {
     border-radius: 5px;
 }
 
+li > code {
+    background: $honeydew;
+    padding: 0em 0.5em;
+    margin: 0em 0.1em;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
 #brand a {
   text-decoration: none;
   color: black;
@@ -98,8 +106,6 @@ pre {
   padding: 1em;
   margin: 0em 3em;
 }
-
-
 
 .page-sidebar {
     display: flex;
@@ -313,4 +319,17 @@ $pale-cerulean: #a5c4d4ff;
 
 .box.note {
     background: #fecf6a;
+}
+
+sup {
+    font-size: 15px;
+}
+
+.index-graph {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mermaid-container {
+    padding: 10px;
 }

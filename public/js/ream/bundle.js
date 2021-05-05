@@ -1,5 +1,8 @@
-(function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.myBundle = {}));
+}(this, (function (exports) { 'use strict';
 
   function mutateString(valueRaw) {
     const content = valueRaw.trim();
@@ -220,19 +223,10 @@
     }
   }
 
-  let buttons = document.querySelectorAll(".update-button");
+  console.log("hello there!");
 
-  buttons.forEach(button => button.addEventListener('click', event => {
-    const id = event.target.id;
-    const input = document.getElementById(`${id}-input`).value;
-    let mdFile = new MdFile(input);
-    let output;
-    try {
-      output = mdFile.toCSV();
-    } catch (error) {
-      output = error;
-    }
-    document.getElementById(`${id}-output`).innerHTML = output;
-  }));
+  exports.MdFile = MdFile;
 
-}());
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));

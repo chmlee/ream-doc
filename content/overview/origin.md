@@ -4,7 +4,8 @@ weight = 4
 +++
 
 REAM was created as a quick solution to manage my undergraduate thesis data.
-To understand certain REAM designs, it might helpful to first understand what problems I was trying to solve.
+To understand certain REAM designs, it might be helpful to first understand what problems I was trying to solve.
+
 In summary, I was searching for an alternative to CSV, but after trying YAML and TOML I decided to create my own language that caters to my own needs and preferences.
 As I develop the language and the tools, I started reflecting on my past experience dealing with social science data and gradually add more features.
 
@@ -22,8 +23,10 @@ I tried editing raw CSV files in Neovim, but even with plugin such as [csv.vim](
 the `ArrangeColumn` function which I used heavily to format and align the columns was inconsistent (the documentation did state it is experimental)
 That's when I started exploring other data serialization languages.
 
-In addition to being editor-friendly, I also wanted the language to support comments so I can add inline documentation to record the rationales.
-The language should also work well with Git for version control.
+In addition to being editor-friendly, I want the solution to work will with Git or provide a native way for version control.
+The solution should also support comments since my work is mostly zipping two larger datasets and I want my matching rationales to be well documented.
+This is largely influenced by my work in [Composition of Religious and Ethnic Groups (CREG) Project ](https://clinecenter.illinois.edu/project/Religious-Ethnic-Identity/composition-religious-and-ethnic-groups-creg-project) at [Cline Center for Advanced Social Research](https://clinecenter.illinois.edu/), where we carefully documented tens of thousands of matches when zipping dozens of datasets.
+
 
 ## YAML
 
@@ -105,6 +108,8 @@ However, the key names are verbose to avoid name collision, hence the `country_`
 With YAML, my dataset would either be a nested structure but with everything in a single tree, or a modular structure but with everything flatten.
 How can I get a nested *and* modular data structure?
 
+(Spoiler: component-based)
+
 My ideal way of organizing data should do the following natively:
 ```yaml
 Country:
@@ -169,19 +174,19 @@ I gave up TOML soon after reading the post and moved on.
 ## Documentation
 
 I want my inline documentation to be easy to read.
-Though I'm comfortable reading raw text files, I prefer reading HTML or PDF files if possible.
-To do so with YAML or TOML, I have to write a documentation generator which either build upon an existing implementation or write one myself.
-If so, I much rather write an implementation of my own language which cater to my own needs and preferences.
+Though I'm comfortable reading monospace raw text files, I still prefer reading HTML or PDF files if possible.
+To do so with YAML or TOML, I have to write a documentation generator which either build upon an existing implementation or write one myself from scratch.
+If so, I much rather write an implementation of my own language which caters to my own needs and preferences.
 
 If I don't want to convert a data serialization language to a markup language, why don't I serialize a markup language?
-All I have to do [1] is to write a decoder of this new language, and let third-party file format converters produce HTML and PDF files.
+All I have to do<sup>[1]</sup> is to write a decoder of this new language, and let third-party file format converters produce HTML and PDF files.
 
 REAM features Markdown-like syntax, in particular, [Pandoc-flavored Markdown](https://pandoc.org/).
 The plan was to use Pandoc as my documentation generator, and [ream-python](https://github.com/chmlee/ream-python) to serialize the data.
-That's why numbers are surrounded by question marks so that they are rendered as inline math notations.
-Boolean values are surrounded by backticks so that they are rendered as inline code.
-The language is not indentation-based simply because in Pandoc, as well as other Markdown flavors, a 4-space indentation indicates code block, and I want to have more than 2 levels nested [2].
-Empty lines are optional because Pandoc requires an empty line before block quotes, which I use for annotations.
+That's why in older versions, numbers were surrounded by question marks so that they were rendered as inline math notations.
+Boolean values were surrounded by backticks so that they were rendered as inline code.
+The language was not indentation-based simply because in Pandoc, as well as other Markdown flavors, a 4-space indentation indicates code block, and I want to have more than 2 levels nested.<sup>[2]</sup>
+Empty lines were optional because Pandoc requires an empty line before block quotes, which I use for annotations.
 
 [1]:
 If you really think about it, mapping a subset of a serialization language to a subset of a markup language is way easier than the opposite.
@@ -196,9 +201,9 @@ Even though I designed REAM to be editor-friendly so that I can edit it in NeoVi
 I don't remember exactly why or when I started working on the editor, but git history shows the [first commit](https://github.com/chmlee/ream-edit/commit/26da6f263b402e87356ddaedc04ce76750c5124e) was created 10 days after the prototype for the language parser was completed.
 
 The original design was to have an architecture similar to [Jupyter Notebook](https://jupyter.org/) and a front-end similar to [StackEdit](https://stackedit.io/app).
-REAM-python would be running on a Flask server [1], and the Vue-based front-end would provide real-time rendering.
+REAM-python would be running on a Flask server<sup>[1]</sup>, and the Vue-based front-end would provide real-time rendering.
 As I work on the editor, I found myself moving more codes into the front-end, and eventually the only thing the server did was receiving REAM data, parsing it, and returning JSON for Vue to render in the front-end.
-What if... I move *everything* to the front-end and make the editor run 100% on the client side?
+What if... I move *everything* to the front-end and make the editor run entirely on the client side?
 
 The development for the editor stops before it worked properly as I had to focus on my thesis.
 After submitting the paper, the focus was on polishing the parser.
@@ -225,7 +230,3 @@ Ease of use became the number one concern for the project.
 
 [1]: I don't know why I thought Jupyter Notebook uses Flask.
 It uses Tornado.
-
-## Pain Points
-
-(to be continued)

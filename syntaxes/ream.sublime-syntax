@@ -4,50 +4,136 @@ name: REAM
 file_extensions: [ream]
 scope: source.ream
 variables:
-  eol: '$\n'
+    ws: '( \t)*'
+    wsnl: '([ \t\n])*'
+
+    eol: '\n+'
+
+    header: '^ *#+'
+
+    num: '[+-]?([0-9]*[.])?[0-9]+(?= *$)'
+    bool: '(TRUE|FALSE)(?= *$)'
+    str: '.+(?= *$)'
+
+    star: '^ *\* +'
 
 contexts:
-  main:
-    - match: '^ *#+ +'
-      scope: entity.name.namespace
-      push: class
-    - match: '^ *> *.+$'
-      scope: comment.ream
-    - match: '^ *- +'
-      scope: entity.name.namespace
-      push: variable
-    - match: '^ *\* +'
-      push: list_item
+    main:
+        - match: '^ *#+ +'
+          push: line_header
+        - match: '^ *- +'
+          scope: puncuation.separator.ream
+          push: line_variable
+        - match: '^ *> +.*$'
+          scope: comment.line.ream
 
-  list_item:
-    - meta_scope: puncuation.separator.ream
-      scope: entity.name.ream
-    - match: '(?<=\$).+(?=\$)'
-      scope: constant.numeric.ream
-    - match: '(?<=`)TRUE(?=`)|(?<=`)FALSE(?=`)'
-      scope: keyword.control.ream
-    - match: '(?!`)\w+$(?<!\$)'
-      scope: string.quoted.ream
-    - match: "{{eol}}"
-      pop: true
 
-  variable:
-    - meta_scope: entity.name.section.ream
-    - match: '[\w_]+(?=:| )'
-      scope: entity.name.ream
-    - match: '(?<=\$).+(?=\$)'
-      scope: constant.numeric.integer.ream
-    - match: '(?<=`)TRUE(?=`)|(?<=`)FALSE(?=`)'
-      scope: keyword.control.ream
-    - match: '(?!`)\w+$(?<!\$)'
-      scope: string.quoted.ream
-    - match: '(?<=\().+(?=\))'
-      scope: storage.type
-    - match: "{{eol}}"
-      pop: true
+    # line_list_item:
+    #     - match: '{{num}}'
+    #       scope: constant.numeric.float.ream
+    #       # push: line_list_item_num
+    #     - match: '{{bool}}'
+    #       scope: constant.language.ream
+    #       # push: line_list_item_bool
+    #     - match: '{{str}}'
+    #       scope: string.quoted.single.ream
+    #       # push: line_list_item_str
+    #     - match: ''
+    #       pop: true
 
-  class:
-    - match: .
-      scope: entity.name.tag.ream
-    - match: "{{eol}}"
-      pop: true
+    # line_list_item_num:
+    #     - match: '{{star}}'
+    #     - match: '{{num}}'
+    #       scope: constant.numeric.float.ream
+    #       push: line_list_item_num
+    #     - match: '(?={{str}})'
+    #       scope: invalid
+    #       set: main
+    #     - match: '(?={{bool}})'
+    #       scope: invalid
+    #       set: main
+
+    # line_list_item_bool:
+    #     - match: '{{star}}'
+    #     - match: '{{bool}}'
+    #       scope: constant.numeric.float.ream
+    #       push: line_list_item_bool
+    #     - match: '(?={{num}})'
+    #       scope: invalid
+    #       set: main
+    #     - match: '(?={{str}})'
+    #       scope: invalid
+    #       set: main
+
+    # line_list_item_str:
+    #     - match: '{{star}}'
+    #     - match: '{{str}}'
+    #       scope: constant.numeric.float.ream
+    #       push: line_list_item_num
+    #     - match: '(?={{str}})'
+    #       scope: invalid
+    #       set: main
+    #     - match: '(?={{bool}})'
+    #       scope: invalid
+    #       set: main
+
+    line_header:
+        - match: '[\w_]+'
+          scope: entity.name.tag.ream
+        - match: ''
+          set: main
+
+    line_variable:
+        - match: '(?<=[- *])[\w_]+ *(?=(:|\())'
+        - match: '\(str\)'
+          scope: storage.type.ream
+          push: value_str
+        - match: '\(bool\)'
+          scope: storage.type.tag.ream
+          push: value_bool
+        - match: '\(num\)'
+          scope: storage.type.tag.ream
+          push: value_num
+        - match: '\(.*\)'
+          scope: invalid
+        - match: ': +'
+          push: value_unknown
+        - match: ''
+          scope: invalid
+
+    value_str:
+        - match: ': +'
+        - match: '(?<=[: *]){{str}}'
+          scope: string.quoted.single.ream
+        - match: ''
+          set: main
+
+    value_bool:
+        - match: ': +'
+        - match: '(?<=[: *]){{bool}}'
+          scope: constant.character.escape.ream
+        - match: '(?<=[: *]){{str}}'
+          scope: invalid.ream
+        - match: ''
+          set: main
+
+    value_num:
+        - match: ': +'
+        - match: '(?<=[: *]){{num}}'
+          scope: constant.numeric.float.ream
+        - match: '(?<=[: *]){{str}}'
+          scope: invalid.ream
+        - match: ''
+          set: main
+
+    value_unknown:
+        - match: '(?<=[: *]){{num}}'
+          scope: constant.numeric.integer.ream
+        - match: '(?<=[: *]){{bool}}'
+          scope: constant.character.escape.ream
+        - match: '(?<=[: *]){{str}}'
+          scope: string.quoted.single.ream
+        # - match: '$\n^  {{star}}'
+        #   push: line_list_item
+        - match: ''
+          set: main
