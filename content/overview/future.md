@@ -4,13 +4,30 @@ weight = 5
 +++
 
 {% box(class="note") %}
-This section is a work in progress
+This section is a work in progress.
 {% end %}
 
-The future of REAM is interoperability.
+The ultimate goal for REAM is to make distributing and reusing data easy.
+To do so we need to think of datasets not just as data serializations, but also as programmes.
 
-To do so require us to think of datasets not just as data serializations but as programmes with well-defined APIs for other datasets/programmes to utilize.
-In additional to a well-design language, the tooling is also crucial to make distributing and reusing data easy, including a documentation generator, a schema validator and a package manager.
+First off, the language.
+To make REAM datasets easy to be reused, the language itself should encourage good practices.
+References and data filters reduce repetition.
+Inline documentation makes generating human-readable documentations a trivial task.
+Templating and static typing help validate schema.
+
+Second, the tooling.
+REAM datasets can't be easily distributed and reused without a package manager.
+Since we are living in the 21st century, we might also want a package registry.
+This is a [notoriously difficult task](https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527), and I don't know whether this project will survive long enough for a package manager to be a need.
+Still I think it's important to have distribution in mind when designing the language.
+At the very least I should provide a boilerplate directory structure for users to import datasets with `git submodule add https://github.com/foo/bar`.
+
+Finally, the community.
+If REAM ever become popular, it's definitely not because of the language itself but the quality datasets in the registry that people can easily install and build new datasets upon.
+For that to happen, the registry should maintain datasets containing popular variables that almost every datasets depend on, such as list of country codes and annual GDP.
+
+(Even though this sounds like a proposal for a standard library, what I have in mind is an [oh-my-zsh](https://ohmyz.sh/) for REAM)
 
 ## Motivation
 
@@ -51,7 +68,7 @@ library(ggplot2)
 
 3. Use `ggplot2`
 ```R
-plot_2 = ggplot(dat = dat) + geom_point(aes(x = x, y = y))
+plot_1 = ggplot(dat = dat) + geom_point(aes(x = x, y = y))
 ```
 
 <br/>
@@ -112,7 +129,7 @@ my_data$GDP = apply(my_data, 1, function(row) get_gdp(row['country'], row['year'
 - Discover Cote d'Ivoire has `NA` GDP.
 Oh, it's called "Sierra Leone" in the World Bank's dataset.
 
-- Figure out all the name differences between the two datasets and write a "dictionary" to translate the names.
+- Figure out all the name differences between the two datasets and write a "dictionary" for translation.
 
 ```R
 country_dict = list(
@@ -265,7 +282,7 @@ graph BT;
     FER(["Fearon<br/>(2002)"])
 {% end %}
 
-We can continue to graph the dependencies for each of the dependencies.
+We can continue to expand the dependency graph for each of the dependencies.
 After adding a few of Easterly and Levine's dependencies, we get:
 
 {% mermaid() %}
@@ -317,11 +334,11 @@ graph BT;
 I am not able to find the original dataset for the study, but I would assume all relevant data are extracted from the dependencies, manually or through scripts, to a master dataset.
 
 The practice of copying dependencies to your own project is known as [vendoring](https://stackoverflow.com/questions/26217488/what-is-vendoring) in programming.
-Vendoring is not necessarily a bad thing, but we do loose some information along the way.
+Vendoring is not necessarily a bad thing, but we do lose some information along the way.
 
-(TODO: add more discussion on pros and cons of vendoring)
+(TODO: discussion on pros and cons of vendoring)
 
-## Versioning
+## Updating dependencies
 
 Let's zoom in on the dependency graph and focus on ethnic data.
 
@@ -359,6 +376,7 @@ graph BT;
 {% end %}
 
 If the original dataset was created by manually copying and pasting data from dependencies, you'll probably have to repeat the process.
+
 If the dataset was created through extracting data from dependencies through scripts, we can rerun the scripts and generate the updated dataset *only if* the schemas remain the same.
 Otherwise you'll have to analyze the schema changes and run custom migration scripts before running the original scripts.
 

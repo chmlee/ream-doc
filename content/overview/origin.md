@@ -31,7 +31,7 @@ This is largely influenced by my work in [Composition of Religious and Ethnic Gr
 ## YAML
 
 I first tried YAML.
-I used YAML for other projects and find it to be human-readable.
+I used YAML for other projects and find it to be a pleasant format to work with.
 Each key-value pair occupy a line, so it's easy to version control.
 
 YAML is also good at representing nested data structure, so instead of:
@@ -58,7 +58,7 @@ row:
       language_name: German
       language_size: 0.01
 ```
-I can do:
+I can write:
 ```yaml
 Country:
     - name: Belgium
@@ -78,7 +78,7 @@ Country:
 
 This is when I started exploring ways to store data in nested structures.
 With this structure, we adhere to the single source of truth principle: attributes of country `Belgium` only ever appear once in the dataset.
-To "flatten" the nested data structure, all we need is [a few lines of code](https://github.com/chmlee/ream-python/blob/master/ream/decode.py#L48-#L86).
+To "flatten" the nested data structure, all we need is [a few lines of code](https://github.com/chmlee/ream-python/blob/master/ream/decode.py#L48-#L86) (not the most elegant solution, but it works).
 
 Another way to organize the data is with [anchor and alias](https://ttl255.com/yaml-anchors-and-aliases-and-how-to-disable-them/), and would look like:
 
@@ -108,30 +108,7 @@ However, the key names are verbose to avoid name collision, hence the `country_`
 With YAML, my dataset would either be a nested structure but with everything in a single tree, or a modular structure but with everything flatten.
 How can I get a nested *and* modular data structure?
 
-(Spoiler: component-based)
-
-My ideal way of organizing data should do the following natively:
-```yaml
-Country:
-    - &Belgium
-      name: Belgium
-      capital: Brussel
-      population: 11433256
-      # data from 2019, retrieved from Work Bank
-      euro_zone: true
-      # joined in 1999
-      Languages:
-          - <<: *Belgium
-            name: Dutch
-            size: 0.59
-          - <<: *Belgium
-            name: French
-            size: 0.4
-          - <<: *Belgium
-            name: German
-            size: 0.01
-```
-(This obviously is not a valid YAML file)
+(Spoiler: by making the language component-based)
 
 ## TOML
 
@@ -160,13 +137,13 @@ name = "German"
 size = 0.01
 ```
 
-I prefer TOML's syntax for [Array for Tables](https://toml.io/en/v1.0.0#array-of-tables) than YAML's indentation-based approach.
+I prefer TOML's syntax for [Array for Tables](https://toml.io/en/v1.0.0#array-of-tables) to YAML's indentation-based approach.
 But I dislike quoting strings, and it lacks reference, which was [explicitly rejected during early design](https://github.com/toml-lang/toml/issues/13).
 
 One thing I like about TOML is its [issue tracker](https://github.com/toml-lang/toml/issues).
 The discussions helped me understood its design rationales and learned that TOML was *not* a good fit for my use.
 TOML's array of tables requires full path name, so the names may be verbose if the table is several levels deep.
-While searching if there were plans to make table names more concise, I found a post that stated that the language [discourages deeply nested structure](https://github.com/toml-lang/toml/issues/309#issuecomment-558338408), which was exactly what I wanted to do.
+While searching for proposal to make table names more concise, I found a post that stated that the language [discourages deeply nested structure](https://github.com/toml-lang/toml/issues/309#issuecomment-558338408), which was exactly what I wanted to do.
 I gave up TOML soon after reading the post and moved on.
 
 ([A new issue](https://github.com/toml-lang/toml/issues/781) was opened on October 2020 to collect ideas on nested structure, but it'll probably take a long time before the community reaches consensus and have the new syntax implemented.)
@@ -174,7 +151,7 @@ I gave up TOML soon after reading the post and moved on.
 ## Documentation
 
 I want my inline documentation to be easy to read.
-Though I'm comfortable reading monospace raw text files, I still prefer reading HTML or PDF files if possible.
+Though I'm comfortable reading raw monospace text files, I still prefer reading HTML or PDF files if possible.
 To do so with YAML or TOML, I have to write a documentation generator which either build upon an existing implementation or write one myself from scratch.
 If so, I much rather write an implementation of my own language which caters to my own needs and preferences.
 
@@ -183,7 +160,7 @@ All I have to do<sup>[1]</sup> is to write a decoder of this new language, and l
 
 REAM features Markdown-like syntax, in particular, [Pandoc-flavored Markdown](https://pandoc.org/).
 The plan was to use Pandoc as my documentation generator, and [ream-python](https://github.com/chmlee/ream-python) to serialize the data.
-That's why in older versions, numbers were surrounded by question marks so that they were rendered as inline math notations.
+That's why in earlier versions, numbers were surrounded by dollar signs so that they were rendered as inline math notations.
 Boolean values were surrounded by backticks so that they were rendered as inline code.
 The language was not indentation-based simply because in Pandoc, as well as other Markdown flavors, a 4-space indentation indicates code block, and I want to have more than 2 levels nested.<sup>[2]</sup>
 Empty lines were optional because Pandoc requires an empty line before block quotes, which I use for annotations.
@@ -210,7 +187,8 @@ After submitting the paper, the focus was on polishing the parser.
 I packaged it as a commandline tool and wrote the documentation.
 I [published it on PyPI](https://pypi.org/project/ream/), and was about to send the links to some friends for review.
 But I wasn't sure people were comfortable working with commandline interfaces, or whether they have Python installed or not.
-That's when I revisit the idea of rewriting the parser in JavaScript so that everything runs on the client side.
+That was when I revisited the idea of a client-side-only editor.
+I've always wanted to rewrite the parser without a parsing library, so I might as well rewrite it in JavaScript.
 
 Another inspiration for this move is [Hedgehog Lab](https://github.com/Hedgehog-Computing/hedgehog-lab), a scientific computing and data visualization project written in TypeScript and runs entirely in the browser.
 One of the motivations behind the project is lower the barrier for scientific computation.
