@@ -11,23 +11,22 @@ The ultimate goal for REAM is to make distributing and reusing data easy.
 To do so we need to think of datasets not just as data serializations, but also as programmes.
 
 First off, the language.
-To make REAM datasets easy to be reused, the language itself should encourage good practices.
+To make REAM datasets easy to be reused, the language itself should encourage or enforce good practices.
 References and data filters reduce repetition.
 Inline documentation makes generating human-readable documentations a trivial task.
-Templating and static typing help validate schema.
+Templating and static typing help validate schemas.
 
 Second, the tooling.
-REAM datasets can't be easily distributed and reused without a package manager.
-Since we are living in the 21st century, we might also want a package registry.
+REAM datasets can't be easily distributed and reused without a package manager and a package registry.
 This is a [notoriously difficult task](https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527), and I don't know whether this project will survive long enough for a package manager to be a need.
-Still I think it's important to have distribution in mind when designing the language.
-At the very least I should provide a boilerplate directory structure for users to import datasets with `git submodule add https://github.com/foo/bar`.
+Still I think it's important to have distribution in mind when designing the language and not as an afterthought.
+At the very least I should provide a boilerplate directory structure for users to import datasets with `git submodule add`.
 
 Finally, the community.
-If REAM ever become popular, it's definitely not because of the language itself but the quality datasets in the registry that people can easily install and build new datasets upon.
-For that to happen, the registry should maintain datasets containing popular variables that almost every datasets depend on, such as list of country codes and annual GDP.
+The number one reason why most users would even consider using REAM is definitely not because of the language itself, but the quality datasets in the registry that people can easily install and build new datasets upon.
+For that to happen, the registry should maintain datasets containing popular variables that almost every datasets depend on, such as datasets for country codes and annual GDP.
 
-(Even though this sounds like a proposal for a standard library, what I have in mind is an [oh-my-zsh](https://ohmyz.sh/) for REAM)
+(Even though this sounds like a proposal for a standard library, what I have in mind is what [oh-my-zsh](https://ohmyz.sh/) is to Zsh.)
 
 ## Motivation
 
@@ -246,7 +245,7 @@ graph BT;
     LAP(["La Porta et al.<br/>(1997)"])
 {% end %}
 
-The Fractionalization indices are compared with existing measures:
+The fractionalization indices are compared with existing measures:
 
 {% mermaid() %}
 graph BT;
@@ -331,7 +330,7 @@ graph BT;
     WRI(["World Resource<br/>Institute (1992)"])
 {% end %}
 
-I am not able to find the original dataset for the study, but I would assume all relevant data are extracted from the dependencies, manually or through scripts, to a master dataset.
+Eventually, all relevant data are extracted from the dependencies, manually or through scripts, to the [aggregated datasets](https://www.openicpsr.org/openicpsr/project/112449/version/V1/view)
 
 The practice of copying dependencies to your own project is known as [vendoring](https://stackoverflow.com/questions/26217488/what-is-vendoring) in programming.
 Vendoring is not necessarily a bad thing, but we do lose some information along the way.
@@ -377,7 +376,7 @@ graph BT;
 
 If the original dataset was created by manually copying and pasting data from dependencies, you'll probably have to repeat the process.
 
-If the dataset was created through extracting data from dependencies through scripts, we can rerun the scripts and generate the updated dataset *only if* the schemas remain the same.
+If the dataset was created by extracting data from dependencies with scripts, we can rerun the scripts and generate the updated dataset *only if* the schemas of all dependencies remain the same.
 Otherwise you'll have to analyze the schema changes and run custom migration scripts before running the original scripts.
 
 (To be continued)
