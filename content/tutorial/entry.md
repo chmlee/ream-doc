@@ -23,7 +23,7 @@ Entries are useful when describing an object with multiple attributes:
 - name: Belgium
 - capital: Brussels
 - population: 11433256
-- euro zone: TRUE
+- euro_zone: TRUE
 ```
 
 {% editor(id="entry")%}
@@ -31,12 +31,12 @@ Entries are useful when describing an object with multiple attributes:
 - name: Belgium
 - capital: Brussels
 - population: 11433256
-- euro zone: TRUE
+- euro_zone: TRUE
 {% end %}
 
 Here we define an object of `Country` class, whose name is `Belgium`, capital is `Brussels`, population is `11433256`, and is part of the `euro zone`.
 
-Let's add some annotations.
+Let's annotate the dataset:
 ```ream
 # Country
 - name: Belgium
@@ -44,7 +44,7 @@ Let's add some annotations.
 - capital: Brussels
 - population: 11433256
   > data from 2019; retrieved from World Bank
-- euro zone: TRUE
+- euro_zone: TRUE
   > joined in 1999
 ```
 
@@ -55,7 +55,7 @@ Let's add some annotations.
 - capital: Brussels
 - population: 11433256
   > data from 2019; retrieved from World Bank
-- euro zone: TRUE
+- euro_zone: TRUE
   > joined in 1999
 {% end %}
 
@@ -127,7 +127,7 @@ Examples:
 
 The `# Country` entry has one variable `name` and three Level-2 child entries `## Language`.
 
-The three `## Language`  subentries are **terminal nodes** as they do not contain any subentry.
+The three `## Language`  subentries are also **terminal nodes** as they do not contain any subentry.
 When compiling the dataset, the parser look for all terminal nodes in the REAM file and flatten the data structure.
 Thus the previous example produces a dataset with three rows (one for each terminal node) and two columns (one of each variable).
 
@@ -280,4 +280,4 @@ Also, entries of the same class need not have identical variables, nor the same 
 Observe that the order of the variables are preserved by default.
 
 The datasets compiled by the last two examples are not too useful for analysis.
-To compile quality analysis-ready datasets, we should specify the schema of the datasets in the codebook.
+To compile quality analysis-ready datasets, we should specify the schema of the datasets in the codebook (not yet implemented).

@@ -7,7 +7,7 @@ REAM was created as a quick solution to manage my undergraduate thesis data.
 To understand certain REAM designs, it might be helpful to first understand what problems I was trying to solve.
 
 In summary, I was searching for an alternative to CSV, but after trying YAML and TOML I decided to create my own language that caters to my own needs and preferences.
-As I develop the language and the tools, I started reflecting on my past experience dealing with social science data and gradually add more features.
+As I develop the language and the tools, I started reflecting on my experience dealing with social science data and gradually add more features.
 
 ## Spreadsheet/CSV
 
@@ -20,12 +20,12 @@ I did not want to use a spreadsheet application to organize my undergraduate the
 (3) I like [Neovim](https://neovim.io/) so much that I want to edit everything in the text editor, including datasets (probably the main motivation)
 
 I tried editing raw CSV files in Neovim, but even with plugin such as [csv.vim](https://github.com/chrisbra/csv.vim) it wasn't a smooth experience;
-the `ArrangeColumn` function which I used heavily to format and align the columns was inconsistent (the documentation did state it is experimental)
+the `ArrangeColumn` function which I used heavily to format and align the columns was inconsistent (the documentation did state it is experimental).
 That's when I started exploring other data serialization languages.
 
-In addition to being editor-friendly, I want the solution to work will with Git or provide a native way for version control.
-The solution should also support comments since my work is mostly zipping two larger datasets and I want my matching rationales to be well documented.
-This is largely influenced by my work in [Composition of Religious and Ethnic Groups (CREG) Project ](https://clinecenter.illinois.edu/project/Religious-Ethnic-Identity/composition-religious-and-ethnic-groups-creg-project) at [Cline Center for Advanced Social Research](https://clinecenter.illinois.edu/), where we carefully documented tens of thousands of matches when zipping dozens of datasets.
+In addition to being editor-friendly, I wanted the solution to work will with Git or provide a native way for version control.
+The solution should also support comments since my work was mostly zipping two larger datasets and I wanted my matching rationales to be well documented.
+This was largely influenced by my work in [Composition of Religious and Ethnic Groups (CREG) Project ](https://clinecenter.illinois.edu/project/Religious-Ethnic-Identity/composition-religious-and-ethnic-groups-creg-project) at [Cline Center for Advanced Social Research](https://clinecenter.illinois.edu/), where we carefully document tens of thousands of matches when zipping dozens of datasets.
 
 
 ## YAML
@@ -76,7 +76,6 @@ Country:
             size: 0.01
 ```
 
-This is when I started exploring ways to store data in nested structures.
 With this structure, we adhere to the single source of truth principle: attributes of country `Belgium` only ever appear once in the dataset.
 To "flatten" the nested data structure, all we need is [a few lines of code](https://github.com/chmlee/ream-python/blob/master/ream/decode.py#L48-#L86) (not the most elegant solution, but it works).
 
@@ -113,7 +112,7 @@ How can I get a nested *and* modular data structure?
 ## TOML
 
 My next candidate was TOML.
-It had been quite popular lately, and in my opinion is easier to learn than YAML.
+It had been quite popular lately, and in my opinion is easier to learn than YAML (the [YAML spec](https://yaml.org/spec/1.2/spec.pdf) is 84 pages long!).
 We can rewrite the previous example as:
 ```toml
 [[Country]]
@@ -150,9 +149,9 @@ I gave up TOML soon after reading the post and moved on.
 
 ## Documentation
 
-I want my inline documentation to be easy to read.
-Though I'm comfortable reading raw monospace text files, I still prefer reading HTML or PDF files if possible.
-To do so with YAML or TOML, I have to write a documentation generator which either build upon an existing implementation or write one myself from scratch.
+I wanted my inline documentation to be easy to read.
+Though I was comfortable reading raw monospace text files, I still preferred reading HTML or PDF files if possible.
+To do so with YAML or TOML, I had to write a documentation generator which either build upon an existing implementation or write one myself from scratch.
 If so, I much rather write an implementation of my own language which caters to my own needs and preferences.
 
 If I don't want to convert a data serialization language to a markup language, why don't I serialize a markup language?

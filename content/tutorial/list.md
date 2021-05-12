@@ -3,14 +3,7 @@ title = "List"
 weight = 3
 +++
 
-{% box(class="note")%}
-Support for lists has been removed for REAM v0.3.
-It will be added back in the future.
-
-The following is from the old documentation for REAM v0.2.
-{% end %}
-
-A list is a sequence of strings, numbers, and/or boolean, in the form of:
+A list is a sequence of strings, numbers, or boolean, in the form of:
 
 ```ream
 - <key>:
@@ -24,38 +17,65 @@ A list is a sequence of strings, numbers, and/or boolean, in the form of:
 Example:
 ```ream
 # Example
-- list of strings:
+- list_of_strings:
   * item 1
   * item 2
   * item 3
-- list of numbers:
-  * $1$
-  * $-2$
-  * $3.1415926$
+- list_of_numbers:
+  * 1
+  * -2
+  * 3.1415926
+- list_of_booleans:
+  * TRUE
+  * FALSE
 ```
 
 {% editor(id="list") %}
 # Example
-- list of strings:
+- list_of_strings:
   * item 1
   * item 2
   * item 3
-- list of numbers:
-  * $1$
-  * $-2$
-  * $3.1415926$
+- list_of_numbers:
+  * 1
+  * -2
+  * 3.1415926
+- list_of_booleans:
+  * TRUE
+  * FALSE
 {% end %}
 
 {% box(class="tip") %}
 By default, items in lists would be joined as strings with semicolons as separators
 {% end %}
 
+A list can't contain elements of different types.
+The following will raise an error.
+
+```ream
+# BadExample
+- list:
+  * 1
+  * item
+  * TRUE
+```
+
+{% editor(id="heterogeneous-list") %}
+# BadExample
+- list:
+  * 1
+  * item
+  * TRUE
+{% end %}
+
+(*: Example *should not* work. See [Note](/contribution/note) for more information, or try it in the [web-editor](https://chmlee.github.io/ream-editor))
+
 REAM is indentation insensitive.
 Spaces before asterisks are not required, but two spaces are recommended.
 
 ```ream
 # Example
-- still a list:
+- still_a_list:
 * item 1
 * item 2
 * item 3
@@ -63,7 +83,7 @@ Spaces before asterisks are not required, but two spaces are recommended.
 
 {% editor(id="list-no-indentation") %}
 # Example
-- still a list:
+- still_a_list:
 * item 1
 * item 2
 * item
@@ -72,7 +92,7 @@ Spaces before asterisks are not required, but two spaces are recommended.
 Empty lines between list items are allowed, but discouraged:
 ```ream
 # Example
-- still a list:
+- still_a_list:
   * item 1
 
   * item 2
@@ -81,16 +101,11 @@ Empty lines between list items are allowed, but discouraged:
 
 {% editor(id="list-emtpy-line") %}
 # Example
-- still a list:
+- still_a_list:
   * item 1
 
   * item 2
   * item 3
-{% end %}
-
-{% box(class="detail" id="list-as-array")%}
-I'm considering limiting lists to be sequences of items of *the same type*, also known as arrays.
-If for any reason you want to save data of different types as tuples, just use [subentries](/ream-doc/Language/Basics/Entry#subentry) as named tuples.
 {% end %}
 
 {% box(class="detail" id="nest-list")%}

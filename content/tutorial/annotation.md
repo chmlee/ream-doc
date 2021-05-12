@@ -24,7 +24,7 @@ and items in [lists](/tutorial/list) in the form of
 They start with a single greater sign (`>`), and a space is required before `>` and the content.
 
 Recall that REAM is indentation-insensitive.
-The indentation before `>` is optional, but the convention is to align `>` with the first character of the key_(for non-list values) or value (for list items).
+The indentation before `>` is optional, but the convention is to align `>` with the first character of the key (for non-list values) or value (for list items).
 
 Examples:
 
@@ -70,7 +70,9 @@ Examples:
     > Annotation for boolean
 {% end %}
 
+{% box(class="tip") %}
 Annotations are ignored when compiled to datasets.
+{% end %}
 
 However, that is not to say annotations can be placed anywhere in the file.
 **Annotations are not comments**: they annotate **values**, and can only follow values.

@@ -25,7 +25,6 @@ Some examples for valid key names are:
 - key: value
 - KEY: value
 - key_1: value
-- key with spaces: value
 - key_with_underscore: value
 - _: value
 ```
@@ -35,7 +34,6 @@ Some examples for valid key names are:
 - key: value
 - KEY: value
 - key_1: value
-- key with spaces: value
 - key_with_underscore: value
 - _: value
 {% end %}
@@ -73,11 +71,27 @@ This rule is not yet enforced.
 {% end %}
 
 {% box(class="detail" id="utf")%}
-Key names should support UTF-8.
-The [current parser](https://github.com/chmlee/ream-core) does not support UTF-8 identifiers yet.
+Key names should support UTF-8, but [ream-core](https://github.com/chmlee/ream-core) does not support UTF-8 identifiers yet.
 It is recommended that you use only ASCII for now.
 {% end %}
 
+## Value
+
+### String
+
+```ream
+# Example
+- string: value
+- long string: Hello World
+- quoted string: "quote"
+```
+
+{% editor(id="string") %}
+# Example
+- string: value
+- long string: Hello World
+- quoted string: "quote"
+{% end %}
 
 There is not need to quote strings.
 Quotation marks will be preserved.
@@ -132,7 +146,7 @@ Example:
 
 {% box(class="detail" id="number-type")%}
 Should REAM distinguish between `Integer` and `Float`?
-I don't think integers are used very often in statistical or numeric analysis, so for now all numbers are IEEE 754 64-bit numbers.
+I don't think integers are used very often in statistical or numeric analysis, so for now all numbers are IEEE 754 64-bit floats.
 In ream-core they are validated through parsing as Rust's `f64` type, but this may change in the future.
 {% end %}
 
@@ -174,6 +188,6 @@ In Rust I would have to do something like `type ReamString = Option<String>`.
 That being said, all missing values require explicit type annotations since `None` is not a type of value but a variant of an enumeration.
 
 The benefit of such design is more obvious when references and filters are implemented.
-When referencing existing data for manipulation, users should consider potential `None` values: referencing a `Boolean` may return `Some(TRUE)`, `Some(FALSE)`, or `None`, and the value should be unwrapped before being manipulated.
-The filters should then provide methods similar to `unwrap`, `unwrap_or` and `unwrap_or_default` in Rust.
+When referencing existing data for manipulation, users should think about how to deal with potential `None` values since referencing a `Boolean` may return `Some(TRUE)`, `Some(FALSE)`, or `None`.
+The filters should then provide methods similar to `unwrap`, `unwrap_or` and `unwrap_or_default`.
 {% end %}

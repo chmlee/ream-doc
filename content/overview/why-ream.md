@@ -7,7 +7,7 @@ level = 2
 +++
 
 REAM provides a one-stop solution to manage social science data projects.
-While there are existing languages and tools that do part of what REAM does, REAM bundle all necessarily functionalities into one framework with consistent syntax.
+While there are existing languages and tools that do part of what REAM does, REAM plans to bundle all necessarily functionalities into one framework with consistent syntax.
 See [Comparison](/ovewrview/comparison) for a more detailed discussion.
 
 In addition, REAM adhere to the [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) design so that large data projects are easier to manage.
@@ -26,14 +26,14 @@ REAM syntax is similar to Markdown, and should look familiar:
 # Country
 - name: Belgium
 - population: 11433256
-- euro zone: TRUE
+- euro_zone: TRUE
 ```
 
 {% editor(id="easy-to-learn-and-use") %}
 # Country
 - name: Belgium
 - population: 11433256
-- euro zone: TRUE
+- euro_zone: TRUE
 {% end %}
 
 It takes around half an hour to [learn the basics](/tutorial) of the language to start writing your first REAM dataset.
@@ -42,15 +42,16 @@ Learn more advanced features later as your project scales up.
 REAM is easy to edit.
 All REAM datasets are stored as text files, and can be edited in any text editor.
 A [web-based editor](https://chmlee.github.io/ream-editor) is available and provides basic functionalities.
-No local installation required; just visit the website, drag and drop your REAM datasets<sup>1</sup>, and start getting productive.
+No local installation required; just visit the website and start getting productive.
 Advanced functionalities are available through the [REAM CLI tool](https://github.com/chmlee/ream-core).
 No complex development environment to set up.
-No third-party dependencies to manage<sup>2</sup>.
-Just one executable binary file.
+No third-party dependencies to manage.<sup>1</sup>
+Just one executable binary file.<sup>2</sup>
 
-[1]: Drag and drop not yet implemented.
+[1]: May require Git during alpha development stage.
 
-[2]: May require Git during alpha development stage.
+[2]: Users have to compile the binary themselves during alpha development stage.
+Platform-specific precompiled binaries would be available in the future.
 
 ## Nested structure
 
@@ -168,10 +169,10 @@ you specify the types through explicit type annotations:
 - x4 (str): TRUE
 {% end %}
 
-(*: Example not working. See [Note](/contribution/note) for more information.)
+(*: Example not working. See [Note](/contribution/note) for more information, or try it in the [web-editor](https://chmlee.github.io/ream-editor))
 
-Type errors are catched during compile time.
-The follwoing would not compile at all:
+Type errors are caught during compile time.
+The follwoing would raise error `TypeError(InvalidNumber)`:
 
 ```ream
 # Data
@@ -185,12 +186,12 @@ The follwoing would not compile at all:
 - number (num): value
 {% end %}
 
-(*: Example not working. See [Note](/contribution/note) for more information.)
+(*: Example not working. See [Note](/contribution/note) for more information, or try it in the [web-editor](https://chmlee.github.io/ream-editor))
 
 The goal is to embed [ream-core](https://github.com/chmlee/ream-core) in Python and R modules through Rust bindings ([PyO3](https://github.com/PyO3/PyO3) and [extendr](https://github.com/extendr/extendr)) so you read REAM datasets directly as `panda.dataframe` and `tidyverse::tibble`.
-REAM's types will be translated directly into target languages' native types without ever touching CSV or JSON and their almost nonexistent type systems which is the source of all evil.
+REAM's types will be mapped directly to target languages' native types without ever touching CSV or JSON and their almost nonexistent type systems which is the source of all evil.
 
-Ideally, you should be able to do something like:
+Ideally, you will be able to do something like:
 
 ```python
 import ream
@@ -205,7 +206,7 @@ type(df) # pandas.core.frame.DataFrame
 ## Reference and filters*
 
 To reduce repetition, REAM implements a reference system to reuse existing data and filters for basic data manipulation.
-Instead of manually manipulating variables with similar pattern:
+Instead of manually editing variables with similar pattern:
 
 ```ream
 # Country
@@ -319,7 +320,8 @@ Variable `Year$unique_id` is now formatted by joining the parent variable `Count
 
 ## Modularity*
 
-REAM encourages datasets to be saved in smaller components.
+REAM encourages datasets to be saved in smaller components and later join them through templates.
+
 Say you want to collect data on Belgium, Netherlands and Luxembourg, instead of saving everything in one single file, it's recommended to saved data by country:
 
 (Country/Belgium.ream)

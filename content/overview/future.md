@@ -8,7 +8,7 @@ This section is a work in progress.
 {% end %}
 
 The ultimate goal for REAM is to make distributing and reusing data easy.
-To do so we need to think of datasets not just as data serializations, but also as programmes.
+To do so we need to think of REAM not just as a data serialization but as a programming language, and REAM datasets as libraries with well-defined APIs for external libraries to use.
 
 First off, the language.
 To make REAM datasets easy to be reused, the language itself should encourage or enforce good practices.
@@ -22,9 +22,9 @@ This is a [notoriously difficult task](https://medium.com/@sdboyer/so-you-want-t
 Still I think it's important to have distribution in mind when designing the language and not as an afterthought.
 At the very least I should provide a boilerplate directory structure for users to import datasets with `git submodule add`.
 
-Finally, the community.
+Finally, the ecosystem.
 The number one reason why most users would even consider using REAM is definitely not because of the language itself, but the quality datasets in the registry that people can easily install and build new datasets upon.
-For that to happen, the registry should maintain datasets containing popular variables that almost every datasets depend on, such as datasets for country codes and annual GDP.
+For that to happen, the registry should have quality datasets containing popular variables that almost every datasets depend on, such as datasets for country codes and annual GDP.
 
 (Even though this sounds like a proposal for a standard library, what I have in mind is what [oh-my-zsh](https://ohmyz.sh/) is to Zsh.)
 
@@ -77,7 +77,7 @@ I can use GDP data from World Bank Open Data.
 
 1. Download dataset
 
-- Google `World Bank GDP` and click on the first result
+- Google `World Bank GDP` and click on the first result (assuming you have ad-block installed)
 
 - Download the data in CSV format
 
@@ -99,7 +99,7 @@ Error in read.table(file = file, header = header, sep = sep, quote = quote,  :
 ```
 
 - Open the CSV file in a text editor.
-Discover the dataset header is on line 5.
+Discover the actual dataset starts on line 5.
 
 - Reread the dataset:
 
@@ -165,7 +165,7 @@ But my ideal package manager is more than a downloader.
 
 ## Dependency
 
-Consider Alesina et al. 2003 study on ethnic, linguistic and religious fractionalization.
+Consider Alesina et al. (2003) study on ethnic, linguistic and religious fractionalization.
 To calculate ethnic fractionalization index for each country, Alesina compiled a list of ethnic groups world wide by consulting six types of sources:
 
 - Encyclopedia Brittanica (EB)
@@ -335,7 +335,7 @@ Eventually, all relevant data are extracted from the dependencies, manually or t
 The practice of copying dependencies to your own project is known as [vendoring](https://stackoverflow.com/questions/26217488/what-is-vendoring) in programming.
 Vendoring is not necessarily a bad thing, but we do lose some information along the way.
 
-(TODO: discussion on pros and cons of vendoring)
+(TODO: discuss pros and cons of vendoring)
 
 ## Updating dependencies
 
