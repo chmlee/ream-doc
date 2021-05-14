@@ -58,7 +58,7 @@ Platform-specific precompiled binaries would be available in the future.
 REAM encourages data to be stored in nested structures.
 Instead of managing data in the following 2-dimension spreadsheet:
 
-```csvv
+```csv
 Country,Year
 Belgium,2010
 Belgium,2011
@@ -149,7 +149,7 @@ Test
 
 REAM checks for data types during compile time to ensure type safety.
 Instead of guessing what type each variable would be assigned to when being read:
-```csvv
+```csv
 x1,x2,x3,x4
 1.0,"1.0",true,"true"
 ```
