@@ -206,6 +206,14 @@ blockquote {
     width: 50%;
     padding: 1em;
     font-size: 27px;
+
+    a {
+        color: $blue-5;
+    }
+
+    a:hover {
+        color: $blue-6;
+    }
 }
 
 .nav-next {
