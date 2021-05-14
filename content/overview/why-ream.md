@@ -78,7 +78,6 @@ you write:
 ## Year
 - name: 2012
 ```
-
 and let the compiler compiles the latter to the former:
 
 {% editor(id="nested-structure") %}
@@ -142,6 +141,9 @@ graph LR;
   COMPILER --> DATA[(Datasets<br>CSV, JSON, etc.)]
   COMPILER --> DOC[[Documentations<br>HTML, PDF, etc.]]
 {% end %}
+
+Test
+
 
 ## Static typing
 

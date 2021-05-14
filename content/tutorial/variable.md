@@ -82,15 +82,15 @@ It is recommended that you use only ASCII for now.
 ```ream
 # Example
 - string: value
-- long string: Hello World
-- quoted string: "quote"
+- long_string: Hello World
+- quoted_string: "quote"
 ```
 
 {% editor(id="string") %}
 # Example
 - string: value
-- long string: Hello World
-- quoted string: "quote"
+- long_string: Hello World
+- quoted_string: "quote"
 {% end %}
 
 There is not need to quote strings.
@@ -100,29 +100,29 @@ Values can't contain line breaks.
 The following will raise an error:
 ```ream
 # BadExample
-- key 1: first line
+- key_1: first line
          second line
-- key 2: value
+- key_2: value
 ```
 
 {% editor(id="string-with-linebreak") %}
 # BadExample
-- key 1: first line
+- key_1: first line
          second line
-- key 2: value
+- key_2: value
 {% end %}
 
 Note that REAM stores strings as raw literals, so the following example is valid. `\n` will not be escaped, and is equivalent to `\\n` in JSON.
 ```ream
 # Example
-- key 1: first line\nsecond line
-- key 2: value
+- key_1: first line\nsecond line
+- key_2: value
 ```
 
 {% editor(id="string-is-raw") %}
 # Example
-- key 1: first line\nsecond line
-- key 2: value
+- key_1: first line\nsecond line
+- key_2: value
 {% end %}
 
 
@@ -131,17 +131,16 @@ Note that REAM stores strings as raw literals, so the following example is valid
 Example:
 ```ream
 # Example
-- number 1: 1
-- number 2: -2
-- number 3: 3.1415926
+- number_1: 1
+- number_2: -2
+- number_3: 3.1415926
 ```
-<EditorLite-EditorLite item="number" />
 
 {% editor(id="number") %}
 # Example
-- number 1: 1
-- number 2: -2
-- number 3: 3.1415926
+- number_1: 1
+- number_2: -2
+- number_3: 3.1415926
 {% end %}
 
 {% box(class="detail" id="number-type")%}

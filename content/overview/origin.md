@@ -25,7 +25,7 @@ That's when I started exploring other data serialization languages.
 
 In addition to being editor-friendly, I wanted the solution to work will with Git or provide a native way for version control.
 The solution should also support comments since my work was mostly zipping two larger datasets and I wanted my matching rationales to be well documented.
-This was largely influenced by my work in [Composition of Religious and Ethnic Groups (CREG) Project ](https://clinecenter.illinois.edu/project/Religious-Ethnic-Identity/composition-religious-and-ethnic-groups-creg-project) at [Cline Center for Advanced Social Research](https://clinecenter.illinois.edu/), where we carefully document tens of thousands of matches when zipping dozens of datasets.
+This was largely influenced by my work in [Composition of Religious and Ethnic Groups (CREG) Project](https://clinecenter.illinois.edu/project/Religious-Ethnic-Identity/composition-religious-and-ethnic-groups-creg-project) at [Cline Center for Advanced Social Research](https://clinecenter.illinois.edu/), where we carefully document tens of thousands of matches when zipping dozens of datasets.
 
 
 ## YAML
@@ -192,7 +192,7 @@ I've always wanted to rewrite the parser without a parsing library, so I might a
 Another inspiration for this move is [Hedgehog Lab](https://github.com/Hedgehog-Computing/hedgehog-lab), a scientific computing and data visualization project written in TypeScript and runs entirely in the browser.
 One of the motivations behind the project is lower the barrier for scientific computation.
 The author argues students who simply want to learn scientific computation shouldn't spend time installing and [configuring Python development environment](https://xkcd.com/1987/) and dealing with third-party dependencies.
-The goal for Hedgehog Lab is to make working on scientific computation as easy as opening an URL in the browser.
+The goal for Hedgehog Lab is to make working on scientific computation as easy as opening a URL in the browser.
 As mentioned in [his design rationale](https://zhuanlan.zhihu.com/p/147402013):
 
 > Even if Numpy and MATLAB are 10000 times easier than Fortran/BLAS, there is always a learning curve.
@@ -200,7 +200,7 @@ As mentioned in [his design rationale](https://zhuanlan.zhihu.com/p/147402013):
 >
 > ...
 >
-> Designing an niche toy for smart people is hard, but creating an easy-to-understand tool for commoners is even harder.
+> Designing a niche toy for smart people is hard, but creating an easy-to-understand tool for commoners is even harder.
 
 This fundamentally changes how I view the future of REAM.
 Ease of use became the number one concern for the project.

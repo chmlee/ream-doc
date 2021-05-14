@@ -1,0 +1,43 @@
+@import "colors";
+// color scheme directly copied from vuepress
+
+.box {
+    border-left: 10px solid;
+    padding: 1em 0.5em 1em 1em;
+    margin: 2em 0em;
+}
+
+.box-title {
+    font-weight: bold;
+    padding: 1em 0px 0px 0px;
+}
+
+.box.tip {
+    border-left-color: #42B983;
+    background: #F3F5F7;
+}
+
+.box.detail {
+    border-left-color: $grey-9;
+    background: #EEEEEE;
+
+    button {
+        margin: 0px 10px;
+        background-color: $grey-5;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+    }
+
+    button:hover {
+        background-color: $grey-7;
+        color: $grey-0;
+    }
+}
+
+.box.note {
+    border-left-color: #E7C000;
+    background: #FFFAE3;
+
+}

@@ -1,36 +1,31 @@
-// scheme:
-// https://coolors.co/1c0f13-6e7e85-b7cece-bbbac6-e2e2e2
-
-// $xiketic: #220c10ff;
-$feldgrau: #506c64ff;
-$middle-blue-green: #77cbb9ff;
-$dark-sky-blue: #75b8c8ff;
-$light-gray: #cdd3d5ff;
-
-// // https://coolors.co/725752-878e88-96c0b7-d4dfc7-fef6c9
-$liver: #725752ff;
-$battleship-grey: #878e88ff;
-$opal: #96c0b7ff;
-$beige: #d4dfc7ff;
-$blond: #fef6c9ff;
-
-$xiketic: #07020dff;
-$cyan-process: #5db7deff;
-$eggshell: #f1e9dbff;
-$grullo: #a39b8bff;
-$dim-gray: #716a5cff;
-$turquoise: #41EAD4;
-$jet: #323031;
-$alablater: #E8EDDF;
-$honeydew: #e1efe6ff;
-
+@import 'colors';
+@import 'navbar';
+@import 'sidebar';
+@import 'box';
 
 html {
-  background: $eggshell;
-  color: $xiketic;
-  font-size: 23px;
-  line-height: 1.6;
-  font-family: arial;
+    background-color: $grey-0;
+    color: $grey-9;
+    font-size: 23px;
+    line-height: 1.6;
+    font-family: arial;
+
+    a {
+        text-decoration: none;
+        color: $grey-9;
+    }
+
+
+}
+
+p > a {
+    color: $blue-7;
+    border-bottom: 3px $blue-7 dashed;
+}
+
+p > a:hover {
+    color: $blue-8;
+    border-bottom: 3px $blue-8 solid;
 }
 
 .base-container {
@@ -40,45 +35,20 @@ html {
   margin: 0em 5em;
 }
 
-a {
-    text-decoration: none;
-    color: purple;
-}
 
 p > code {
-    background: $honeydew;
-    padding: 0em 0.5em;
-    margin: 0em 0.1em;
-    border: 1px solid grey;
+    background: $grey-3;
+    padding: 0.1em 0.25em;
     border-radius: 5px;
 }
 
 li > code {
-    background: $honeydew;
+    background: $grey-3;
     padding: 0em 0.5em;
     margin: 0em 0.1em;
-    border: 1px solid grey;
     border-radius: 5px;
 }
 
-#brand a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-.navbar a {
-  color: $liver;
-}
-
-.navbar {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-  padding: 0em 0em 0em 0em;
-  //border-bottom: 2px solid grey;
-}
 
 .nav-list {
   display: flex;
@@ -90,9 +60,6 @@ li > code {
   margin: 0em 0.5em;
 }
 
-.nav-item-active > a {
-    color: red;
-}
 
 .content-container {
   display: flex;
@@ -101,49 +68,14 @@ li > code {
 
 
 pre {
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   line-height: 1.4;
   overflow-y: auto;
   padding: 1em;
   margin: 0em 3em;
 }
 
-.page-sidebar {
-    display: flex;
-    flex-wrap: wrap;
-}
 
-ul.sidebar {
-    font-weight: bold;
-    padding: 1em 0em 0em 0.5em;
-    margin: 0em 1em 0em 0em;
-    //border-right: 2px solid grey;
-}
-
-ul.sub-sidebar {
-    padding: 0em 0em 0em 1.5em;
-    font-weight: normal;
-}
-
-li.sidebar-item {
-    list-style-type: none;
-}
-
-li.sidebar-item>a {
-    text-decoration: none;
-    color: $xiketic;
-}
-
-li.sidebar-item-focus>a:first-child {
-    color: red;
-}
-
-ul.header-container {
-  list-style-type: none;
-  padding: 0em 1em;
-  border-left: 1px solid gray;
-  font-size: 20px;
-  font-weight: normal;
-}
 
 .main {
     padding: 1em 0em 0em 0.5em;
@@ -179,13 +111,6 @@ ul.header-container {
   text-align: center;
 }
 
-.intro-note {
-  padding: 5vh 3vw;
-  margin: 0em 5em;
-  text-align: left;
-  background: $opal;
-}
-
 .index-button {
     display: flex;
     justify-content: center;
@@ -193,8 +118,8 @@ ul.header-container {
 }
 
 .index-button a {
-    color: black;
-    background-color: $grullo;
+    background-color: $blue-3;
+    color: $grey-9;
     display: inline-block;
     padding: 0.5em 1em;
     margin: 0em 0.5em;
@@ -202,12 +127,12 @@ ul.header-container {
 }
 
 .index-button a:hover {
-    background: $cyan-process;
+    background-color: $blue-5;
 }
 
 blockquote {
-    border-left: 8px solid grey;
-    color: grey;
+    border-left: 8px solid $grey-6;
+    color: $grey-6;
     padding: 10px;
     text-align: left;
     font-style: italic;
@@ -263,12 +188,12 @@ blockquote {
 .update-button {
     font-size: 23px;
     width: 5em;
-    background: $turquoise;
+    background: $blue-3;
     margin: 0em 0.5em;
 }
 
 .update-button:hover {
-    background: grey;
+    background: $blue-5;
     color: white;
 }
 
@@ -287,39 +212,9 @@ blockquote {
     text-align: right;
 }
 
-$magic-mint: #8be8cbff;
 
 
-$pale-cerulean: #a5c4d4ff;
 
-.box {
-    border-left: 10px solid;
-    padding: 0.5em 0.5em 0.5em 1em;
-    margin: 2em 0em;
-}
-
-.box-heading {
-    margin: 0em 0em 0em 0em;
-}
-
-.box-title {
-    font-weight: bold;
-}
-
-
-.box.tip {
-    border-left-color: green;
-    background: $pale-cerulean;
-}
-
-.box.detail {
-    border-left-color: black;
-    background: #6B9193;
-}
-
-.box.note {
-    background: #fecf6a;
-}
 
 sup {
     font-size: 15px;

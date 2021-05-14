@@ -19,18 +19,18 @@ Templating and static typing help validate schemas.
 Second, the tooling.
 REAM datasets can't be easily distributed and reused without a package manager and a package registry.
 This is a [notoriously difficult task](https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527), and I don't know whether this project will survive long enough for a package manager to be a need.
-Still I think it's important to have distribution in mind when designing the language and not as an afterthought.
+Still I think it is important to have distribution in mind when designing the language and not as an afterthought.
 At the very least I should provide a boilerplate directory structure for users to import datasets with `git submodule add`.
 
 Finally, the ecosystem.
 The number one reason why most users would even consider using REAM is definitely not because of the language itself, but the quality datasets in the registry that people can easily install and build new datasets upon.
-For that to happen, the registry should have quality datasets containing popular variables that almost every datasets depend on, such as datasets for country codes and annual GDP.
+For that to happen, the registry should have quality datasets containing popular variables that almost every dataset depend on, such as datasets for country codes and annual GDP.
 
 (Even though this sounds like a proposal for a standard library, what I have in mind is what [oh-my-zsh](https://ohmyz.sh/) is to Zsh.)
 
 ## Motivation
 
-If I want to do matrix calculation in Python, I don't need to implement a linear algebra library from scratch.
+If I want to do matrix calculation in Python, I do not need to implement a linear algebra library from scratch.
 I can use `numpy`:
 
 1. Download `numpy`
@@ -52,7 +52,7 @@ mat_A_inv = la.inv(mat_A)
 
 <br/>
 
-If I want to create fancy plots in R, I don't need to write a graphing library from scratch.
+If I want to create fancy plots in R, I do not need to write a graphing library from scratch.
 I can use `ggplot2`
 
 1. Download `ggplot2`
