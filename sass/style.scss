@@ -18,14 +18,14 @@ html {
 
 }
 
-p > a {
+.main a {
     color: $blue-7;
-    border-bottom: 3px $blue-7 dashed;
+    border-bottom: 3px $blue-7 solid;
 }
 
-p > a:hover {
+.main a:hover {
     color: $blue-8;
-    border-bottom: 3px $blue-8 solid;
+    border-bottom: 3px $blue-8 dashed;
 }
 
 .base-container {

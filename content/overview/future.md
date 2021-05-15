@@ -13,18 +13,18 @@ To do so we need to think of REAM not just as a data serialization but as a prog
 First off, the language.
 To make REAM datasets easy to be reused, the language itself should encourage or enforce good practices.
 References and data filters reduce repetition.
-Inline documentation makes generating human-readable documentations a trivial task.
+Inline documentations makes generating human-readable documentations a trivial task.
 Templating and static typing help validate schemas.
 
 Second, the tooling.
 REAM datasets can't be easily distributed and reused without a package manager and a package registry.
 This is a [notoriously difficult task](https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527), and I don't know whether this project will survive long enough for a package manager to be a need.
-Still I think it is important to have distribution in mind when designing the language and not as an afterthought.
+Still, I think it is important to have distribution in mind when designing the language and not as an afterthought.
 At the very least I should provide a boilerplate directory structure for users to import datasets with `git submodule add`.
 
 Finally, the ecosystem.
-The number one reason why most users would even consider using REAM is definitely not because of the language itself, but the quality datasets in the registry that people can easily install and build new datasets upon.
-For that to happen, the registry should have quality datasets containing popular variables that almost every dataset depend on, such as datasets for country codes and annual GDP.
+The number one reason why most users would even consider using REAM is not because of the language itself, but the quality datasets in the registry that people can easily install and build new datasets upon.
+For that to happen, the registry should have quality datasets containing popular variables that almost every dataset depends on, such as datasets for country codes and annual GDP.
 
 (Even though this sounds like a proposal for a standard library, what I have in mind is what [oh-my-zsh](https://ohmyz.sh/) is to Zsh.)
 
@@ -159,14 +159,15 @@ my_data$GDP = apply(my_data, 1, function(row) get_gdp(row['country'], row['year'
 There should be an easier way to import existing datasets.
 We need a package manager for data.
 
-It's not unheard of to download datasets with package managers. Beside the build-in datasets in R, you can download quite a few datasets from CRAN using `install.pacakges`, including example datasets in libraries (`diamonds` in ggplot2), datasets as libraries (`titanic`), or wrappers of APIs (`censusapi`).
+It's not unheard of to download datasets with package managers.
+Besides the build-in datasets in R, you can download quite a few datasets from CRAN using `install.pacakges`, including example datasets in libraries (`diamonds` in ggplot2), datasets as libraries (`titanic`), or wrappers of APIs (`censusapi`).
 
 But my ideal package manager is more than a downloader.
 
 ## Dependency
 
-Consider Alesina et al. (2003) study on ethnic, linguistic and religious fractionalization.
-To calculate ethnic fractionalization index for each country, Alesina compiled a list of ethnic groups world wide by consulting six types of sources:
+Consider Alesina et al. (2003) study on ethnic, linguistic, and religious fractionalization.
+To calculate ethnic fractionalization indices for each country, Alesina compiled a list of ethnic groups worldwide by consulting six types of sources:
 
 - Encyclopedia Brittanica (EB)
 - CIA World Factbook (CIA)
@@ -377,6 +378,6 @@ graph BT;
 If the original dataset was created by manually copying and pasting data from dependencies, you'll probably have to repeat the process.
 
 If the dataset was created by extracting data from dependencies with scripts, we can rerun the scripts and generate the updated dataset *only if* the schemas of all dependencies remain the same.
-Otherwise you'll have to analyze the schema changes and run custom migration scripts before running the original scripts.
+Otherwise, you'll have to analyze the schema changes and run custom migration scripts before running the original scripts.
 
 (To be continued)

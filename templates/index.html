@@ -41,53 +41,41 @@
 
     <div>
         <p>
-            REAM is an alternative to spreadsheets and databases for managing social science datasets.
-            It has three main components:
+            REAM is an alternative to spreadsheets and databases for managing social science datasets that emphasizes on maintainability.
+            It compiles to both analysis-ready <b>datasets</b> (CSV, JSON) and human-readable <b>documentations</b> (HTML, PDF).
+            Multiple formats, one source.
+        </p>
+
+        <div class="mermaid-container">
+            <div class="mermaid">
+            graph LR;
+              SOURCE[REAM File] --> PARSER(["REAM Parser<br>(ream-core)"]);
+              PARSER --> DATA[(Datasets<br>CSV, JSON, etc.)]
+
+              SOURCE --> CONVERTER([Third-party<br>Markdown Converter])
+              CONVERTER --> DOC[[Documentation<br>HTML, PDF, etc.]]
+            </div>
+        </div>
+
+        <p>
+            REAM has three main components:
             <ol>
                 <li>
                     a <em>data serialization language</em> for structured datasets (working in progress)
                 </li>
                 <li>
-                    a <em>data template language</em> to generate datasets (planned)
+                    a <em>data template</em> for generating datasets (working in progress)
                 </li>
                 <li>
-                    a collection of <em>filters</em> to manipulate data (planned)
+                    a collection of <em>filters</em> for data manipulation (planned)
                 </li>
             </ol>
         </p>
-        <p>
-          REAM encourages inline documentation through <a href="#">annotations</a>, and compiles to both analysis-ready <b>datasets</b> (CSV, JSON, etc.) and human-readable <b>documentations</b> (HTML, PDF, etc.)
-          Two formats, one source.
-        </p>
 
-        <div class="index-graph">
-
-            <div class="mermaid-container">
-                <strong>Current Design:</strong>
-                <div class="mermaid">
-                graph LR;
-                  SOURCE[REAM File] --> PARSER(["REAM Parser<br>(ream-core)"]);
-                  PARSER --> DATA[(Datasets<br>CSV, JSON, etc.)]
-
-                  SOURCE --> CONVERTER([Third-party<br>Markdown Converter])
-                  CONVERTER --> DOC[[Documentation<br>HTML, PDF, etc.]]
-                </div>
-            </div>
-
-            <div class="mermaid-container">
-                <strong>Future Design:</strong>
-                <div class="mermaid">
-                graph LR;
-                  SOURCE[REAM File] --> COMPILER(["REAM Compiler<br>(ream-core)"]);
-                  COMPILER --> DATA[(Datasets<br>CSV, JSON, etc.)]
-                  COMPILER --> DOC[[Documentations<br>HTML, PDF, etc.]]
-                </div>
-            </div>
-        </div>
 
 
         <p>
-          The language, along with the <a href="/toolchain">toolchain</a>, aims to help social scientists build human-readable, modular and interoperable datasets, ranging from small personal projects to large collaborative projects.
+          The language, along with the <a href="/toolchain">toolchain</a>, aims to help social scientists build human-readable, modular and reusable datasets, ranging from small personal projects to large collaborative projects.
           Learn more about <a href="/overview/why-ream">REAM's features</a> to see whether it is the right choice for your next project.
         </p>
     </div>

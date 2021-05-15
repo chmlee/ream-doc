@@ -24,7 +24,7 @@ syntax highlighting for REAM in Vim.
 
 ## Planned
 
-- [Cargo-inspired](https://doc.rust-lang.org/cargo/) package manager for REAM with ream-core embedded in it.
+- A package manger inspired by [Cargo](https://doc.rust-lang.org/cargo/)
 
 ## Not maintained
 - [ream-python](https://github.com/chmlee/ream-python):

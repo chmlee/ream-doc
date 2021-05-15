@@ -14,7 +14,7 @@ REAM is statically typed, that is, the compiler check for and catch type errors 
 
 Type annotations are added after the key and wrapped by parentheses:
 ```ream
-- <key> (<type>): <value>
+f - <key> (<type>): <value>
 ```
 
 Values can be one of the three primitive types:
@@ -61,8 +61,47 @@ So the following two entries generates identical abstract syntax trees:
 - key_3: FALSE
 ```
 
+For untyped lists, the type of the first element would be used.
+The following two lists generate identical abstract syntax trees:
+```ream
+# Example
+- key:
+  * 1
+  * -2
+  * 3.14159
+```
+
+```ream
+# Example
+- key (list num):
+  * 1
+  * -2
+  * 3.14159
+```
+
+But the following would produce a different one:
+```ream
+# Example
+- key (list str):
+  * 1
+  * -2
+  * 3.14159
+```
+
+And the following would raise `TypeError(HeterogeneousList)`:
+```ream
+# Example
+- key:
+  * 1
+  * item
+  * 3.14159
+```
+
+
+
+
 Type annotations can be used to convert values types.
-Add type annotation `(str)` to store `3.14159` and `FALSE` as strings.
+Add type annotation `str` to store `3.14159` and `FALSE` as strings.
 ```ream
 # Example
 - key_1: 3.14159

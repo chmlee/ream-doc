@@ -140,10 +140,17 @@ graph LR;
   SOURCE[REAM File] --> COMPILER(["REAM Compiler<br>(ream-core)"]);
   COMPILER --> DATA[(Datasets<br>CSV, JSON, etc.)]
   COMPILER --> DOC[[Documentations<br>HTML, PDF, etc.]]
+
+  COMPILER --> PYMOD(["Python module"])
+  subgraph Python
+    PYMOD --> PYDAT[("panda.dataframe")]
+  end
+
+  COMPILER --> RMOD(["R module"])
+  subgraph R
+    RMOD --> RDAT[("tidyverse::tibble")]
+  end
 {% end %}
-
-Test
-
 
 ## Static typing
 
@@ -322,9 +329,10 @@ Variable `Year$unique_id` is now formatted by joining the parent variable `Count
 
 ## Modularity*
 
-REAM encourages datasets to be saved in smaller components and later join them through templates.
+REAM encourages datasets to be saved in smaller components.
 
-Say you want to collect data on Belgium, Netherlands and Luxembourg, instead of saving everything in one single file, it's recommended to saved data by country:
+Say you want to collect data on Belgium, Netherlands and Luxembourg.
+Instead of saving everything in one single file, you split the datasets into three smaller ones:
 
 (Country/Belgium.ream)
 ```ream
@@ -352,14 +360,14 @@ and zip the files into one master dataset with templates:
 (TheBeneluxUnion.ream)
 ```ream
 # TheBeneluxUnion
-- population (num): `Country$population.sum()`
+- population (num): `Country$population | sum`
 
 @@ IMPORT Country::{Belgium, Netherlands, Luxembourg}
 @@ SET Countries = [Belgium, Netherlands, Luxembourg]
 @@ FOR Member IN Countries
 ## Country
-- name (ref): &Member$name
-- population (ref): &Member$population
+- name (ref str): &Member$name
+- population (ref num): &Member$population
 ```
 
 Or even better:
@@ -367,24 +375,24 @@ Or even better:
 (TheBeneluxUnion.ream)
 ```ream
 # TheBeneluxUnion
-- population (num): `Country$population.sum()`
+- population (num): `Country$population | sum`
 
 @@ IMPORT Country::{*} AS Countries
 @@ FOR Member IN Countries
 ## Country
-- name (ref): &Member$name
-- population (ref): &Member$population
+- name (ref str): &Member$name
+- population (ref num): &Member$population
 ```
 
 {% editor(id="interoperatability")%}
 # TheBeneluxUnion
-- population (num): `Country$population.sum()`
+- population (num): `Country$population | sum`
 
 @@ IMPORT Country::{*} AS Countries
 @@ FOR Member IN Countries
 ## Country
-- name (ref): &Member$name
-- population (ref): &Member$population
+- name (ref str): &Member$name
+- population (ref num): &Member$population
 {% end %}
 
 (*: not implemented yet. Design is not yet final, and suggestions are welcome)
