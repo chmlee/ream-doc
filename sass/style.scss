@@ -13,6 +13,12 @@ html {
     a {
         text-decoration: none;
         color: $grey-9;
+
+        code {
+            background: $grey-3;
+            padding: 0.1em 0.25em;
+            border-radius: 5px;
+        }
     }
 
 
@@ -41,6 +47,7 @@ p > code {
     padding: 0.1em 0.25em;
     border-radius: 5px;
 }
+
 
 li > code {
     background: $grey-3;

@@ -144,9 +144,10 @@ Example:
 {% end %}
 
 {% box(class="detail" id="number-type")%}
-Should REAM distinguish between `Integer` and `Float`?
-I don't think integers are used very often in statistical or numeric analysis, so for now all numbers are IEEE 754 64-bit floats.
-In ream-core they are validated through parsing as Rust's `f64` type, but this may change in the future.
+REAM should probably distinguish between `Integer` and `Float`.
+In ream-core `Number`s are validated through parsing as Rust's `f64` type, but this may change in the future.
+
+I might also introduce `Fraction` type.
 {% end %}
 
 ### Boolean
@@ -184,9 +185,9 @@ One solution is to simply add a `None` type.
 
 Another solution is converting all REAM types into [options](https://en.wikipedia.org/wiki/Option_type).
 In Rust I would have to do something like `type ReamString = Option<String>`.
-That being said, all missing values require explicit type annotations since `None` is not a type of value but a variant of an enumeration.
+That being said, all missing values require explicit type annotations since `None` is not a value type but a variant of an enumeration.
 
 The benefit of such design is more obvious when references and filters are implemented.
-When referencing existing data for manipulation, users should think about how to deal with potential `None` values since referencing a `Boolean` may return `Some(TRUE)`, `Some(FALSE)`, or `None`.
-The filters should then provide methods similar to `unwrap`, `unwrap_or` and `unwrap_or_default`.
+When referencing existing data for manipulation, users should think about how to deal with potential `None` values since referencing a `Boolean` returns `Boolean::Some(TRUE)`, `Boolean::Some(FALSE)`, or `Boolean::None`.
+The filters should then provide methods similar to [`?`](https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator) and [`unwrap`](https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap).
 {% end %}
