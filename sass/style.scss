@@ -29,9 +29,33 @@ html {
     border-bottom: 3px $blue-7 solid;
 }
 
+.index-button {
+    display: flex;
+    justify-content: center;
+    padding: 0em 1em 1em 0em;
+}
+
+
 .main a:hover {
     color: $blue-8;
     border-bottom: 3px $blue-8 dashed;
+}
+
+.index-button a {
+    background-color: $blue-3;
+    color: $grey-9;
+    display: inline-block;
+    padding: 0.5em 1em;
+    margin: 0em 0.5em;
+    text-decoration: none;
+    border-bottom: 0px $blue-7 solid;
+}
+
+.index-button a:hover {
+    background-color: $blue-8;
+    color: $grey-1;
+    text-decoration: none;
+    border-bottom: 0px $blue-7 solid;
 }
 
 .base-container {
@@ -118,24 +142,6 @@ pre {
   text-align: center;
 }
 
-.index-button {
-    display: flex;
-    justify-content: center;
-    padding: 0em 1em 1em 0em;
-}
-
-.index-button a {
-    background-color: $blue-3;
-    color: $grey-9;
-    display: inline-block;
-    padding: 0.5em 1em;
-    margin: 0em 0.5em;
-    text-decoration: none;
-}
-
-.index-button a:hover {
-    background-color: $blue-5;
-}
 
 blockquote {
     border-left: 8px solid $grey-6;
