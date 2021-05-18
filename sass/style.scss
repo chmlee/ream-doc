@@ -29,16 +29,17 @@ html {
     border-bottom: 3px $blue-7 solid;
 }
 
-.index-button {
-    display: flex;
-    justify-content: center;
-    padding: 0em 1em 1em 0em;
-}
 
 
 .main a:hover {
     color: $blue-8;
     border-bottom: 3px $blue-8 dashed;
+}
+
+.index-button {
+    display: flex;
+    justify-content: center;
+    padding: 0em 1em 1em 0em;
 }
 
 .index-button a {
