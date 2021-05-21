@@ -14,7 +14,7 @@ REAM is statically typed, that is, the compiler check for and catch type errors 
 
 Type annotations are added after the key and wrapped by parentheses:
 ```ream
-f - <key> (<type>): <value>
+- <key> (<type>): <value>
 ```
 
 Values can be one of the three primitive types:
