@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://ream-lang.org/</loc>
+        <loc>https://chmlee.github.io/ream-doc/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/contribution/</loc>
+        <loc>https://chmlee.github.io/ream-doc/contribution/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/contribution/home/</loc>
+        <loc>https://chmlee.github.io/ream-doc/contribution/home/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/contribution/note/</loc>
+        <loc>https://chmlee.github.io/ream-doc/contribution/note/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/overview/</loc>
+        <loc>https://chmlee.github.io/ream-doc/overview/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/overview/changelog/</loc>
+        <loc>https://chmlee.github.io/ream-doc/overview/changelog/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/overview/comparison/</loc>
+        <loc>https://chmlee.github.io/ream-doc/overview/comparison/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/overview/future/</loc>
+        <loc>https://chmlee.github.io/ream-doc/overview/future/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/overview/origin/</loc>
+        <loc>https://chmlee.github.io/ream-doc/overview/origin/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/overview/why-ream/</loc>
+        <loc>https://chmlee.github.io/ream-doc/overview/why-ream/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/toolchain/</loc>
+        <loc>https://chmlee.github.io/ream-doc/toolchain/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/toolchain/home/</loc>
+        <loc>https://chmlee.github.io/ream-doc/toolchain/home/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/annotation/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/annotation/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/entry/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/entry/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/getting-started/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/getting-started/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/list/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/list/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/reference/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/reference/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/type-system/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/type-system/</loc>
     </url>
     <url>
-        <loc>https://ream-lang.org/tutorial/variable/</loc>
+        <loc>https://chmlee.github.io/ream-doc/tutorial/variable/</loc>
     </url>
 </urlset>

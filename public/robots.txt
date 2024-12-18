@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://ream-lang.org/sitemap.xml
+Sitemap: https://chmlee.github.io/ream-doc/sitemap.xml
