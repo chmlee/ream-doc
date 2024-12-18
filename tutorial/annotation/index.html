@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://chmlee.github.io/ream-doc/style.css">
+  <link rel="shortcut icon" href="https://chmlee.github.io/ream-doc/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://chmlee.github.io/ream-doc/js/bundle.js">
+  </script>
+  <script type="module" src="https://chmlee.github.io/ream-doc/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://chmlee.github.io/ream-doc/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;">
+				
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;">
+				
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;toolchain&#x2F;">
+				
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;contribution&#x2F;">
+				
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;getting-started&#x2F;">Getting Started</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;variable&#x2F;">Variable</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;list&#x2F;">List</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;annotation&#x2F;">Annotation</a>
+
+                    <ul class="header-container">
+                        
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;entry&#x2F;">Entry</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;type-system&#x2F;">Type System</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;reference&#x2F;">Reference</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Annotation
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p>Annotations follow
+<a href="/tutorial/variable#string">strings</a>,
+<a href="/tutorial/variable#number">numbers</a>,
+and
+<a href="/tutorial/variable#boolean">booleans</a>
+in variables in the form of</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;">- &lt;key&gt;: </span><span style="color:#9acc76;">&lt;value&gt;
+</span><span style="font-style:italic;color:#5f697a;">  &gt; &lt;annotation&gt;
+</span></code></pre>
+<p>and items in <a href="/tutorial/list">lists</a> in the form of</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;">- &lt;key&gt;:
+</span><span style="color:#abb2bf;">  * &lt;item&gt;
+</span><span style="color:#abb2bf;">    &gt; &lt;annotation&gt;
+</span></code></pre>
+<p>They start with a single greater sign (<code>&gt;</code>), and a space is required before <code>&gt;</code> and the content.</p>
+<p>Recall that REAM is indentation-insensitive.
+The indentation before <code>&gt;</code> is optional, but the convention is to align <code>&gt;</code> with the first character of the key (for non-list values) or value (for list items).</p>
+<p>Examples:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#9acc76;">value
+</span><span style="font-style:italic;color:#5f697a;">  &gt; Annotation for string
+</span><span style="color:#abb2bf;">- key_2: </span><span style="color:#db9d63;">1
+</span><span style="font-style:italic;color:#5f697a;">  &gt; Annotation for number
+</span><span style="color:#abb2bf;">- key_3: </span><span style="color:#5ebfcc;">TRUE
+</span><span style="font-style:italic;color:#5f697a;">  &gt; Annotation for boolean
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="entry-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>key_1: value
+<blockquote>
+<p>Annotation for string</p>
+</blockquote>
+</li>
+<li>key_2: 1
+<blockquote>
+<p>Annotation for number</p>
+</blockquote>
+</li>
+<li>key_3: TRUE
+<blockquote>
+<p>Annotation for boolean</p>
+</blockquote>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="entry-input" wrap="off"># Example
+- key_1: value
+  &gt; Annotation for string
+- key_2: 1
+  &gt; Annotation for number
+- key_3: TRUE
+  &gt; Annotation for boolean</textarea>
+    </div>
+    <div id="entry-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="entry">Compile</button>
+</div>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- list:
+</span><span style="color:#abb2bf;">  * value
+</span><span style="color:#abb2bf;">    &gt; Annotation for string
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">    &gt; Annotation for number
+</span><span style="color:#abb2bf;">  * TRUE
+</span><span style="color:#abb2bf;">    &gt; Annotation for boolean
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="annotation-list-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>list:
+<ul>
+<li>value
+<blockquote>
+<p>Annotation for string</p>
+</blockquote>
+</li>
+<li>1
+<blockquote>
+<p>Annotation for number</p>
+</blockquote>
+</li>
+<li>TRUE
+<blockquote>
+<p>Annotation for boolean</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="annotation-list-input" wrap="off"># Example
+- list:
+  * value
+    &gt; Annotation for string
+  * 1
+    &gt; Annotation for number
+  * TRUE
+    &gt; Annotation for boolean</textarea>
+    </div>
+    <div id="annotation-list-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="annotation-list">Compile</button>
+</div>
+<div class="box tip">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        TIP
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>Annotations are ignored when compiled to datasets.</p>
+
+  </div>
+</div>
+<p>However, that is not to say annotations can be placed anywhere in the file.
+<strong>Annotations are not comments</strong>: they annotate <strong>values</strong>, and can only follow values.
+Placing annotations in any other places will raise errors:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="font-style:italic;color:#5f697a;">&gt; Annotation can&#39;t be placed here...
+</span><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="font-style:italic;color:#5f697a;">&gt; ...or here
+</span><span style="color:#abb2bf;">- key: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="annotation-mistake-code"> -->
+  <!--   <blockquote>
+<p>Annotation can't be placed here...</p>
+</blockquote>
+<h1 id="badexample">BadExample</h1>
+<blockquote>
+<p>...or here</p>
+</blockquote>
+<ul>
+<li>key: value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="annotation-mistake-input" wrap="off">&gt; Annotation can&#x27;t be placed here...
+# BadExample
+&gt; ...or here
+- key: value</textarea>
+    </div>
+    <div id="annotation-mistake-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="annotation-mistake">Compile</button>
+</div>
+<p>Empty lines around annotations are allowed, but discouraged.</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#9acc76;">value 1
+</span><span style="color:#abb2bf;">- key_2: </span><span style="color:#9acc76;">value 2
+</span><span style="font-style:italic;color:#5f697a;">  &gt; Annotation
+</span><span style="color:#abb2bf;">- key_3: </span><span style="color:#9acc76;">value 3
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">  &gt; Valid annotation
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">- key_4: </span><span style="color:#9acc76;">value 4
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="annotation-empty-line-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>
+<p>key_1: value 1</p>
+</li>
+<li>
+<p>key_2: value 2</p>
+<blockquote>
+<p>Annotation</p>
+</blockquote>
+</li>
+<li>
+<p>key_3: value 3</p>
+<blockquote>
+<p>Valid annotation</p>
+</blockquote>
+</li>
+<li>
+<p>key_4: value 4</p>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="annotation-empty-line-input" wrap="off"># Example
+- key_1: value 1
+- key_2: value 2
+  &gt; Annotation
+- key_3: value 3
+
+  &gt; Valid annotation
+
+- key_4: value 4</textarea>
+    </div>
+    <div id="annotation-empty-line-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="annotation-empty-line">Compile</button>
+</div>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

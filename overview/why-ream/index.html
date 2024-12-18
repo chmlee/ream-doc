@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://chmlee.github.io/ream-doc/style.css">
+  <link rel="shortcut icon" href="https://chmlee.github.io/ream-doc/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://chmlee.github.io/ream-doc/js/bundle.js">
+  </script>
+  <script type="module" src="https://chmlee.github.io/ream-doc/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://chmlee.github.io/ream-doc/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;">
+				
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;">
+				
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;toolchain&#x2F;">
+				
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;contribution&#x2F;">
+				
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;">Why REAM</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#ease-of-use">Ease of use</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#nested-structure">Nested structure</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#inline-documentation">Inline documentation</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#static-typing">Static typing</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#reference-and-filters">Reference and filters*</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#template">Template*</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;#modularity">Modularity*</a>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;comparison&#x2F;">Comparison</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;origin&#x2F;">Origin</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;future&#x2F;">Future</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;changelog&#x2F;">Changelog</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Why REAM
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p>REAM provides a one-stop solution to manage social science data projects.
+While there are existing languages and tools that do part of what REAM does, REAM plans to bundle all necessarily functionalities into one framework with consistent syntax.
+See <a href="/ovewrview/comparison">Comparison</a> for a more detailed discussion.</p>
+<p>In addition, REAM adhere to the <a href="https://en.wikipedia.org/wiki/Single_source_of_truth">single source of truth</a> design so that large data projects are easier to manage.
+See the rest of the section for examples.</p>
+<div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>Features with a star sign <code>*</code> are not yet implemented.</p>
+
+  </div>
+</div>
+<h2 id="ease-of-use">Ease of use</h2>
+<p>REAM is easy to learn.
+REAM syntax is similar to Markdown, and should look familiar:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">- population: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">- euro_zone: </span><span style="color:#5ebfcc;">TRUE
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="easy-to-learn-and-use-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+<li>population: 11433256</li>
+<li>euro_zone: TRUE</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="easy-to-learn-and-use-input" wrap="off"># Country
+- name: Belgium
+- population: 11433256
+- euro_zone: TRUE</textarea>
+    </div>
+    <div id="easy-to-learn-and-use-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="easy-to-learn-and-use">Compile</button>
+</div>
+<p>It takes around half an hour to <a href="/tutorial">learn the basics</a> of the language to start writing your first REAM dataset.
+Learn more advanced features later as your project scales up.</p>
+<p>REAM is easy to edit.
+All REAM datasets are stored as text files, and can be edited in any text editor.
+A <a href="https://chmlee.github.io/ream-editor">web-based editor</a> is available and provides basic functionalities.
+No local installation required; just visit the website and start getting productive.
+Advanced functionalities are available through the <a href="https://github.com/chmlee/ream-core">REAM CLI tool</a>.
+No complex development environment to set up.
+No third-party dependencies to manage.<sup>1</sup>
+Just one executable binary file.<sup>2</sup></p>
+<p>[1]: May require Git during alpha development stage.</p>
+<p>[2]: Users have to compile the binary themselves during alpha development stage.
+Platform-specific precompiled binaries would be available in the future.</p>
+<h2 id="nested-structure">Nested structure</h2>
+<p>REAM encourages data to be stored in nested structures.
+Instead of managing data in the following 2-dimension spreadsheet:</p>
+<pre data-lang="csv" style="background-color:#2b303b;color:#6c7079;" class="language-csv "><code class="language-csv" data-lang="csv"><span style="color:#cd74e8;">Country</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">Year
+</span><span style="color:#cd74e8;">Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">2010
+</span><span style="color:#cd74e8;">Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">2011
+</span><span style="color:#cd74e8;">Belgium</span><span style="color:#adb7c9;">,</span><span style="color:#db9d63;">2012
+</span></code></pre>
+<p>you write:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#db9d63;">2010
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#db9d63;">2011
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#db9d63;">2012
+</span></code></pre>
+<p>and let the compiler compiles the latter to the former:</p>
+<div class="editor">
+  <!-- <div id="nested-structure-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+</ul>
+<h2 id="year">Year</h2>
+<ul>
+<li>name: 2010</li>
+</ul>
+<h2 id="year-1">Year</h2>
+<ul>
+<li>name: 2011</li>
+</ul>
+<h2 id="year-2">Year</h2>
+<ul>
+<li>name: 2012</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="nested-structure-input" wrap="off"># Country
+- name: Belgium
+
+## Year
+- name: 2010
+
+## Year
+- name: 2011
+
+## Year
+- name: 2012</textarea>
+    </div>
+    <div id="nested-structure-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="nested-structure">Compile</button>
+</div>
+<p>To replace <code>Belgium</code> with its ISO code <code>BEL</code>, you now have only one cell to update instead of three.</p>
+<h2 id="inline-documentation">Inline documentation</h2>
+<p>REAM encourages inline documentation for individual data points through <a href="/tutorial/annotation">annotations</a>.
+Instead of editing data and its documentation in two separate files - one spreadsheet and one word document - you write:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="font-style:italic;color:#5f697a;">  &gt; officially the Kingdom of Belgium
+</span><span style="color:#abb2bf;">- population: </span><span style="color:#db9d63;">11433256
+</span><span style="font-style:italic;color:#5f697a;">  &gt; data from 2019; retrieved from World Bank
+</span><span style="color:#abb2bf;">- euro zone: </span><span style="color:#5ebfcc;">TRUE
+</span><span style="font-style:italic;color:#5f697a;">  &gt; joined in 1999
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="inline-documentation-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium
+<blockquote>
+<p>officially the Kingdom of Belgium</p>
+</blockquote>
+</li>
+<li>population: 11433256
+<blockquote>
+<p>data from 2019; retrieved from World Bank</p>
+</blockquote>
+</li>
+<li>euro zone: TRUE
+<blockquote>
+<p>joined in 1999</p>
+</blockquote>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="inline-documentation-input" wrap="off"># Country
+- name: Belgium
+  &gt; officially the Kingdom of Belgium
+- population: 11433256
+  &gt; data from 2019; retrieved from World Bank
+- euro zone: TRUE
+  &gt; joined in 1999</textarea>
+    </div>
+    <div id="inline-documentation-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="inline-documentation">Compile</button>
+</div>
+<p>and let the compiler produce analysis-ready datasets (CSV, JSON, etc.) and human-readable documentations (HTML, PDF, etc.)
+Two formats, one source.</p>
+<p><strong>Current Design:</strong>
+<div class="mermaid">
+  graph LR;
+  SOURCE[REAM File] --&gt; PARSER([&quot;REAM Parser&lt;br&gt;(ream-core)&quot;]);
+  PARSER --&gt; DATA[(Datasets&lt;br&gt;CSV, JSON, etc.)]
+
+  SOURCE --&gt; CONVERTER([Third-party&lt;br&gt;Markdown Converter])
+  CONVERTER --&gt; DOC[[Documentation&lt;br&gt;HTML, PDF, etc.]]
+</div>
+</p>
+<p><strong>Future Design:</strong>
+<div class="mermaid">
+  graph LR;
+  SOURCE[REAM File] --&gt; COMPILER([&quot;REAM Compiler&lt;br&gt;(ream-core)&quot;]);
+  COMPILER --&gt; DATA[(Datasets&lt;br&gt;CSV, JSON, etc.)]
+  COMPILER --&gt; DOC[[Documentations&lt;br&gt;HTML, PDF, etc.]]
+
+  COMPILER --&gt; PYMOD([&quot;Python module&quot;])
+  subgraph Python
+    PYMOD --&gt; PYDAT[(&quot;panda.dataframe&quot;)]
+  end
+
+  COMPILER --&gt; RMOD([&quot;R module&quot;])
+  subgraph R
+    RMOD --&gt; RDAT[(&quot;tidyverse::tibble&quot;)]
+  end
+</div>
+</p>
+<h2 id="static-typing">Static typing</h2>
+<p>REAM checks for data types during compile time to ensure type safety.
+Instead of guessing what type each variable would be assigned to when being read:</p>
+<pre data-lang="csv" style="background-color:#2b303b;color:#6c7079;" class="language-csv "><code class="language-csv" data-lang="csv"><span style="color:#cd74e8;">x1</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">x2</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">x3</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">x4
+</span><span style="color:#db9d63;">1.0</span><span style="color:#adb7c9;">,</span><span style="color:#9acc76;">&quot;</span><span style="color:#db9d63;">1.0</span><span style="color:#9acc76;">&quot;</span><span style="color:#adb7c9;">,</span><span style="color:#cd74e8;">true</span><span style="color:#adb7c9;">,</span><span style="color:#9acc76;">&quot;</span><span style="color:#cd74e8;">true</span><span style="color:#9acc76;">&quot;
+</span></code></pre>
+<p>you specify the types through explicit type annotations:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Data
+</span><span style="color:#abb2bf;">- x1 </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">1.0
+</span><span style="color:#abb2bf;">- x2 </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">1.0
+</span><span style="color:#abb2bf;">- x3 </span><span style="color:#cd74e8;">(bool)</span><span style="color:#abb2bf;">: </span><span style="color:#5ebfcc;">TRUE
+</span><span style="color:#abb2bf;">- x4 </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">TRUE
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="static-typing-code"> -->
+  <!--   <h1 id="data">Data</h1>
+<ul>
+<li>x1 (num): 1.0</li>
+<li>x2 (str): 1.0</li>
+<li>x3 (bool): TRUE</li>
+<li>x4 (str): TRUE</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="static-typing-input" wrap="off"># Data
+- x1 (num): 1.0
+- x2 (str): 1.0
+- x3 (bool): TRUE
+- x4 (str): TRUE</textarea>
+    </div>
+    <div id="static-typing-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="static-typing">Compile</button>
+</div>
+<p>(*: Example not working. See <a href="/contribution/note">Note</a> for more information, or try it in the <a href="https://chmlee.github.io/ream-editor">web-editor</a>)</p>
+<p>Type errors are caught during compile time.
+The follwoing would raise error <code>TypeError(InvalidNumber)</code>:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Data
+</span><span style="color:#abb2bf;">- string </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- number </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="type-error-code"> -->
+  <!--   <h1 id="data">Data</h1>
+<ul>
+<li>string (str): value</li>
+<li>number (num): value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="type-error-input" wrap="off"># Data
+- string (str): value
+- number (num): value</textarea>
+    </div>
+    <div id="type-error-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="type-error">Compile</button>
+</div>
+<p>(*: Example not working. See <a href="/contribution/note">Note</a> for more information, or try it in the <a href="https://chmlee.github.io/ream-editor">web-editor</a>)</p>
+<p>The goal is to embed <a href="https://github.com/chmlee/ream-core">ream-core</a> in Python and R modules through Rust bindings (<a href="https://github.com/PyO3/PyO3">PyO3</a> and <a href="https://github.com/extendr/extendr">extendr</a>) so you read REAM datasets directly as <code>panda.dataframe</code> and <code>tidyverse::tibble</code>.
+REAM's types will be mapped directly to target languages' native types without ever touching CSV or JSON and their almost nonexistent type systems which is the source of all evil.</p>
+<p>Ideally, you will be able to do something like:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">ream
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">pandas </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">pd
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">with </span><span style="color:#5ebfcc;">open</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;data.ream&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;r&quot;</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">f:
+</span><span style="color:#abb2bf;">    df </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">ream.</span><span style="color:#eb6772;">read</span><span style="color:#abb2bf;">(f)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#5ebfcc;">type</span><span style="color:#abb2bf;">(df) </span><span style="font-style:italic;color:#5f697a;"># pandas.core.frame.DataFrame
+</span></code></pre>
+<h2 id="reference-and-filters">Reference and filters*</h2>
+<p>To reduce repetition, REAM implements a reference system to reuse existing data and filters for basic data manipulation.
+Instead of manually editing variables with similar pattern:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2010
+</span><span style="color:#abb2bf;">- unique_id </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium_2010
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2011
+</span><span style="color:#abb2bf;">- unique_id </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium_2011
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2012
+</span><span style="color:#abb2bf;">- unique_id </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium_2012
+</span></code></pre>
+<p>you write:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2010
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{Year$name}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2011
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{Year$name}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2012
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{Year$name}
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="reference-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name (str): Belgium</li>
+</ul>
+<h2 id="year">Year</h2>
+<ul>
+<li>name (str): 2010</li>
+<li>unique_id (fmt): {Country$name}_{Year$name}</li>
+</ul>
+<h2 id="year-1">Year</h2>
+<ul>
+<li>name (str): 2011</li>
+<li>unique_id (fmt): {Country$name}_{Year$name}</li>
+</ul>
+<h2 id="year-2">Year</h2>
+<ul>
+<li>name (str): 2012</li>
+<li>unique_id (fmt): {Country$name}_{Year$name}</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="reference-input" wrap="off"># Country
+- name (str): Belgium
+
+## Year
+- name (str): 2010
+- unique_id (fmt): {Country$name}_{Year$name}
+
+## Year
+- name (str): 2011
+- unique_id (fmt): {Country$name}_{Year$name}
+
+## Year
+- name (str): 2012
+- unique_id (fmt): {Country$name}_{Year$name}</textarea>
+    </div>
+    <div id="reference-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="reference">Compile</button>
+</div>
+<p>(*: not implemted yet)</p>
+<p>Variable <code>Year$unique_id</code> (variable <code>unique_id</code> in entry <code>Year</code>) are now formatted by joining a local variable <code>Year$name</code> and the parent variable <code>Country$name</code>, separated by an underscore.</p>
+<h2 id="template">Template*</h2>
+<p>Templates allow datasets to reuse schemas.
+Instead of defining the schema for the entry of class <code>Year</code> three times:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2010
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{Year$name}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2011
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{Year$name}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Year
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">2012
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{Year$name}
+</span></code></pre>
+<p>you write:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">- years (list str):
+</span><span style="color:#abb2bf;">  * 2010
+</span><span style="color:#abb2bf;">  * 2011
+</span><span style="color:#abb2bf;">  * 2012
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">@@ FOR year IN Country$years
+</span><span style="color:#abb2bf;">## Year
+</span><span style="color:#abb2bf;">- name (ref str): </span><span style="color:#9acc76;">&amp;year
+</span><span style="color:#abb2bf;">- unique_id (fmt): </span><span style="color:#9acc76;">{Country$name}_{&amp;year}
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="template-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name (str): Belgium</li>
+<li>years (list str):
+<ul>
+<li>2010</li>
+<li>2011</li>
+<li>2012</li>
+</ul>
+</li>
+</ul>
+<p>@@ FOR year IN Country$years</p>
+<h2 id="year">Year</h2>
+<ul>
+<li>name (ref str): &amp;year</li>
+<li>unique_id (fmt): {Country$name}_{&amp;year}</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="template-input" wrap="off"># Country
+- name (str): Belgium
+- years (list str):
+  * 2010
+  * 2011
+  * 2012
+
+@@ FOR year IN Country$years
+## Year
+- name (ref str): &amp;year
+- unique_id (fmt): {Country$name}_{&amp;year}</textarea>
+    </div>
+    <div id="template-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="template">Compile</button>
+</div>
+<p>(*: not implemented yet. Design is not yet final, and suggestions are welcome)</p>
+<p>Variable <code>Year$unique_id</code> is now formatted by joining the parent variable <code>Country$name</code> and a <em>template</em> variable <code>&amp;year</code> which loop through the parent varible <code>Country$years</code>.</p>
+<h2 id="modularity">Modularity*</h2>
+<p>REAM encourages datasets to be saved in smaller components.</p>
+<p>Say you want to collect data on Belgium, Netherlands and Luxembourg.
+Instead of saving everything in one single file, you split the datasets into three smaller ones:</p>
+<p>(Country/Belgium.ream)</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">- population </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span></code></pre>
+<p>(Country/Netherlands.ream)</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Netherlands
+</span><span style="color:#abb2bf;">- population </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span></code></pre>
+<p>(Country/Luxembourg.ream)</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Luxembourg
+</span><span style="color:#abb2bf;">- population </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">619900
+</span></code></pre>
+<p>and zip the files into one master dataset with templates:</p>
+<p>(TheBeneluxUnion.ream)</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">TheBeneluxUnion
+</span><span style="color:#abb2bf;">- population </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: `Country$population | sum`
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">@@ IMPORT Country::{Belgium, Netherlands, Luxembourg}
+</span><span style="color:#abb2bf;">@@ SET Countries = [Belgium, Netherlands, Luxembourg]
+</span><span style="color:#abb2bf;">@@ FOR Member IN Countries
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name (ref str): </span><span style="color:#9acc76;">&amp;Member$name
+</span><span style="color:#abb2bf;">- population (ref num): </span><span style="color:#9acc76;">&amp;Member$population
+</span></code></pre>
+<p>Or even better:</p>
+<p>(TheBeneluxUnion.ream)</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">TheBeneluxUnion
+</span><span style="color:#abb2bf;">- population </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: `Country$population | sum`
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">@@ IMPORT Country::{*} AS Countries
+</span><span style="color:#abb2bf;">@@ FOR Member IN Countries
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name (ref str): </span><span style="color:#9acc76;">&amp;Member$name
+</span><span style="color:#abb2bf;">- population (ref num): </span><span style="color:#9acc76;">&amp;Member$population
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="interoperatability-code"> -->
+  <!--   <h1 id="thebeneluxunion">TheBeneluxUnion</h1>
+<ul>
+<li>population (num): <code>Country$population | sum</code></li>
+</ul>
+<p>@@ IMPORT Country::{*} AS Countries
+@@ FOR Member IN Countries</p>
+<h2 id="country">Country</h2>
+<ul>
+<li>name (ref str): &amp;Member$name</li>
+<li>population (ref num): &amp;Member$population</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="interoperatability-input" wrap="off"># TheBeneluxUnion
+- population (num): `Country$population | sum`
+
+@@ IMPORT Country::{*} AS Countries
+@@ FOR Member IN Countries
+## Country
+- name (ref str): &amp;Member$name
+- population (ref num): &amp;Member$population</textarea>
+    </div>
+    <div id="interoperatability-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="interoperatability">Compile</button>
+</div>
+<p>(*: not implemented yet. Design is not yet final, and suggestions are welcome)</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://chmlee.github.io/ream-doc/style.css">
+  <link rel="shortcut icon" href="https://chmlee.github.io/ream-doc/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://chmlee.github.io/ream-doc/js/bundle.js">
+  </script>
+  <script type="module" src="https://chmlee.github.io/ream-doc/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://chmlee.github.io/ream-doc/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;">
+				
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;tutorial&#x2F;">
+				
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;toolchain&#x2F;">
+				
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;contribution&#x2F;">
+				
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;why-ream&#x2F;">Why REAM</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;comparison&#x2F;">Comparison</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;origin&#x2F;">Origin</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;origin&#x2F;#spreadsheet-csv">Spreadsheet&#x2F;CSV</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;origin&#x2F;#yaml">YAML</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;origin&#x2F;#toml">TOML</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;origin&#x2F;#documentation">Documentation</a>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;future&#x2F;">Future</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;chmlee.github.io&#x2F;ream-doc&#x2F;overview&#x2F;changelog&#x2F;">Changelog</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Origin
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p>REAM was created as a quick solution to manage my undergraduate thesis data.
+To understand certain REAM designs, it might be helpful to first understand what problems I was trying to solve.</p>
+<p>In summary, I was searching for an alternative to CSV, but after trying YAML and TOML I decided to create my language that caters to my needs and preferences.
+As I develop the language and the tools, I started reflecting on my experience dealing with social science data and gradually add more features.</p>
+<h2 id="spreadsheet-csv">Spreadsheet/CSV</h2>
+<p>I did not want to use a spreadsheet application to organize my undergraduate thesis data, because:</p>
+<p>(1) I use Linux, and Microsoft Excel doesn't run natively in Linux,</p>
+<p>(2) LibreOffice Calc, a popular Excel alternative in Linux, somehow kept crashing on my machine, and,</p>
+<p>(3) I like <a href="https://neovim.io/">Neovim</a> so much that I want to edit everything in the text editor, including datasets (probably the main motivation)</p>
+<p>I tried editing raw CSV files in Neovim, but even with plugins such as <a href="https://github.com/chrisbra/csv.vim">csv.vim</a> it wasn't a smooth experience.
+That's when I started exploring other data serialization languages.</p>
+<p>In addition to being editor-friendly, I wanted the solution to work well with Git or provide a native way for version control.
+The solution should also support comments since my work was mostly zipping two larger datasets and I wanted my matching rationales to be well documented.
+This was largely influenced by my work in <a href="https://clinecenter.illinois.edu/project/Religious-Ethnic-Identity/composition-religious-and-ethnic-groups-creg-project">Composition of Religious and Ethnic Groups (CREG) Project</a> at <a href="https://clinecenter.illinois.edu/">Cline Center for Advanced Social Research</a>, where we carefully document thousands of matches when zipping dozens of datasets.</p>
+<h2 id="yaml">YAML</h2>
+<p>I first tried YAML.
+I used YAML for other projects and find it to be a pleasant format to work with.
+Each key-value pair occupy a line, so it's easy to version control.</p>
+<p>YAML is also good at representing nested data structure, so instead of:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#6c7079;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#eb6772;">row</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    - </span><span style="color:#eb6772;">country_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_capital</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Brussel
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_population</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_euro_zone</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.59
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    - </span><span style="color:#eb6772;">country_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_capital</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Brussel
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_population</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_euro_zone</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.4
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    - </span><span style="color:#eb6772;">country_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_capital</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Brussel
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_population</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_euro_zone</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">German
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.01
+</span></code></pre>
+<p>I can write:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#6c7079;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#eb6772;">Country</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    - </span><span style="color:#eb6772;">name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">capital</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Brussel
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">population</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">      </span><span style="font-style:italic;color:#5f697a;"># data from 2019, retrieved from Work Bank
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">euro_zone</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">      </span><span style="font-style:italic;color:#5f697a;"># joined in 1999
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">Languages</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">          - </span><span style="color:#eb6772;">name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">            </span><span style="color:#eb6772;">size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.59
+</span><span style="color:#abb2bf;">          - </span><span style="color:#eb6772;">name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">            </span><span style="color:#eb6772;">size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.4
+</span><span style="color:#abb2bf;">          - </span><span style="color:#eb6772;">name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">German
+</span><span style="color:#abb2bf;">            </span><span style="color:#eb6772;">size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.01
+</span></code></pre>
+<p>With this structure, we adhere to the single source of truth principle: attributes of country <code>Belgium</code> only ever appear once in the dataset.
+To &quot;flatten&quot; the nested data structure, all we need is <a href="https://github.com/chmlee/ream-python/blob/master/ream/decode.py#L48-#L86">a few lines of code</a> (not the most elegant solution, but it works).</p>
+<p>Another way to organize the data is with <a href="https://ttl255.com/yaml-anchors-and-aliases-and-how-to-disable-them/">anchor and alias</a>, and would look like:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#6c7079;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#eb6772;">Country</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    - </span><span style="color:#cd74e8;">&amp;</span><span style="color:#abb2bf;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_capital</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Brussel
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_population</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">country_euro_zone</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Languages</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    - </span><span style="color:#db9d63;">&lt;&lt;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">*</span><span style="color:#eb6772;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.59
+</span><span style="color:#abb2bf;">    - </span><span style="color:#db9d63;">&lt;&lt;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">*</span><span style="color:#eb6772;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.4
+</span><span style="color:#abb2bf;">    - </span><span style="color:#db9d63;">&lt;&lt;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">*</span><span style="color:#eb6772;">Belgium
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_name</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">German
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">language_size</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">0.01
+</span></code></pre>
+<p>Beside being modular, this method uses native YAML features and can be easily converted to CSV.
+However, the key names are verbose to avoid name collision, hence the <code>country_</code> and <code>language_</code> prefixes.</p>
+<p>With YAML, my dataset would either be a nested structure but with everything in a single tree, or a modular structure but with everything flatten.
+How can I get a nested <em>and</em> modular data structure?</p>
+<p>(Spoiler: by making the language component-based)</p>
+<h2 id="toml">TOML</h2>
+<p>My next candidate was TOML.
+It had been quite popular lately, and in my opinion is easier to learn than YAML (the <a href="https://yaml.org/spec/1.2/spec.pdf">YAML spec</a> is 84 pages long!).
+We can rewrite the previous example as:</p>
+<pre data-lang="toml" style="background-color:#2b303b;color:#6c7079;" class="language-toml "><code class="language-toml" data-lang="toml"><span style="color:#abb2bf;">[[Country]]
+</span><span style="color:#eb6772;">name </span><span style="color:#abb2bf;">= </span><span style="color:#9acc76;">&quot;Belgium&quot;
+</span><span style="color:#eb6772;">capital </span><span style="color:#abb2bf;">= </span><span style="color:#9acc76;">&quot;Brussel&quot;
+</span><span style="color:#eb6772;">population </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">  </span><span style="font-style:italic;color:#5f697a;"># data from 2019, retrieved from Work Bank
+</span><span style="color:#eb6772;">euro_zone </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">true
+</span><span style="color:#abb2bf;">  </span><span style="font-style:italic;color:#5f697a;"># joined in 1999
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">[[Country.Language]]
+</span><span style="color:#eb6772;">name </span><span style="color:#abb2bf;">= </span><span style="color:#9acc76;">&quot;Dutch&quot;
+</span><span style="color:#eb6772;">size </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">0.59
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">[[Country.Language]]
+</span><span style="color:#eb6772;">name </span><span style="color:#abb2bf;">= </span><span style="color:#9acc76;">&quot;French&quot;
+</span><span style="color:#eb6772;">size </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">0.4
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">[[Country.Language]]
+</span><span style="color:#eb6772;">name </span><span style="color:#abb2bf;">= </span><span style="color:#9acc76;">&quot;German&quot;
+</span><span style="color:#eb6772;">size </span><span style="color:#abb2bf;">= </span><span style="color:#db9d63;">0.01
+</span></code></pre>
+<p>I prefer TOML's syntax for <a href="https://toml.io/en/v1.0.0#array-of-tables">Array for Tables</a> to YAML's indentation-based approach.
+But I dislike quoting strings, and it lacks reference, which was <a href="https://github.com/toml-lang/toml/issues/13">explicitly rejected during early design</a>.</p>
+<p>One thing I like about TOML is its <a href="https://github.com/toml-lang/toml/issues">issue tracker</a>.
+The discussions helped me understood its design rationales and learned that TOML was <em>not</em> a good fit for my use.
+TOML's array of tables requires full path names, so the names may be verbose if the table is several levels deep.
+While searching for proposals to make table names more concise, I found a post that stated that the language <a href="https://github.com/toml-lang/toml/issues/309#issuecomment-558338408">discourages deeply nested structure</a>, which was exactly what I wanted to do.
+I gave up TOML soon after reading the post and moved on.</p>
+<p>(<a href="https://github.com/toml-lang/toml/issues/781">A new issue</a> was opened on October 2020 to collect ideas on nested structure, but it'll probably take a long time before the community reaches consensus and has the new syntax implemented.)</p>
+<h2 id="documentation">Documentation</h2>
+<p>I wanted my inline documentation to be easy to read.
+I  was comfortable reading raw monospace text files, still, I preferred reading HTML or PDF files if possible.
+To do so with YAML or TOML, I had to write a documentation generator that either builds upon an existing implementation or write one myself from scratch.
+If so, I much rather write an implementation of my language which caters to my needs and preferences.</p>
+<p>If I don't want to convert a data serialization language to a markup language, why don't I serialize a markup language?
+All I have to do<sup>[1]</sup> is to write a decoder of this new language, and let third-party file format converters produce HTML and PDF files.</p>
+<p>REAM features Markdown-like syntax, in particular, <a href="https://pandoc.org/">Pandoc-flavored Markdown</a>.
+The plan was to use Pandoc as my documentation generator, and <a href="https://github.com/chmlee/ream-python">ream-python</a> to serialize the data.
+That's why in earlier versions, numbers were surrounded by dollar signs so that they were rendered as inline math notations.
+Boolean values were surrounded by backticks so that they were rendered as inline code.
+The language was not indentation-based simply because in Pandoc, as well as other Markdown flavors, a 4-space indentation indicates code block, and I want to have more than 2 levels nested.<sup>[2]</sup>
+Empty lines were optional because Pandoc requires an empty line before block quotes, which I use for annotations.</p>
+<p>[1]:
+If you really think about it, mapping a subset of a serialization language to a subset of a markup language is way easier than the opposite.
+I don't know why I thought the former would be easier.</p>
+<p>[2]:
+I was so close to make REAM indentation-based, which would be a big mistake.</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>
