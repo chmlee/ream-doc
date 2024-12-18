@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;getting-started&#x2F;">Getting Started</a>
+
+                    <ul class="header-container">
+                        
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;">Variable</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;list&#x2F;">List</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;annotation&#x2F;">Annotation</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;entry&#x2F;">Entry</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;type-system&#x2F;">Type System</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;reference&#x2F;">Reference</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Getting Started
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>The tutorial is a work in progress.
+It provides too much information to be a tutorial, and too little to be a reference.</p>
+<p>For first time readers, simply ignore all <strong>DETAIL</strong> (they look like this <strong>NOTE</strong>, but grey) as they contain additional information on language design, unsolved problems and known bugs.
+If you wish to contribute, <strong>DETAIL</strong> is a good place to start.
+In the future all <strong>DETAIL</strong> would be moved to either <a href="/overview/language-design/">Language Design</a> or <a href="/contribution">Contribution</a>.</p>
+
+  </div>
+</div>
+<p>The recommended way to edit REAM files is to use <a href="https://chmlee.github.io/ream-editor">REAM Editor</a>, a web-based editor designed to read and write REAM files.
+It runs entirely in the browser and requires no local installation.
+A lite version of REAM Editor is embedded in this documentation for readers to test the examples.</p>
+<div class="editor">
+  <!-- <div id="getting-started-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+<li>capital: Brussels</li>
+<li>population: 11433256</li>
+<li>euro zone: TRUE</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="getting-started-input" wrap="off"># Country
+- name: Belgium
+- capital: Brussels
+- population: 11433256
+- euro zone: TRUE</textarea>
+    </div>
+    <div id="getting-started-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="getting-started">Compile</button>
+</div>
+<p>You can also edit REAM files with any text editor, and use the standalone compiler to compile the datasets.
+See <a href="https://github.com/chmlee/ream-core">ream-core</a> for installation guide.</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

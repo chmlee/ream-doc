@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;getting-started&#x2F;">Getting Started</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;">Variable</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;list&#x2F;">List</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;annotation&#x2F;">Annotation</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;entry&#x2F;">Entry</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;entry&#x2F;#subentry">Subentry</a>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;type-system&#x2F;">Type System</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;reference&#x2F;">Reference</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Entry
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p>An entry is a collection of variables.
+An entry class is proceeded by one or multiple pound signs <code>#</code>, in the form of:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># &lt;entry class&gt;
+</span><span style="color:#abb2bf;">- &lt;key 1&gt;: </span><span style="color:#9acc76;">&lt;value 1&gt;
+</span><span style="color:#abb2bf;">- &lt;key 2&gt;: </span><span style="color:#9acc76;">&lt;value 2&gt;
+</span><span style="color:#abb2bf;">...
+</span><span style="color:#abb2bf;">- &lt;key n&gt;: </span><span style="color:#9acc76;">&lt;value n&gt;
+</span></code></pre>
+<p><code># Example</code> in previous examples are the classes of Level-1 Entries, as denoted by the single leading pound sign.
+All REAM files start with a Level-1 Entry, and contain exactly one Level-1 Entry.</p>
+<p>Entries are useful when describing an object with multiple attributes:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">- capital: </span><span style="color:#9acc76;">Brussels
+</span><span style="color:#abb2bf;">- population: </span><span style="color:#db9d63;">11433256
+</span><span style="color:#abb2bf;">- euro_zone: </span><span style="color:#5ebfcc;">TRUE
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="entry-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+<li>capital: Brussels</li>
+<li>population: 11433256</li>
+<li>euro_zone: TRUE</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="entry-input" wrap="off"># Country
+- name: Belgium
+- capital: Brussels
+- population: 11433256
+- euro_zone: TRUE</textarea>
+    </div>
+    <div id="entry-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="entry">Compile</button>
+</div>
+<p>Here we define an object of <code>Country</code> class, whose name is <code>Belgium</code>, capital is <code>Brussels</code>, population is <code>11433256</code>, and is part of the <code>euro zone</code>.</p>
+<p>Let's annotate the dataset:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="font-style:italic;color:#5f697a;">  &gt; short for the Kingdom of Belgium
+</span><span style="color:#abb2bf;">- capital: </span><span style="color:#9acc76;">Brussels
+</span><span style="color:#abb2bf;">- population: </span><span style="color:#db9d63;">11433256
+</span><span style="font-style:italic;color:#5f697a;">  &gt; data from 2019; retrieved from World Bank
+</span><span style="color:#abb2bf;">- euro_zone: </span><span style="color:#5ebfcc;">TRUE
+</span><span style="font-style:italic;color:#5f697a;">  &gt; joined in 1999
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="entry-with-annotation-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium
+<blockquote>
+<p>short for the Kingdom of Belgium</p>
+</blockquote>
+</li>
+<li>capital: Brussels</li>
+<li>population: 11433256
+<blockquote>
+<p>data from 2019; retrieved from World Bank</p>
+</blockquote>
+</li>
+<li>euro_zone: TRUE
+<blockquote>
+<p>joined in 1999</p>
+</blockquote>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="entry-with-annotation-input" wrap="off"># Country
+- name: Belgium
+  &gt; short for the Kingdom of Belgium
+- capital: Brussels
+- population: 11433256
+  &gt; data from 2019; retrieved from World Bank
+- euro_zone: TRUE
+  &gt; joined in 1999</textarea>
+    </div>
+    <div id="entry-with-annotation-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="entry-with-annotation">Compile</button>
+</div>
+<p>Entries can have zero variables:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="entry-with-no-variable-code"> -->
+  <!--   <h1 id="country">Country</h1>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="entry-with-no-variable-input" wrap="off"># Country</textarea>
+    </div>
+    <div id="entry-with-no-variable-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="entry-with-no-variable">Compile</button>
+</div>
+<p>Entries should have local unique keys.
+The following code will raise an error:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">- language: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">- language: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">- language: </span><span style="color:#9acc76;">German
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="entry-duplicate-keys-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+<li>language: Dutch</li>
+<li>language: French</li>
+<li>language: German</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="entry-duplicate-keys-input" wrap="off"># Country
+- name: Belgium
+- language: Dutch
+- language: French
+- language: German</textarea>
+    </div>
+    <div id="entry-duplicate-keys-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="entry-duplicate-keys">Compile</button>
+</div>
+<div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>The current parser don't check for duplicate keys yet, so technically this is still valid.
+This rule will be enforced in future versions.</p>
+
+  </div>
+</div>
+<h2 id="subentry">Subentry</h2>
+<p>Entries can be nested, and the level of the entry is denoted by the number of leading <code>#</code>.
+So a Level-1 Entry takes the form of <code># &lt;Level 1 Entry Class&gt;</code>, and a Level-2 Entry takes the form of <code>## &lt;Level 2 Entry Class&gt;</code>, and so forth.</p>
+<p>Examples:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">German
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="subentry-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+</ul>
+<h2 id="language">Language</h2>
+<ul>
+<li>name: Dutch</li>
+</ul>
+<h2 id="language-1">Language</h2>
+<ul>
+<li>name: French</li>
+</ul>
+<h2 id="language-2">Language</h2>
+<ul>
+<li>name: German</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="subentry-input" wrap="off"># Country
+- name: Belgium
+
+## Language
+- name: Dutch
+
+## Language
+- name: French
+
+## Language
+- name: German</textarea>
+    </div>
+    <div id="subentry-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="subentry">Compile</button>
+</div>
+<p>The <code># Country</code> entry has one variable <code>name</code> and three Level-2 child entries <code>## Language</code>.</p>
+<p>The three <code>## Language</code>  subentries are also <strong>terminal nodes</strong> as they do not contain any subentry.
+When compiling the dataset, the parser look for all terminal nodes in the REAM file and flatten the data structure.
+Thus the previous example produces a dataset with three rows (one for each terminal node) and two columns (one of each variable).</p>
+<p>Note that the variable keys are scoped, so <code>## Language</code> is allowed to have a variable with the key <code>name</code> despite its parent entry <code># Country</code> also contain a variable with the same key.</p>
+<p>Entry must be nested in order.
+Level-2 Entries can only be nested in a Level-1 Entry, and Level-3 Entries can only be nested in a Level-2 Entry, and so forth.
+Compare the datasets compiled from the following two examples with the previous one:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 2 Entry
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">### </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">French
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 3 Entry
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">### </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">German
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 3 Entry
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="subentry-2-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+</ul>
+<h2 id="language">Language</h2>
+<ul>
+<li>name: Dutch
+<blockquote>
+<p>This is in a Level 2 Entry</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="language-1">Language</h3>
+<ul>
+<li>name: French
+<blockquote>
+<p>This is in a Level 3 Entry</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="language-2">Language</h3>
+<ul>
+<li>name: German
+<blockquote>
+<p>This is in a Level 3 Entry</p>
+</blockquote>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="subentry-2-input" wrap="off"># Country
+- name: Belgium
+
+## Language
+- name: Dutch
+  &gt; This is in a Level 2 Entry
+
+### Language
+- name: French
+  &gt; This is in a Level 3 Entry
+
+### Language
+- name: German
+  &gt; This is in a Level 3 Entry</textarea>
+    </div>
+    <div id="subentry-2-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="subentry-2">Compile</button>
+</div>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 2 Entry
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">French
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 2 Entry
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">### </span><span style="color:#eb6772;">Language
+</span><span style="font-style:italic;color:#5f697a;">  &gt; This is in a Level 3 Entry
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">German
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="subentry-3-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+</ul>
+<h2 id="language">Language</h2>
+<ul>
+<li>name: Dutch
+<blockquote>
+<p>This is in a Level 2 Entry</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="language-1">Language</h2>
+<ul>
+<li>name: French
+<blockquote>
+<p>This is in a Level 2 Entry</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="language-2">Language</h3>
+<blockquote>
+<p>This is in a Level 3 Entry</p>
+</blockquote>
+<ul>
+<li>name: German</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="subentry-3-input" wrap="off"># Country
+- name: Belgium
+
+## Language
+- name: Dutch
+  &gt; This is in a Level 2 Entry
+
+## Language
+- name: French
+  &gt; This is in a Level 2 Entry
+
+### Language
+  &gt; This is in a Level 3 Entry
+- name: German</textarea>
+    </div>
+    <div id="subentry-3-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="subentry-3">Compile</button>
+</div>
+<p>A visualization of the differences between the three schemas are as follows.
+The terminal nodes are colored yellow.</p>
+<p><img src="/img/tree.svg" alt="tree" /></p>
+<!--
+:::details Note: Duplicate Entry Class
+Can a `### Language` entry be nested in another `## Language` entry?
+This doesn't really make sense, but currently there is no rule against it, and the parser is able to parse it.
+
+Maybe this shouldn't be allowed?
+:::
+-->
+<p>An entry can contain subentires of differenct classes:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">City
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Brussels
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Dutch
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="subentry-different-class-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+</ul>
+<h2 id="city">City</h2>
+<ul>
+<li>name: Brussels</li>
+</ul>
+<h2 id="language">Language</h2>
+<ul>
+<li>name: Dutch</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="subentry-different-class-input" wrap="off"># Country
+- name: Belgium
+
+## City
+- name: Brussels
+
+## Language
+- name: Dutch</textarea>
+    </div>
+    <div id="subentry-different-class-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="subentry-different-class">Compile</button>
+</div>
+<p>Also, entries of the same class need not have identical variables, nor the same variable order.</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">- size: </span><span style="color:#db9d63;">0.59
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- size: </span><span style="color:#db9d63;">0.4
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">German
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="subentry-different-schema-code"> -->
+  <!--   <h1 id="country">Country</h1>
+<ul>
+<li>name: Belgium</li>
+</ul>
+<h2 id="language">Language</h2>
+<ul>
+<li>name: Dutch</li>
+<li>size: 0.59</li>
+</ul>
+<h2 id="language-1">Language</h2>
+<ul>
+<li>size: 0.4</li>
+<li>name: French</li>
+</ul>
+<h2 id="language-2">Language</h2>
+<ul>
+<li>name: German</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="subentry-different-schema-input" wrap="off"># Country
+- name: Belgium
+
+## Language
+- name: Dutch
+- size: 0.59
+
+## Language
+- size: 0.4
+- name: French
+
+## Language
+- name: German</textarea>
+    </div>
+    <div id="subentry-different-schema-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="subentry-different-schema">Compile</button>
+</div>
+<p>Observe that the order of the variables are preserved by default.</p>
+<p>The datasets compiled by the last two examples are not too useful for analysis.
+To compile quality analysis-ready datasets, we should specify the schema of the datasets in the codebook (not yet implemented).</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

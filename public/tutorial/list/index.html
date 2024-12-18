@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;getting-started&#x2F;">Getting Started</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;">Variable</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;list&#x2F;">List</a>
+
+                    <ul class="header-container">
+                        
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;annotation&#x2F;">Annotation</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;entry&#x2F;">Entry</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;type-system&#x2F;">Type System</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;reference&#x2F;">Reference</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          List
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p>A list is a sequence of strings, numbers, or boolean, in the form of:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;">- &lt;key&gt;:
+</span><span style="color:#abb2bf;">  * &lt;item&gt;
+</span><span style="color:#abb2bf;">  * &lt;item&gt;
+</span><span style="color:#abb2bf;">  ...
+</span><span style="color:#abb2bf;">  * &lt;item&gt;
+</span></code></pre>
+<p><code>&lt;item&gt;</code> should be in separate lines, following an asterisk (<code>*</code>)</p>
+<p>Example:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- list_of_strings:
+</span><span style="color:#abb2bf;">  * item 1
+</span><span style="color:#abb2bf;">  * item 2
+</span><span style="color:#abb2bf;">  * item 3
+</span><span style="color:#abb2bf;">- list_of_numbers:
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * -2
+</span><span style="color:#abb2bf;">  * 3.1415926
+</span><span style="color:#abb2bf;">- list_of_booleans:
+</span><span style="color:#abb2bf;">  * TRUE
+</span><span style="color:#abb2bf;">  * FALSE
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="list-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>list_of_strings:
+<ul>
+<li>item 1</li>
+<li>item 2</li>
+<li>item 3</li>
+</ul>
+</li>
+<li>list_of_numbers:
+<ul>
+<li>1</li>
+<li>-2</li>
+<li>3.1415926</li>
+</ul>
+</li>
+<li>list_of_booleans:
+<ul>
+<li>TRUE</li>
+<li>FALSE</li>
+</ul>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="list-input" wrap="off"># Example
+- list_of_strings:
+  * item 1
+  * item 2
+  * item 3
+- list_of_numbers:
+  * 1
+  * -2
+  * 3.1415926
+- list_of_booleans:
+  * TRUE
+  * FALSE</textarea>
+    </div>
+    <div id="list-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="list">Compile</button>
+</div>
+<div class="box tip">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        TIP
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>By default, items in lists would be joined as strings with semicolons as separators</p>
+
+  </div>
+</div>
+<p>A list can't contain elements of different types.
+The following will raise an error.</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#abb2bf;">- list:
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * item
+</span><span style="color:#abb2bf;">  * TRUE
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="heterogeneous-list-code"> -->
+  <!--   <h1 id="badexample">BadExample</h1>
+<ul>
+<li>list:
+<ul>
+<li>1</li>
+<li>item</li>
+<li>TRUE</li>
+</ul>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="heterogeneous-list-input" wrap="off"># BadExample
+- list:
+  * 1
+  * item
+  * TRUE</textarea>
+    </div>
+    <div id="heterogeneous-list-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="heterogeneous-list">Compile</button>
+</div>
+<p>(*: Example <em>should not</em> work. See <a href="/contribution/note">Note</a> for more information, or try it in the <a href="https://chmlee.github.io/ream-editor">web-editor</a>)</p>
+<p>REAM is indentation insensitive.
+Spaces before asterisks are not required, but two spaces are recommended.</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- still_a_list:
+</span><span style="color:#abb2bf;">* item 1
+</span><span style="color:#abb2bf;">* item 2
+</span><span style="color:#abb2bf;">* item 3
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="list-no-indentation-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>still_a_list:</li>
+</ul>
+<ul>
+<li>item 1</li>
+<li>item 2</li>
+<li>item</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="list-no-indentation-input" wrap="off"># Example
+- still_a_list:
+* item 1
+* item 2
+* item</textarea>
+    </div>
+    <div id="list-no-indentation-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="list-no-indentation">Compile</button>
+</div>
+<p>Empty lines between list items are allowed, but discouraged:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- still_a_list:
+</span><span style="color:#abb2bf;">  * item 1
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  * item 2
+</span><span style="color:#abb2bf;">  * item 3
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="list-emtpy-line-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>still_a_list:
+<ul>
+<li>
+<p>item 1</p>
+</li>
+<li>
+<p>item 2</p>
+</li>
+<li>
+<p>item 3</p>
+</li>
+</ul>
+</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="list-emtpy-line-input" wrap="off"># Example
+- still_a_list:
+  * item 1
+
+  * item 2
+  * item 3</textarea>
+    </div>
+    <div id="list-emtpy-line-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="list-emtpy-line">Compile</button>
+</div>
+<div class="box detail">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        DETAIL
+      
+    </span>
+    
+      <button class="toggle-detail" id="nest-list">show</button>
+    
+  </div>
+  <div
+    class="box-detail-content" id="nest-list-content">
+  <p>Should lists be nested?</p>
+<p>The only reason why I thought of this is because I'm exploring ways to represent <a href="https://geojson.org/">GeoJson</a> in REAM, but I couldn't found one nice way to do so.</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#6c7079;" class="language-json "><code class="language-json" data-lang="json"><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#9acc76;">&quot;type&quot;</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">&quot;MultiLineString&quot;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">    </span><span style="color:#9acc76;">&quot;coordinates&quot;</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    [
+</span><span style="color:#abb2bf;">        [
+</span><span style="color:#abb2bf;">            [</span><span style="color:#db9d63;">170.0</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">45.0</span><span style="color:#abb2bf;">], [</span><span style="color:#db9d63;">180.0</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">45.0</span><span style="color:#abb2bf;">]
+</span><span style="color:#abb2bf;">        ],
+</span><span style="color:#abb2bf;">        [
+</span><span style="color:#abb2bf;">            [</span><span style="color:#db9d63;">-180.0</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">45.0</span><span style="color:#abb2bf;">], [</span><span style="color:#db9d63;">-170.0</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">45.0</span><span style="color:#abb2bf;">]
+</span><span style="color:#abb2bf;">        ]
+</span><span style="color:#abb2bf;">    ]
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+
+  </div>
+</div>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

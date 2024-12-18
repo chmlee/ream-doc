@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+<div class="main">
+
+    <div class="intro">
+        Data language for building maintainable social science datasets
+    </div>
+
+    <div class="index-button">
+        <a href="/overview/why-ream">Why REAM</a>
+        <a href="/tutorial/getting-started">Get Started</a>
+    </div>
+
+    <div class="description">
+        <p>
+        </p>
+    </div>
+
+    <div class="box note">
+        <div class="box-title">NOTE</div>
+        <p>
+            The project is under active development and is not production ready.
+            You are free to play around with the language and tools, but note that backward compatibility is not guaranteed.
+            If you are interested in using REAM for serious projects, please
+            <a href="mailto:louis@chihminglee.com">contact me</a>.
+        </p>
+
+        <p>
+            Migration from the <a href="https://chmlee.github.io/ream-doc-v2">old documentation</a> is a work in progress.
+            Not all features are well-documented, and the website needs more polishing.
+            See
+            <a href="/contribution/note">here</a>
+            for a more detailed discussion.
+        </p>
+    </div>
+
+    <div>
+        <p>
+            REAM is an alternative to spreadsheets and databases for managing social science datasets that emphasizes on maintainability.
+            It compiles to both analysis-ready <b>datasets</b> (CSV, JSON) and human-readable <b>documentations</b> (HTML, PDF).
+            Multiple formats, one source.
+        </p>
+
+        <div class="mermaid-container">
+            <div class="mermaid">
+            graph LR;
+              SOURCE[REAM File] --> PARSER(["REAM Parser<br>(ream-core)"]);
+              PARSER --> DATA[(Datasets<br>CSV, JSON, etc.)]
+
+              SOURCE --> CONVERTER([Third-party<br>Markdown Converter])
+              CONVERTER --> DOC[[Documentation<br>HTML, PDF, etc.]]
+            </div>
+        </div>
+
+        <p>
+            REAM has three main components:
+            <ol>
+                <li>
+                    a <em>data serialization language</em> for structured datasets (working in progress)
+                </li>
+                <li>
+                    a <em>data template</em> for generating datasets (working in progress)
+                </li>
+                <li>
+                    a collection of <em>filters</em> for data manipulation (planned)
+                </li>
+            </ol>
+        </p>
+
+
+
+        <p>
+          The language, along with the <a href="/toolchain">toolchain</a>, aims to help social scientists build human-readable, modular and reusable datasets, ranging from small personal projects to large collaborative projects.
+          Learn more about <a href="/overview/why-ream">REAM's features</a> to see whether it is the right choice for your next project.
+        </p>
+    </div>
+
+    <div class="intro-quote">
+        <blockquote>
+            It reads like Markdown, writes like Markdown, converts like Markdown.
+            Is it Markdown?
+        </blockquote>
+
+        <blockquote>
+            <b>RE</b>AM <b>A</b>int <b>M</b>arkdown!
+        </blockquote>
+    </div>
+
+    
+  <pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Country
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Belgium
+</span><span style="color:#abb2bf;">- capital: </span><span style="color:#9acc76;">Brussels
+</span><span style="color:#abb2bf;">- population: </span><span style="color:#db9d63;">11433256
+</span><span style="font-style:italic;color:#5f697a;">  &gt; data from 2019; retrieved from World Bank
+</span><span style="color:#abb2bf;">- euro_zone: </span><span style="color:#5ebfcc;">TRUE
+</span><span style="font-style:italic;color:#5f697a;">  &gt; joined in 1999
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">Dutch
+</span><span style="color:#abb2bf;">- size: </span><span style="color:#db9d63;">0.59
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">French
+</span><span style="color:#abb2bf;">- size: </span><span style="color:#db9d63;">0.4
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">## </span><span style="color:#eb6772;">Language
+</span><span style="color:#abb2bf;">- name: </span><span style="color:#9acc76;">German
+</span><span style="color:#abb2bf;">- size: </span><span style="color:#db9d63;">0.01
+</span></code></pre>
+
+
+
+</div>
+
+<br>
+
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

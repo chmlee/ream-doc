@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;getting-started&#x2F;">Getting Started</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;">Variable</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-3">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#key">Key</a>
+        
+      </li>
+    
+      <li class="header-item header-level-3">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#value">Value</a>
+        
+          
+          <ul class="header-container">
+            
+    
+      <li class="header-item header-level-3">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#string">String</a>
+        
+      </li>
+    
+      <li class="header-item header-level-3">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#number">Number</a>
+        
+      </li>
+    
+      <li class="header-item header-level-3">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#boolean">Boolean</a>
+        
+      </li>
+    
+      <li class="header-item header-level-3">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;#missing-value">Missing Value*</a>
+        
+      </li>
+    
+
+          </ul>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;list&#x2F;">List</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;annotation&#x2F;">Annotation</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;entry&#x2F;">Entry</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;type-system&#x2F;">Type System</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;reference&#x2F;">Reference</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Variable
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p><code>&lt;variable&gt;</code> assigns a <code>&lt;value&gt;</code> to a <code>&lt;key&gt;</code>, in the form of</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;">- &lt;key&gt;: </span><span style="color:#9acc76;">&lt;value&gt;
+</span></code></pre>
+<p>Note that a space is required after the dash and colon.</p>
+<h2 id="key">Key</h2>
+<p><code>&lt;key&gt;</code> can't be empty.
+It may contain any upper and lowercase letters (<code>A-Za-z</code>), digits (<code>0-9</code>), spaces (<code>U+0020</code>), and underscores (<code>_</code>), but can't start with a digit.
+Key names are case sensitive.</p>
+<p>Some examples for valid key names are:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- KEY: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- key_with_underscore: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- _: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="key-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>key: value</li>
+<li>KEY: value</li>
+<li>key_1: value</li>
+<li>key_with_underscore: value</li>
+<li>_: value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="key-input" wrap="off"># Example
+- key: value
+- KEY: value
+- key_1: value
+- key_with_underscore: value
+- _: value</textarea>
+    </div>
+    <div id="key-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="key">Compile</button>
+</div>
+<div class="box tip">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        TIP
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>Don't worry about what <code># Example</code> is.
+For now just see this as the title for your REAM file, and all REAM files starts with a title.
+We'll discuss what it is in detail in <a href="/tutorial/entry">Entry</a> section.</p>
+
+  </div>
+</div>
+<p>Key name can't be empty:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#abb2bf;">- : </span><span style="color:#9acc76;">value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="key-cant-be-empty-code"> -->
+  <!--   <h1 id="badexample">BadExample</h1>
+<ul>
+<li>: value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="key-cant-be-empty-input" wrap="off"># BadExample
+- : value</textarea>
+    </div>
+    <div id="key-cant-be-empty-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="key-cant-be-empty">Compile</button>
+</div>
+<p>Key name can't start with a digit:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#abb2bf;">- 1key: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="key-cant-start-with-a-digit-code"> -->
+  <!--   <h1 id="badexample">BadExample</h1>
+<ul>
+<li>1key: value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="key-cant-start-with-a-digit-input" wrap="off"># BadExample
+- 1key: value</textarea>
+    </div>
+    <div id="key-cant-start-with-a-digit-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="key-cant-start-with-a-digit">Compile</button>
+</div>
+<div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>This rule is not yet enforced.</p>
+
+  </div>
+</div>
+<div class="box detail">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        DETAIL
+      
+    </span>
+    
+      <button class="toggle-detail" id="utf">show</button>
+    
+  </div>
+  <div
+    class="box-detail-content" id="utf-content">
+  <p>Key names should support UTF-8, but <a href="https://github.com/chmlee/ream-core">ream-core</a> does not support UTF-8 identifiers yet.
+It is recommended that you use only ASCII for now.</p>
+
+  </div>
+</div>
+<h2 id="value">Value</h2>
+<h3 id="string">String</h3>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- string: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- long_string: </span><span style="color:#9acc76;">Hello World
+</span><span style="color:#abb2bf;">- quoted_string: </span><span style="color:#9acc76;">&quot;quote&quot;
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="string-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>string: value</li>
+<li>long_string: Hello World</li>
+<li>quoted_string: &quot;quote&quot;</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="string-input" wrap="off"># Example
+- string: value
+- long_string: Hello World
+- quoted_string: &quot;quote&quot;</textarea>
+    </div>
+    <div id="string-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="string">Compile</button>
+</div>
+<p>There is not need to quote strings.
+Quotation marks will be preserved.</p>
+<p>Values can't contain line breaks.
+The following will raise an error:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#9acc76;">first line
+</span><span style="color:#abb2bf;">         second line
+</span><span style="color:#abb2bf;">- key_2: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="string-with-linebreak-code"> -->
+  <!--   <h1 id="badexample">BadExample</h1>
+<ul>
+<li>key_1: first line
+second line</li>
+<li>key_2: value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="string-with-linebreak-input" wrap="off"># BadExample
+- key_1: first line
+         second line
+- key_2: value</textarea>
+    </div>
+    <div id="string-with-linebreak-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="string-with-linebreak">Compile</button>
+</div>
+<p>Note that REAM stores strings as raw literals, so the following example is valid. <code>\n</code> will not be escaped, and is equivalent to <code>\\n</code> in JSON.</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#9acc76;">first line\nsecond line
+</span><span style="color:#abb2bf;">- key_2: </span><span style="color:#9acc76;">value
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="string-is-raw-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>key_1: first line\nsecond line</li>
+<li>key_2: value</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="string-is-raw-input" wrap="off"># Example
+- key_1: first line\nsecond line
+- key_2: value</textarea>
+    </div>
+    <div id="string-is-raw-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="string-is-raw">Compile</button>
+</div>
+<h3 id="number">Number</h3>
+<p>Example:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- number_1: </span><span style="color:#db9d63;">1
+</span><span style="color:#abb2bf;">- number_2: </span><span style="color:#db9d63;">-2
+</span><span style="color:#abb2bf;">- number_3: </span><span style="color:#db9d63;">3.1415926
+</span></code></pre>
+<div class="editor">
+  <!-- <div id="number-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>number_1: 1</li>
+<li>number_2: -2</li>
+<li>number_3: 3.1415926</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="number-input" wrap="off"># Example
+- number_1: 1
+- number_2: -2
+- number_3: 3.1415926</textarea>
+    </div>
+    <div id="number-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="number">Compile</button>
+</div>
+<div class="box detail">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        DETAIL
+      
+    </span>
+    
+      <button class="toggle-detail" id="number-type">show</button>
+    
+  </div>
+  <div
+    class="box-detail-content" id="number-type-content">
+  <p>REAM should probably distinguish between <code>Integer</code> and <code>Float</code>.
+In ream-core <code>Number</code>s are validated through parsing as Rust's <code>f64</code> type, but this may change in the future.</p>
+<p>I might also introduce <code>Fraction</code> type.</p>
+
+  </div>
+</div>
+<h3 id="boolean">Boolean</h3>
+<p>Boolean values are <code>TRUE</code> and <code>FALSE</code>, both uppercase.</p>
+<p>Example:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- bool_1: </span><span style="color:#5ebfcc;">TRUE
+</span><span style="color:#abb2bf;">- bool_2: </span><span style="color:#5ebfcc;">FALSE
+</span><span style="color:#abb2bf;">- not_bool_1: </span><span style="color:#9acc76;">true
+</span><span style="color:#abb2bf;">- not_bool_2: </span><span style="color:#9acc76;">False
+</span></code></pre>
+<p>Note that boolean values must be exact matches.
+Values that doesn't match the pattern are stored as strings.</p>
+<div class="editor">
+  <!-- <div id="boolean-code"> -->
+  <!--   <h1 id="example">Example</h1>
+<ul>
+<li>bool_1: TRUE</li>
+<li>bool_2: FALSE</li>
+<li>not_bool_1: true</li>
+<li>not_bool_2: False</li>
+</ul>
+ -->
+  <!-- </div> -->
+  <div class="input-output-container">
+    <div class="input-container">
+      <textarea class="input" oninput="auto_grow(this)" id="boolean-input" wrap="off"># Example
+- bool_1: TRUE
+- bool_2: FALSE
+- not_bool_1: true
+- not_bool_2: False</textarea>
+    </div>
+    <div id="boolean-output" class="output" style="monospace">(compile output)</div>
+  </div>
+  <button class="update-button" id="boolean">Compile</button>
+</div>
+<h3 id="missing-value">Missing Value*</h3>
+<p>See DETAIL.</p>
+<div class="box detail">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        DETAIL
+      
+    </span>
+    
+      <button class="toggle-detail" id="missing-value">show</button>
+    
+  </div>
+  <div
+    class="box-detail-content" id="missing-value-content">
+  <p>How should REAM represent missing value?</p>
+<p>One solution is to simply add a <code>None</code> type.</p>
+<p>Another solution is converting all REAM types into <a href="https://en.wikipedia.org/wiki/Option_type">options</a>.
+In Rust I would have to do something like <code>type ReamString = Option&lt;String&gt;</code>.
+That being said, all missing values require explicit type annotations since <code>None</code> is not a value type but a variant of an enumeration.</p>
+<p>The benefit of such design is more obvious when references and filters are implemented.
+When referencing existing data for manipulation, users should think about how to deal with potential <code>None</code> values since referencing a <code>Boolean</code> returns <code>Boolean::Some(TRUE)</code>, <code>Boolean::Some(FALSE)</code>, or <code>Boolean::None</code>.
+The filters should then provide methods similar to <a href="https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator"><code>?</code></a> and <a href="https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap"><code>unwrap</code></a>.</p>
+
+  </div>
+</div>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

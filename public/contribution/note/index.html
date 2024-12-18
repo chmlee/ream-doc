@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;">Contribution</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;note&#x2F;">Note</a>
+
+                    <ul class="header-container">
+                        
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Note
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <p>This documentation is for REAM v0.3 and above,  but I haven't upgraded the embedded editor with the new implementation.
+The editor in the site is currently running reamparser.js, the implementation for REAM v0.2.
+The most reliable way to test the examples is through the <a href="https://chmlee.github.io/ream-editor">standalone editor</a>.</p>
+<hr />
+<p>There are three major versions of REAM and three corresponding implementations:</p>
+<ul>
+<li>
+<p>REAM v0.1:
+<a href="https://github.com/chmlee/ream-lang">specs</a>,
+<a href="https://github.com/chmlee/ream-python">ream-python</a>,
+<a href="https://pypi.org/project/ream/">PyPI</a></p>
+</li>
+<li>
+<p>REAM v0.2:
+<a href="https://chmlee.github.io/ream-doc-v2">specs</a>,
+<a href="https://github.com/chmlee/reamparser.js">reamparser.js</a>,
+<a href="https://chmlee.github.io/ream-editor-vue">editor</a><sup>[1]</sup></p>
+</li>
+<li>
+<p>REAM v0.3:
+<a href="/">specs</a>(this site),
+<a href="https://github.com/chmlee/ream-core">ream-core</a>,
+<a href="https://crates.io/crates/ream">crates.io</a>,
+<a href="https://chmlee.github.io/ream-editor">editor-yew</a>,
+<a href="https://chmlee.github.io/ream-wasm">editor-wasm</a><sup>[2]</sup></p>
+</li>
+</ul>
+<p>[1]: I broke some node dependencies, again, and the site is currently not working. Sad :(</p>
+<p>[2]: Both editor 1 and 2 use ream-core for parsing and rely on <a href="https://webassembly.org/">WebAssembly (WASM)</a>, but they are used differently.</p>
+<p>Editor-yew is written entirely in Rust with <a href="https://yew.rs">Yew</a> as the front-end, and the entire editor is compiled to WASM.
+The ream-core it used is pulled directly from my GitHub <code>master</code> branch and added as a project dependency.</p>
+<p>The front-end for editor-wasm is implemented in vanilla JavaScript, and the parser embedded in it is a local <code>dev</code> branch of ream-core compiled to WASM.
+This editor is mostly for development use since it is much faster to compile just ream-core and not the entire editor.
+New functionalities will be tested in editor-wasm before adding to editor-yew.</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;why-ream&#x2F;">Why REAM</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;comparison&#x2F;">Comparison</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;origin&#x2F;">Origin</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;future&#x2F;">Future</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;changelog&#x2F;">Changelog</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;changelog&#x2F;#0-3-3-2021-05-15">[0.3.3] - 2021-05-15</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;changelog&#x2F;#0-3-2-2021-05-10">[0.3.2] - 2021-05-10</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;changelog&#x2F;#0-3-1-2021-04-27">[0.3.1] - 2021-04-27</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;changelog&#x2F;#0-3-0-2021-04-26">[0.3.0] - 2021-04-26</a>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Changelog
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <h2 id="0-3-3-2021-05-15">[0.3.3] - 2021-05-15</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Fix <code>flatten_entry</code></li>
+</ul>
+<h2 id="0-3-2-2021-05-10">[0.3.2] - 2021-05-10</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>Add list type: <code>list &lt;T&gt;</code></li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Force list to be homogeneous, or else raise <code>TypeError(HeterogeneousList)</code></li>
+<li>Wrap <code>ReamValue</code> in <code>ReamValueAnnotated</code></li>
+</ul>
+<h2 id="0-3-1-2021-04-27">[0.3.1] - 2021-04-27</h2>
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Add README and CHANGELOG</li>
+</ul>
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Change CSV separators from semicolons to commas</li>
+</ul>
+<h2 id="0-3-0-2021-04-26">[0.3.0] - 2021-04-26</h2>
+<h3 id="added-2">Added</h3>
+<ul>
+<li>Add type checking for <code>num</code> and <code>bool</code></li>
+</ul>
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Change syntax for <code>num</code>. Numbers are no longer wrapped by dollar signs.</li>
+<li>Change syntax for <code>bool</code>. Booleans are no longer wrapped by back ticks.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Drop support for list</li>
+</ul>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

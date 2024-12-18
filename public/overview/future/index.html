@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;why-ream&#x2F;">Why REAM</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;comparison&#x2F;">Comparison</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;origin&#x2F;">Origin</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;future&#x2F;">Future</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;future&#x2F;#motivation">Motivation</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;future&#x2F;#dependency">Dependency</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;future&#x2F;#updating-dependencies">Updating dependencies</a>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;overview&#x2F;changelog&#x2F;">Changelog</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Future
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>This section is a work in progress.</p>
+
+  </div>
+</div>
+<p>The ultimate goal for REAM is to make distributing and reusing data easy.
+To do so we need to think of REAM not just as a data serialization but as a programming language, and REAM datasets as libraries with well-defined APIs for external libraries to use.</p>
+<p>First off, the language.
+To make REAM datasets easy to be reused, the language itself should encourage or enforce good practices.
+References and data filters reduce repetition.
+Inline documentations makes generating human-readable documentations a trivial task.
+Templating and static typing help validate schemas.</p>
+<p>Second, the tooling.
+REAM datasets can't be easily distributed and reused without a package manager and a package registry.
+This is a <a href="https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527">notoriously difficult task</a>, and I don't know whether this project will survive long enough for a package manager to be a need.
+Still, I think it is important to have distribution in mind when designing the language and not as an afterthought.
+At the very least I should provide a boilerplate directory structure for users to import datasets with <code>git submodule add</code>.</p>
+<p>Finally, the ecosystem.
+The number one reason why most users would even consider using REAM is not because of the language itself, but the quality datasets in the registry that people can easily install and build new datasets upon.
+For that to happen, the registry should have quality datasets containing popular variables that almost every dataset depends on, such as datasets for country codes and annual GDP.</p>
+<p>(Even though this sounds like a proposal for a standard library, what I have in mind is what <a href="https://ohmyz.sh/">oh-my-zsh</a> is to Zsh.)</p>
+<h2 id="motivation">Motivation</h2>
+<p>If I want to do matrix calculation in Python, I do not need to implement a linear algebra library from scratch.
+I can use <code>numpy</code>:</p>
+<ol>
+<li>Download <code>numpy</code></li>
+</ol>
+<pre data-lang="shell" style="background-color:#2b303b;color:#6c7079;" class="language-shell "><code class="language-shell" data-lang="shell"><span style="color:#abb2bf;">pip install --user numpy
+</span></code></pre>
+<ol start="2">
+<li>Import <code>numpy</code></li>
+</ol>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">numpy </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">np
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">numpy.linalg </span><span style="color:#cd74e8;">as </span><span style="color:#abb2bf;">la
+</span></code></pre>
+<ol start="3">
+<li>Use <code>numpy</code></li>
+</ol>
+<pre data-lang="python" style="background-color:#2b303b;color:#6c7079;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#abb2bf;">mat_A_inv </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">la.</span><span style="color:#eb6772;">inv</span><span style="color:#abb2bf;">(mat_A)
+</span></code></pre>
+<br/>
+<p>If I want to create fancy plots in R, I do not need to write a graphing library from scratch.
+I can use <code>ggplot2</code></p>
+<ol>
+<li>Download <code>ggplot2</code></li>
+</ol>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#5ebfcc;">install.packages</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;ggplot2&quot;</span><span style="color:#abb2bf;">)
+</span></code></pre>
+<ol start="2">
+<li>Import <code>ggplot2</code></li>
+</ol>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#5ebfcc;">library</span><span style="color:#abb2bf;">(ggplot2)
+</span></code></pre>
+<ol start="3">
+<li>Use <code>ggplot2</code></li>
+</ol>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">plot_1 </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">ggplot</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">dat </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> dat) </span><span style="color:#adb7c9;">+ </span><span style="color:#eb6772;">geom_point</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">aes</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">x </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> x, </span><span style="color:#eb6772;">y </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> y))
+</span></code></pre>
+<br/>
+<p>If I want to add country GDP as a control variable in my dataset, I don't need to calculate GDP for each country myself.
+I can use GDP data from World Bank Open Data.</p>
+<ol>
+<li>Download dataset</li>
+</ol>
+<ul>
+<li>
+<p>Google <code>World Bank GDP</code> and click on the first result (assuming you have ad-block installed)</p>
+</li>
+<li>
+<p>Download the data in CSV format</p>
+</li>
+<li>
+<p>Unzip <code>API_NY.GDP.MKTP.CD_DS2_en_csv_v2_1678496.zip</code></p>
+</li>
+</ul>
+<ol start="2">
+<li>Import dataset</li>
+</ol>
+<ul>
+<li>Read the dataset:</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">wb </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">read.csv</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;./API_NY.GDP.MKTP.CD_DS2_en_csv_v2_1678496.csv&quot;</span><span style="color:#abb2bf;">)
+</span></code></pre>
+<ul>
+<li>See error messages:</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">Error </span><span style="color:#adb7c9;">in </span><span style="color:#5ebfcc;">read.table</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">file </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> file, </span><span style="color:#eb6772;">header </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> header, </span><span style="color:#eb6772;">sep </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> sep, </span><span style="color:#eb6772;">quote </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> quote,  </span><span style="color:#cd74e8;">:
+</span><span style="color:#abb2bf;">  more columns than column names)
+</span></code></pre>
+<ul>
+<li>
+<p>Open the CSV file in a text editor.
+Discover the actual dataset starts on line 5.</p>
+</li>
+<li>
+<p>Reread the dataset:</p>
+</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">wb </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">read.csv</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;./API_NY.GDP.MKTP.CD_DS2_en_csv_v2_1678496.csv&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">skip </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">4</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">header </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> T)
+</span></code></pre>
+<ol start="3">
+<li>Use dataset</li>
+</ol>
+<ul>
+<li>write function <code>get_gdp</code> to extract GDP:</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#5cb3fa;">get_gdp </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">function</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">country</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">year</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">  col_i </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">grep</span><span style="color:#abb2bf;">(</span><span style="color:#5ebfcc;">paste0</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;X&#39;</span><span style="color:#abb2bf;">, year), </span><span style="color:#5ebfcc;">names</span><span style="color:#abb2bf;">(wb))
+</span><span style="color:#abb2bf;">  gdp </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> wb[wb</span><span style="color:#cd74e8;">$</span><span style="color:#abb2bf;">Country.Name </span><span style="color:#adb7c9;">==</span><span style="color:#abb2bf;"> country,][col_i]
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">(gdp[</span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">,</span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">])
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<ul>
+<li>apply the function by row:</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">my_data</span><span style="color:#cd74e8;">$</span><span style="color:#abb2bf;">GDP </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">apply</span><span style="color:#abb2bf;">(my_data, </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">, </span><span style="color:#cd74e8;">function</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">row</span><span style="color:#abb2bf;">) </span><span style="color:#eb6772;">get_gdp</span><span style="color:#abb2bf;">(row[</span><span style="color:#9acc76;">&#39;country&#39;</span><span style="color:#abb2bf;">], row[</span><span style="color:#9acc76;">&#39;year&#39;</span><span style="color:#abb2bf;">]))
+</span></code></pre>
+<ul>
+<li>
+<p>Discover Cote d'Ivoire has <code>NA</code> GDP.
+Oh, it's called &quot;Sierra Leone&quot; in the World Bank's dataset.</p>
+</li>
+<li>
+<p>Figure out all the name differences between the two datasets and write a &quot;dictionary&quot; for translation.</p>
+</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">country_dict </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">list</span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">  </span><span style="color:#9acc76;">&quot;Brunei&quot; </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;Brunei Darussalam&quot;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">  </span><span style="color:#9acc76;">&quot;Dominican Republic&quot; </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;Dominica&quot;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">  </span><span style="color:#9acc76;">&quot;Cote d&#39;Ivoire&quot; </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;Sierra Leone&quot;
+</span><span style="color:#abb2bf;">  </span><span style="font-style:italic;color:#5f697a;"># You get the idea
+</span><span style="color:#abb2bf;">)
+</span></code></pre>
+<ul>
+<li>Modify <code>get_gdp</code></li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#5cb3fa;">get_gdp </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">function</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">my_country</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">year</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">  col_i </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">grep</span><span style="color:#abb2bf;">(</span><span style="color:#5ebfcc;">paste0</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;X&#39;</span><span style="color:#abb2bf;">, year), </span><span style="color:#5ebfcc;">names</span><span style="color:#abb2bf;">(wb))
+</span><span style="color:#abb2bf;">  wb_country </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> country_dict[[my_country]]
+</span><span style="color:#abb2bf;">  gdp </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> wb[wb</span><span style="color:#cd74e8;">$</span><span style="color:#abb2bf;">Country.Name </span><span style="color:#adb7c9;">==</span><span style="color:#abb2bf;"> wb_country,][col_i]
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">(gdp[</span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">,</span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">])
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<ul>
+<li>Apply the function again:</li>
+</ul>
+<pre data-lang="R" style="background-color:#2b303b;color:#6c7079;" class="language-R "><code class="language-R" data-lang="R"><span style="color:#abb2bf;">my_data</span><span style="color:#cd74e8;">$</span><span style="color:#abb2bf;">GDP </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">apply</span><span style="color:#abb2bf;">(my_data, </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">, </span><span style="color:#cd74e8;">function</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">row</span><span style="color:#abb2bf;">) </span><span style="color:#eb6772;">get_gdp</span><span style="color:#abb2bf;">(row[</span><span style="color:#9acc76;">&#39;country&#39;</span><span style="color:#abb2bf;">], row[</span><span style="color:#9acc76;">&#39;year&#39;</span><span style="color:#abb2bf;">]))
+</span></code></pre>
+<p>There should be an easier way to import existing datasets.
+We need a package manager for data.</p>
+<p>It's not unheard of to download datasets with package managers.
+Besides the build-in datasets in R, you can download quite a few datasets from CRAN using <code>install.pacakges</code>, including example datasets in libraries (<code>diamonds</code> in ggplot2), datasets as libraries (<code>titanic</code>), or wrappers of APIs (<code>censusapi</code>).</p>
+<p>But my ideal package manager is more than a downloader.</p>
+<h2 id="dependency">Dependency</h2>
+<p>Consider Alesina et al. (2003) study on ethnic, linguistic, and religious fractionalization.
+To calculate ethnic fractionalization indices for each country, Alesina compiled a list of ethnic groups worldwide by consulting six types of sources:</p>
+<ul>
+<li>Encyclopedia Brittanica (EB)</li>
+<li>CIA World Factbook (CIA)</li>
+<li>Scarrit and Mozaffar (1999) (SM)</li>
+<li>Levinson (1998) (LEV)</li>
+<li>World Directory of Minorities (WDM)</li>
+<li>National census data (CENSUS)</li>
+</ul>
+<p>If you plot the dependency graph, it'll look like the following:</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB --&gt; ETH
+</div>
+<p>Alesina also calculated fractionalization indexes for language and religion based on data from Encyclopedia Brittanica.
+Let's update the dependency graph:</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+    REL --&gt; MASTER
+    LAN --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB --&gt; ETH
+
+    REL[[Religion Data]]
+    EB --&gt; REL
+
+    LAN[[Language Data]]
+    EB --&gt; LAN
+</div>
+<p>To study the effect of fractionalization, variables from past studies are added from Easterly and Levine (1997) and La Porta et al. (1997):</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+    REL --&gt; MASTER
+    LAN --&gt; MASTER
+    EAL --&gt; MASTER
+    LAP --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB --&gt; ETH
+
+    REL[[Religion Data]]
+    EB --&gt; REL
+
+    LAN[[Language Data]]
+    EB --&gt; LAN
+
+    EAL([&quot;Easterly and Levine&lt;br&#x2F;&gt;(1997)&quot;])
+    LAP([&quot;La Porta et al.&lt;br&#x2F;&gt;(1997)&quot;])
+</div>
+<p>The fractionalization indices are compared with existing measures:</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+    REL --&gt; MASTER
+    LAN --&gt; MASTER
+    EAL --&gt; MASTER
+    LAP --&gt; MASTER
+    ANM --&gt; MASTER
+    ANN --&gt; MASTER
+    FER --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB --&gt; ETH
+
+    REL[[Religion Data]]
+    EB --&gt; REL
+
+    LAN[[Language Data]]
+    EB --&gt; LAN
+
+    EAL([&quot;Easterly and Levine&lt;br&#x2F;&gt;(1997)&quot;])
+    LAP([&quot;La Porta et al.&lt;br&#x2F;&gt;(1997)&quot;])
+
+    ANM([&quot;Atlas Narodov&lt;br&#x2F;&gt;Mira (1964)&quot;])
+    ANN([&quot;Annett&lt;br&#x2F;&gt;(2001)&quot;])
+    FER([&quot;Fearon&lt;br&#x2F;&gt;(2002)&quot;])
+</div>
+<p>We can continue to expand the dependency graph for each of the dependencies.
+After adding a few of Easterly and Levine's dependencies, we get:</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+    REL --&gt; MASTER
+    LAN --&gt; MASTER
+    EAL --&gt; MASTER
+    LAP --&gt; MASTER
+    ANM --&gt; MASTER
+    ANN --&gt; MASTER
+    FER --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB --&gt; ETH
+
+    REL[[Religion Data]]
+    EB --&gt; REL
+
+    LAN[[Language Data]]
+    EB --&gt; LAN
+
+    EAL([&quot;Easterly and Levine&lt;br&#x2F;&gt;(1997)&quot;])
+    LAP([&quot;La Porta et al.&lt;br&#x2F;&gt;(1997)&quot;])
+
+    ANM([&quot;Atlas Narodov&lt;br&#x2F;&gt;Mira (1964)&quot;])
+    ANN([&quot;Annett&lt;br&#x2F;&gt;(2001)&quot;])
+    FER([&quot;Fearon&lt;br&#x2F;&gt;(2002)&quot;])
+
+    TAH --&gt; EAL
+    TAH([&quot;Taylor and Hudson&lt;br&#x2F;&gt;(1997)&quot;])
+
+    GUN --&gt; EAL
+    GUN([&quot;Gunnemark (1991)&quot;])
+
+    SIV --&gt; EAL
+    SIV([&quot;Sivard (1993)&quot;])
+
+    WRI --&gt; EAL
+    WRI([&quot;World Resource&lt;br&#x2F;&gt;Institute (1992)&quot;])
+</div>
+<p>Eventually, all relevant data are extracted from the dependencies, manually or through scripts, to the <a href="https://www.openicpsr.org/openicpsr/project/112449/version/V1/view">aggregated datasets</a></p>
+<p>The practice of copying dependencies to your own project is known as <a href="https://stackoverflow.com/questions/26217488/what-is-vendoring">vendoring</a> in programming.
+Vendoring is not necessarily a bad thing, but we do lose some information along the way.</p>
+<p>(TODO: discuss pros and cons of vendoring)</p>
+<h2 id="updating-dependencies">Updating dependencies</h2>
+<p>Let's zoom in on the dependency graph and focus on ethnic data.</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB --&gt; ETH
+</div>
+<p>If researchers plan to reproduce the research with updated dependencies, how would they update the dataset?</p>
+<div class="mermaid">
+  graph BT;
+    MASTER([Master Dataset])
+    ETH --&gt; MASTER
+
+    ETH[[Ethnic Data]]
+    CIA --&gt; ETH
+    SM([SM]) --&gt; ETH
+    LEV([LEV]) --&gt; ETH
+    WDM --&gt; ETH
+    CENSUS --&gt; ETH
+    EB_OLD[&quot;EB (2001)&quot;] --&gt; ETH
+    subgraph EB
+    EB_OLD -.-&gt; EB_NEW[&quot;EB (2010)&quot;]
+    end
+</div>
+<p>If the original dataset was created by manually copying and pasting data from dependencies, you'll probably have to repeat the process.</p>
+<p>If the dataset was created by extracting data from dependencies with scripts, we can rerun the scripts and generate the updated dataset <em>only if</em> the schemas of all dependencies remain the same.
+Otherwise, you'll have to analyze the schema changes and run custom migration scripts before running the original scripts.</p>
+<p>(To be continued)</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

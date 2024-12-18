@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;getting-started&#x2F;">Getting Started</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;variable&#x2F;">Variable</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;list&#x2F;">List</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;annotation&#x2F;">Annotation</a></li>
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;entry&#x2F;">Entry</a></li>
+                </li>
+
+            
+
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;type-system&#x2F;">Type System</a>
+
+                    <ul class="header-container">
+                        
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;tutorial&#x2F;reference&#x2F;">Reference</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Type System
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>Examples with types are not supported by the embedded editor.
+Use the <a href="https://chmlee.github.io/ream-editor">web editor</a> to test the examples instead.</p>
+<p>See <a href="/contribution/note">Note</a> for more information.</p>
+
+  </div>
+</div>
+<p>REAM is statically typed, that is, the compiler check for and catch type errors when compiling your dataset.</p>
+<p>Type annotations are added after the key and wrapped by parentheses:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;">- &lt;key&gt; (&lt;type&gt;): </span><span style="color:#9acc76;">&lt;value&gt;
+</span></code></pre>
+<p>Values can be one of the three primitive types:</p>
+<ul>
+<li><code>str</code>: <a href="/tutorial/variable#string">String</a></li>
+<li><code>num</code>: <a href="/tutorial/variable#number">Number</a></li>
+<li><code>bool</code>: <a href="/tutorial/variable#boolean">Boolean</a></li>
+</ul>
+<p>or the following composition type:</p>
+<ul>
+<li><code>list &lt;T&gt;</code>: <a href="/tutorial/list">List</a> of <code>&lt;T&gt;</code> where <code>&lt;T&gt;</code> is a primitive type.</li>
+</ul>
+<p>Example:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1 </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- key_2 </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">3.14159
+</span><span style="color:#abb2bf;">- key_3 </span><span style="color:#cd74e8;">(bool)</span><span style="color:#abb2bf;">: </span><span style="color:#5ebfcc;">FALSE
+</span><span style="color:#abb2bf;">- list_1 (list str):
+</span><span style="color:#abb2bf;">  * item 1
+</span><span style="color:#abb2bf;">  * item 2
+</span><span style="color:#abb2bf;">  * item 3
+</span><span style="color:#abb2bf;">- key_2 (list num):
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * -2
+</span><span style="color:#abb2bf;">  * 3.14159
+</span><span style="color:#abb2bf;">- key_3 (list bool):
+</span><span style="color:#abb2bf;">  * TRUE
+</span><span style="color:#abb2bf;">  * FALSE
+</span><span style="color:#abb2bf;">  * TRUE
+</span></code></pre>
+<p>If no type annotation is provided, the compiler will guess the type of the value.
+So the following two entries generates identical abstract syntax trees:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1 </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- key_2 </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: </span><span style="color:#db9d63;">3.14159
+</span><span style="color:#abb2bf;">- key_3 </span><span style="color:#cd74e8;">(bool)</span><span style="color:#abb2bf;">: </span><span style="color:#5ebfcc;">FALSE
+</span></code></pre>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#9acc76;">value
+</span><span style="color:#abb2bf;">- key_2: </span><span style="color:#db9d63;">3.14159
+</span><span style="color:#abb2bf;">- key_3: </span><span style="color:#5ebfcc;">FALSE
+</span></code></pre>
+<p>For untyped lists, the type of the first element would be used.
+The following two lists generate identical abstract syntax trees:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key:
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * -2
+</span><span style="color:#abb2bf;">  * 3.14159
+</span></code></pre>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key (list num):
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * -2
+</span><span style="color:#abb2bf;">  * 3.14159
+</span></code></pre>
+<p>But the following would produce a different one:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key (list str):
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * -2
+</span><span style="color:#abb2bf;">  * 3.14159
+</span></code></pre>
+<p>And the following would raise <code>TypeError(HeterogeneousList)</code>:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key:
+</span><span style="color:#abb2bf;">  * 1
+</span><span style="color:#abb2bf;">  * item
+</span><span style="color:#abb2bf;">  * 3.14159
+</span></code></pre>
+<p>Type annotations can be used to convert values types.
+Add type annotation <code>str</code> to store <code>3.14159</code> and <code>FALSE</code> as strings.</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">Example
+</span><span style="color:#abb2bf;">- key_1: </span><span style="color:#db9d63;">3.14159
+</span><span style="color:#abb2bf;">- key_2 </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">3.14159
+</span><span style="color:#abb2bf;">- key_3: </span><span style="color:#5ebfcc;">FALSE
+</span><span style="color:#abb2bf;">- key_4 </span><span style="color:#cd74e8;">(str)</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">FALSE
+</span></code></pre>
+<p>Type annotations can help catch type errors:</p>
+<pre data-lang="ream" style="background-color:#2b303b;color:#6c7079;" class="language-ream "><code class="language-ream" data-lang="ream"><span style="color:#abb2bf;"># </span><span style="color:#eb6772;">BadExample
+</span><span style="color:#abb2bf;">- key_1 </span><span style="color:#cd74e8;">(num)</span><span style="color:#abb2bf;">: 10O0.1
+</span><span style="color:#abb2bf;">- key_2 </span><span style="color:#cd74e8;">(bool)</span><span style="color:#abb2bf;">: False
+</span></code></pre>
+<p>Without type annotations, both <code>10O0.1</code> and <code>False</code> are passed as strings.</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>REAM</title>
+
+  <link rel="stylesheet" type="text/css" href="https://ream-lang.org/style.css">
+  <link rel="shortcut icon" href="https://ream-lang.org/favicon.ico" type="image/x-icon">
+
+  <script type="module" src="https://ream-lang.org/js/bundle.js">
+  </script>
+  <script type="module" src="https://ream-lang.org/js/b.js"></script>
+  <script>
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight)+"px";
+    };
+  </script>
+  <!-- <script type="module"> -->
+  <!--   import init, {ream2csv} from "https://ream-lang.org/js/wasm/ream.js" -->
+  <!--   //init().then(() => {console.log("It's alive")}) -->
+  <!-- </script> -->
+
+
+</head>
+
+<body>
+  <div class="base-container">
+
+    
+
+  
+
+
+<nav class="navbar">
+  <div class="brand">
+    <a href="/">REAM</a>
+  </div>
+  <ul class="nav-list">
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;overview&#x2F;">
+          Overview
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;tutorial&#x2F;">
+          Tutorial
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item ">
+        <a href="&#x2F;toolchain&#x2F;">
+          Toolchain
+        </a>
+      </li>
+  
+    
+    
+      <li class="nav-item nav-item-active">
+        <a href="&#x2F;contribution&#x2F;">
+          Contribution
+        </a>
+      </li>
+  
+      <li class="nav-item github">
+        <a href="https://github.com/chmlee/ream-core">GitHub</a>
+      </li>
+  </ul>
+</nav>
+
+
+    
+
+    <div class="content-container">
+      
+
+
+<div class="page-sidebar">
+
+    <ul class="sidebar">
+        
+        
+        
+        
+
+            
+                
+                    
+                
+
+                <li class="sidebar-item sidebar-item-focus">
+
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;">Contribution</a>
+
+                    <ul class="header-container">
+                        
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;#documentataion">Documentataion</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;#language">Language</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;#compiler">Compiler</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;#editor">Editor</a>
+        
+      </li>
+    
+      <li class="header-item header-level-2">
+        <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;home&#x2F;#synatx-highlighting">Synatx Highlighting</a>
+        
+      </li>
+    
+
+                    </ul>
+
+                </li>
+
+            
+
+        
+
+            
+
+                <li class="sidebar-item">
+                    <a href="https:&#x2F;&#x2F;ream-lang.org&#x2F;contribution&#x2F;note&#x2F;">Note</a></li>
+                </li>
+
+            
+
+        
+    </ul>
+
+    <div class="main">
+        <h1 class="title">
+          Contribution
+        </h1>
+        <p class="subtitle"><strong></strong></p>
+
+        <div class="box note">
+  <div class="box-heading">
+    <span class="box-title">
+      
+        NOTE
+      
+    </span>
+    
+  </div>
+  <div
+    >
+  <p>This section is a work in progress.</p>
+
+  </div>
+</div>
+<p>This is a free and open source project.
+Suggestions and pull requests are welcome.
+You can <a href="mailto:louis@chihminglee.com">email me</a> your suggestions or create new issues in the relevant repository.</p>
+<p>Some of the improvements I plan to make are listed below.</p>
+<h2 id="documentataion">Documentataion</h2>
+<p>Source: <a href="https://github.com/chmlee/ream-doc">https://github.com/chmlee/ream-doc</a></p>
+<h3 id="typo-and-grammatical-error">Typo and Grammatical Error</h3>
+<h3 id="content-reorganization">Content reorganization</h3>
+<p>Documentation content should follow the <a href="https://documentation.divio.com/">Divio Documentation System</a> and be reorganized into four parts:</p>
+<ol>
+<li>tutorials</li>
+<li>how-to guides</li>
+<li>technical reference</li>
+<li>explanation</li>
+</ol>
+<h3 id="embedded-editor">Embedded Editor</h3>
+<p>The embedded editor in this documentation still uses the <a href="https://github.com/chmlee/reamparser.js">v0.2 implementation</a>.
+I have yet find a way to port the <a href="https://github.com/chmlee/ream-wasm">WebAssembly version of the v0.3 implementation</a> into the website.</p>
+<h3 id="tutorial">Tutorial</h3>
+<p>The current tutorial is structured more like a reference than a tutorial.
+Some of the features I wish to see in a tutorial is:</p>
+<ul>
+<li>
+<p>introduce just enough concept to create a simple dataset in less than 30 minutes.</p>
+</li>
+<li>
+<p>interactive.
+Users should be able to test the examples without a local install.
+<a href="https://svelte.dev/tutorial/basics">Svelte tutorial</a> is my ideal tutorial.</p>
+</li>
+<li>
+<p>beginner-friendly.
+What is a 64-bit float?
+What is an abstract syntax tree?
+What is Git?
+If I can't provide brief explanations in the tutorial, they don't belong in the tutorial.</p>
+</li>
+</ul>
+<h3 id="css">CSS</h3>
+<h2 id="language">Language</h2>
+<h2 id="compiler">Compiler</h2>
+<p>source: <a href="https://github.com/chmlee/ream-core">https://github.com/chmlee/ream-core</a></p>
+<h2 id="editor">Editor</h2>
+<p>source: <a href="https://github.com/chmlee/ream-editor">https://github.com/chmlee/ream-editor</a></p>
+<h2 id="synatx-highlighting">Synatx Highlighting</h2>
+<p>source: <a href="https://github.com/chmlee/prism">https://github.com/chmlee/prism</a> and <a href="https://github.com/chmlee/ream.vim">https://github.com/chmlee/ream.vim</a></p>
+<p>Update to v0.3.</p>
+
+
+        <div class="nav-row">
+            <div class="nav-box nav-previous">
+                
+            </div>
+
+            <div class="nav-box nav-next">
+                
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll(".input").forEach(textarea => {
+      //let input_array = textarea.value.split('\n');
+      //input_array.shift();
+      //input_array.pop();
+      //const input = input_array.join("\n");
+      //textarea.value = input;
+      auto_grow(textarea)
+    });
+  </script>
+  <script>
+
+    let boxDetailContent = document.querySelectorAll(".box-detail-content")
+    boxDetailContent.forEach(content => {
+      content.style.display = 'none'
+    })
+
+    let buttons = document.querySelectorAll(".toggle-detail")
+
+    buttons.forEach(button => button.addEventListener('click', event => {
+      const id = event.target.id
+      const contentId = `${id}-content`
+      const content = document.getElementById(contentId)
+      const state = event.target.innerHTML
+      if (state === 'show') {
+        button.innerHTML = 'hide'
+        content.style.display = 'block'
+      } else {
+        button.innerHTML = 'show'
+        content.style.display = 'none'
+      }
+    }))
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+
+</html>
