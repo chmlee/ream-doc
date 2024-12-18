@@ -14,7 +14,8 @@
     {% set item = get_section(path=subsection)%}
     {% set title = item.components | first %}
       <li class="nav-item {% if title == current_title %}nav-item-active{% endif %}">
-        <a href="{{ item.path }}">
+        <a href="{{ config.base_url }}{{ item.path }}">
+				
           {{ item.title }}
         </a>
       </li>
